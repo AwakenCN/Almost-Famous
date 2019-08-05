@@ -1,0 +1,6 @@
+rootProject.name = 'Almost-Famous'
+include ':famous-game'
+include ':famous-common'
+include ':famous-battle'
+include ':famous-login'
+
