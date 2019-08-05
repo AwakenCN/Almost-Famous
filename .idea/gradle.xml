@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/famous-common" />
             <option value="$PROJECT_DIR$/famous-game" />
             <option value="$PROJECT_DIR$/famous-login" />
+            <option value="$PROJECT_DIR$/famous-unique" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
