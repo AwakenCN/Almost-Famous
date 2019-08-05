@@ -58,3 +58,16 @@ subprojects {
 
 }
 
+
+// Gradle 生命周期开始执行
+beforeEvaluate {
+    println '配置阶段开始...'
+}
+
+afterEvaluate {
+    println '配置阶段结束...'
+}
+
+this.gradle.buildFinished {
+    println '构建阶段完毕...'
+}
