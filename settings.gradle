@@ -4,3 +4,4 @@ include ':famous-common'
 include ':famous-battle'
 include ':famous-login'
 
+println 'Gradle初始化阶段开始...'
