@@ -15,8 +15,26 @@
 以及Gradle的生命周期，Gradle的核心模块Project、Task等，为此我也想将这部分的学习成果与大家分享    
 ~~~    
 
+~~~
+Root project 'Almost-Famous'
++--- Project ':famous-battle'
++--- Project ':famous-common'
++--- Project ':famous-game'
++--- Project ':famous-login'
+\--- Project ':unique'
+~~~
+
+
 ## 1.2 Gradle学习资料
 
 * [Gradle中文版](https://github.com/DONGChuan/GradleUserGuide)
 * [Gradle阅读地址](https://dongchuan.gitbooks.io/gradle-user-guide-/)
     
+    
+## 1.3 Thrift RPC通信框架    
+
+~~~
+    Thrift Facebook开源的通讯、rpc框架    
+~~~
+
+* [Thrift生成规则](https://github.com/noseparte/thrift-server) 
