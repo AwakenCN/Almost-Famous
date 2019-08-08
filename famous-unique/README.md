@@ -4,6 +4,10 @@
 
 
 * [百度UidGenerator](https://github.com/baidu/uid-generator/blob/master/README.zh_cn.md)
+
+```txt
+   UidGenerator的生成规则详见common工程，我已将源码集成到工程中。
+```
 * [Twitter的雪花算法(SnowflakeWorker)](https://blog.csdn.net/lirenzuo/article/details/79308098)
 
 
