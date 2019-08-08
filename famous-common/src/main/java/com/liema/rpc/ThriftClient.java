@@ -1,6 +1,7 @@
-package rpc;
+package com.liema.rpc;
 
-import lombok.Data;
+import com.liema.rpc.protocol.RPCDateService;
+import com.liema.rpc.protocol.UniqueNameEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
@@ -8,10 +9,8 @@ import org.apache.thrift.protocol.TMultiplexedProtocol;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
-import rpc.protocol.RPCDateService;
-import rpc.protocol.RPCUniqueIdService;
-import rpc.protocol.RPCUniqueNameService;
-import rpc.protocol.UniqueNameEnum;
+import com.liema.rpc.protocol.RPCUniqueIdService;
+import com.liema.rpc.protocol.RPCUniqueNameService;
 
 /**
  * @author Noseparte

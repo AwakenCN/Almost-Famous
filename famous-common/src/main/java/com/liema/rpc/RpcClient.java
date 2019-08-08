@@ -1,6 +1,6 @@
-package rpc;
+package com.liema.rpc;
 
-import rpc.protocol.UniqueNameEnum;
+import com.liema.rpc.protocol.UniqueNameEnum;
 
 /**
  * @author Noseparte
