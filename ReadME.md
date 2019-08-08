@@ -21,9 +21,10 @@ Root project 'Almost-Famous'
 +--- Project ':famous-common'
 +--- Project ':famous-game'
 +--- Project ':famous-login'
-\--- Project ':unique'
+\--- Project ':famous-unique'
 ~~~
 
+* [unique服务的介绍](./famous-unique/README.md)
 
 ## 1.2 Gradle学习资料
 

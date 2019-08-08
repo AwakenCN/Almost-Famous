@@ -3,8 +3,7 @@ include ':famous-game'
 include ':famous-common'
 include ':famous-battle'
 include ':famous-login'
-include 'famous-unique'
-findProject(':famous-unique')?.name = 'unique'
+include ':famous-unique'
 
 println 'Gradle初始化阶段开始...'
 
