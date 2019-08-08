@@ -38,3 +38,5 @@ Root project 'Almost-Famous'
 ~~~
 
 * [Thrift生成规则](https://github.com/noseparte/thrift-server) 
+
+* [Banner生成器](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
