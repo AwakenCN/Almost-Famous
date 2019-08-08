@@ -13,32 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.liema;
-
-import com.liema.exception.UidGenerateException;
+package com.liema.baidu.utils;
 
 /**
- * Represents a unique id generator.
- *
+ * {@code ValuedEnum} defines an enumeration which is bounded to a value, you
+ * may implements this interface when you defines such kind of enumeration, that
+ * you can use {@link EnumUtils} to simplify parse and valueOf operation.
+ *  
  * @author yutianbao
  */
-public interface UidGenerator {
-
-    /**
-     * Get a unique ID
-     *
-     * @return UID
-     * @throws UidGenerateException
-     */
-    long getUID() throws UidGenerateException;
-
-    /**
-     * Parse the UID into elements which are used to generate the UID. <br>
-     * Such as timestamp & workerId & sequence...
-     *
-     * @param uid
-     * @return Parsed info
-     */
-    String parseUID(long uid);
-
+public interface ValuedEnum<T> {
+    T value();
 }

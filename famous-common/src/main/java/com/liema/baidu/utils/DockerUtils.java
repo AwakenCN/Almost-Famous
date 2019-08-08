@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.liema.utils;
+package com.liema.baidu.utils;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.liema.buffer;
+package com.liema.baidu.buffer;
 
 /**
  * If tail catches the cursor it means that the ring buffer is full, any more buffer put request will be rejected.

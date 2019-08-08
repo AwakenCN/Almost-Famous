@@ -13,28 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.liema.impl;
+package com.liema.baidu.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.liema.buffer.BufferPaddingExecutor;
-import com.liema.buffer.RejectedPutBufferHandler;
-import com.liema.buffer.RejectedTakeBufferHandler;
-import com.liema.buffer.RingBuffer;
-import com.liema.exception.UidGenerateException;
+import com.liema.baidu.BitsAllocator;
+import com.liema.baidu.UidGenerator;
+import com.liema.baidu.buffer.RingBuffer;
+import com.liema.baidu.buffer.BufferPaddingExecutor;
+import com.liema.baidu.buffer.RejectedPutBufferHandler;
+import com.liema.baidu.buffer.RejectedTakeBufferHandler;
+import com.liema.baidu.exception.UidGenerateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.util.Assert;
 
 /**
- * Represents a cached implementation of {@link com.liema.UidGenerator} extends
+ * Represents a cached implementation of {@link UidGenerator} extends
  * from {@link DefaultUidGenerator}, based on a lock free {@link RingBuffer}<p>
  * 
  * The spring properties you can specified as below:<br>
  * <li><b>boostPower:</b> RingBuffer size boost for a power of 2, Sample: boostPower is 3, it means the buffer size 
- *                        will be <code>({@link com.liema.BitsAllocator#getMaxSequence()} + 1) &lt;&lt;
+ *                        will be <code>({@link BitsAllocator#getMaxSequence()} + 1) &lt;&lt;
  *                        {@link #boostPower}</code>, Default as {@value #DEFAULT_BOOST_POWER}
  * <li><b>paddingFactor:</b> Represents a percent value of (0 - 100). When the count of rest available UIDs reach the 
  *                           threshold, it will trigger padding buffer. Default as{@link RingBuffer#DEFAULT_PADDING_PERCENT}
@@ -85,7 +87,7 @@ public class CachedUidGenerator extends DefaultUidGenerator implements Disposabl
      * Get the UIDs in the same specified second under the max sequence
      * 
      * @param currentSecond
-     * @return UID list, size of {@link com.liema.BitsAllocator#getMaxSequence()} + 1
+     * @return UID list, size of {@link BitsAllocator#getMaxSequence()} + 1
      */
     protected List<Long> nextIdsForOneSecond(long currentSecond) {
         // Initialize result list size of (max sequence + 1)

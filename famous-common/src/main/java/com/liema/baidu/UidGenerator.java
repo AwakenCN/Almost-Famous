@@ -13,23 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.liema.buffer;
+package com.liema.baidu;
 
-import java.util.List;
+import com.liema.baidu.exception.UidGenerateException;
 
 /**
- * Buffered UID provider(Lambda supported), which provides UID in the same one second
- * 
+ * Represents a unique id generator.
+ *
  * @author yutianbao
  */
-@FunctionalInterface
-public interface BufferedUidProvider {
+public interface UidGenerator {
 
     /**
-     * Provides UID in one second
-     * 
-     * @param momentInSecond
-     * @return
+     * Get a unique ID
+     *
+     * @return UID
+     * @throws UidGenerateException
      */
-    List<Long> provide(long momentInSecond);
+    long getUID() throws UidGenerateException;
+
+    /**
+     * Parse the UID into elements which are used to generate the UID. <br>
+     * Such as timestamp & workerId & sequence...
+     *
+     * @param uid
+     * @return Parsed info
+     */
+    String parseUID(long uid);
+
 }

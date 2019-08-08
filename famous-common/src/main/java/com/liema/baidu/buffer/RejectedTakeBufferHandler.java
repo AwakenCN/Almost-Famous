@@ -13,15 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.liema.utils;
+package com.liema.baidu.buffer;
 
 /**
- * {@code ValuedEnum} defines an enumeration which is bounded to a value, you
- * may implements this interface when you defines such kind of enumeration, that
- * you can use {@link EnumUtils} to simplify parse and valueOf operation.
- *  
+ * If cursor catches the tail it means that the ring buffer is empty, any more buffer take request will be rejected.
+ * Specify the policy to handle the reject. This is a Lambda supported interface
+ * 
  * @author yutianbao
  */
-public interface ValuedEnum<T> {
-    T value();
+@FunctionalInterface
+public interface RejectedTakeBufferHandler {
+
+    /**
+     * Reject take buffer request
+     * 
+     * @param ringBuffer
+     */
+    void rejectTakeBuffer(RingBuffer ringBuffer);
 }

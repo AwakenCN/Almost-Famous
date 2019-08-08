@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.liema.impl;
+package com.liema.baidu.impl;
 
-import com.liema.BitsAllocator;
-import com.liema.UidGenerator;
-import com.liema.exception.UidGenerateException;
-import com.liema.utils.DateUtils;
+import com.liema.baidu.BitsAllocator;
+import com.liema.baidu.UidGenerator;
+import com.liema.baidu.exception.UidGenerateException;
+import com.liema.baidu.utils.DateUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
