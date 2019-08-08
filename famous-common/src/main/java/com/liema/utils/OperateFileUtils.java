@@ -1,5 +1,7 @@
 package com.liema.utils;
 
+import com.google.gson.JsonObject;
+
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
