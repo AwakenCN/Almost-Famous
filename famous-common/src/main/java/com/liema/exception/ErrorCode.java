@@ -14,14 +14,14 @@ public enum ErrorCode {
     SERVER_ERROR(500);
 
 
-    ErrorCode(int value) {
-        this.value = value;
+    ErrorCode(int i) {
+        this.value = i;
     }
 
     int value;
 
-    public int getValue() {
-        return value;
+    public int value() {
+        return this.value;
     }
 
 }
