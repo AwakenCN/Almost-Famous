@@ -14,8 +14,6 @@ buildscript {
     }
 }
 
-
-
 subprojects {
     group 'com.liema'
     version '1.0-SNAPSHOT'
@@ -56,6 +54,7 @@ subprojects {
 
     dependencies {
         compile 'org.springframework.boot:spring-boot-starter',
+                'org.springframework.boot:spring-boot-starter-data-mongodb',
                 'org.springframework.boot:spring-boot-configuration-processor',
                 'org.springframework.boot:spring-boot-starter-actuator',
                 'org.springframework.boot:spring-boot-test',
