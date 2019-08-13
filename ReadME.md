@@ -49,6 +49,6 @@ Root project 'Almost-Famous'
 
 
 
-* [QQ群 670252084](点击链接加入群聊【Almost-Famous】：https://jq.qq.com/?_wv=1027&k=5gXmfE2)
+* [QQ群 670252084](https://jq.qq.com/?_wv=1027&k=5gXmfE2)
 
  (Chinese ver.) 持续更新中，保持关注。
