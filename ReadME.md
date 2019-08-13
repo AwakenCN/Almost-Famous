@@ -26,6 +26,7 @@ Root project 'Almost-Famous'
 ~~~
 
 * [unique服务的介绍](./famous-unique/README.md)
+* [Login服务的介绍](./famous-login/README.md)
 
 ## 1.2 Gradle学习资料
 
@@ -48,6 +49,6 @@ Root project 'Almost-Famous'
 
 
 
-
+* [QQ群 670252084](点击链接加入群聊【Almost-Famous】：https://jq.qq.com/?_wv=1027&k=5gXmfE2)
 
  (Chinese ver.) 持续更新中，保持关注。
