@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -39,9 +40,19 @@ public class AccountDao {
 
     public boolean save(Account account) {
         Account actor = accountMongoTemplate.insert(account);
-        if(Objects.nonNull(actor)){
+        if (Objects.nonNull(actor)) {
             return true;
         }
         return false;
+    }
+
+    public void update(Account account) {
+        Query query = new Query();
+        Update update = new Update();
+        query.addCriteria(new Criteria()
+                .and("account").is(account.getAccount())
+                .and("password").is(account.getPassword()));
+        update.set("token", account.getToken());
+        accountMongoTemplate.updateFirst(query, update, Account.class);
     }
 }

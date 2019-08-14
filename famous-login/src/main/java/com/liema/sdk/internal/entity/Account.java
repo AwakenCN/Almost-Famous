@@ -29,7 +29,7 @@ public class Account {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private Long createTime;
 
     private String token;
 }

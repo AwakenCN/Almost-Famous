@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -31,10 +32,16 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public boolean register(Account account) {
-        account = accountDao.findById(account);
+        String userName = account.getAccount();
+        String password = account.getPassword();
+        account = accountDao.getOne(account);
         if (Objects.isNull(account)) {
             long uid = rpcClient.getUniqueId();
+            account = new Account();
             account.setUid(uid);
+            account.setAccount(userName);
+            account.setPassword(password);
+            account.setCreateTime(new Date().getTime());
             return this.accountDao.save(account);
         }
         return false;
@@ -46,6 +53,7 @@ public class AccountServiceImpl implements AccountService {
         if (Objects.nonNull(account)) {
             String token = TokenGenerator.getToken(account.getUid());
             account.setToken(token);
+            accountDao.update(account);
             RBucket<Object> bucket = redissonClient.getBucket(KeyPrefix.AdminRedisPrefix.ADMIN_USER_ID + account.getUid());
             bucket.set(token);
         }
