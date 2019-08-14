@@ -2,6 +2,7 @@ package com.liema.sdk.dispatch;
 
 import com.liema.global.Action;
 import com.liema.sdk.internal.controller.ActorLoginAction;
+import com.liema.sdk.internal.controller.ActorRegisterAction;
 import com.liema.utils.SpringContextUtils;
 
 import java.util.HashMap;
