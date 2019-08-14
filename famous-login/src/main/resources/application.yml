@@ -1,0 +1,23 @@
+server:
+  port: 8808
+
+spring:
+  data:
+    mongodb:
+      login:
+        host: localhost
+        port: 27017
+        database: famous-login
+        username:
+        password:
+
+#redisson
+redis:
+  redisson:
+    config: classpath:redisson.yaml
+
+#RPC
+rpc:
+  host: localhost
+  port: 10000
+  rpc-type: Thrift
