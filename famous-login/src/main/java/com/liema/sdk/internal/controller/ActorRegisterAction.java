@@ -12,15 +12,16 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Objects;
 
 /**
  * @author Noseparte
- * @date 2019/8/12 17:43
+ * @date 2019/8/12 18:08
  * @Description
+ *      <p>注册<p/>
+ *      <p>Register<p/>
  */
 @Component
-public class ActorLoginAction extends Action {
+public class ActorRegisterAction extends Action {
 
     @Autowired
     private AccountService accountService;
@@ -28,12 +29,9 @@ public class ActorLoginAction extends Action {
     @Override
     public Resoult execute(JSONObject jsonObject, HttpServletRequest request, HttpServletResponse response) {
         Account account = jsonObject.toJavaObject(Account.class);
-        account = accountService.login(account);
-
-        if (Objects.nonNull(account)) {
-            return Resoult.ok(RegisterProtocol.ACTOR_LOGIN_ACTION_RESP);
+        if (this.accountService.register(account)) {
+            return Resoult.ok(RegisterProtocol.ACTOR_REGISTER_ACTION_RESP);
         }
-        return Resoult.error(RegisterProtocol.ACTOR_LOGIN_ACTION_RESP, ErrorCode.SERVER_ERROR, "");
+        return Resoult.error(RegisterProtocol.ACTOR_REGISTER_ACTION_RESP, ErrorCode.SERVER_ERROR, "");
     }
-
 }
