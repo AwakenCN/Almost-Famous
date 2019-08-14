@@ -10,6 +10,9 @@ public enum ErrorCode {
     /*成功*/
     SERVER_SUCCESS(0),
 
+    /*未知的协议号*/
+    UNKNOWN_PROTOCOL(4),
+
     /*服务器错误*/
     SERVER_ERROR(500);
 
