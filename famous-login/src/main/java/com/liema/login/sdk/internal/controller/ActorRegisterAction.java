@@ -1,12 +1,12 @@
-package com.liema.sdk.internal.controller;
+package com.liema.login.sdk.internal.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.liema.exception.ErrorCode;
-import com.liema.global.Action;
-import com.liema.global.Resoult;
-import com.liema.sdk.dispatch.RegisterProtocol;
-import com.liema.sdk.internal.entity.Account;
-import com.liema.sdk.internal.service.AccountService;
+import com.liema.login.sdk.dispatch.RegisterProtocol;
+import com.liema.login.sdk.internal.entity.Account;
+import com.liema.login.sdk.internal.service.AccountService;
+import com.liema.common.exception.ErrorCode;
+import com.liema.common.global.Action;
+import com.liema.common.global.Resoult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,9 +1,9 @@
-package com.liema.sdk.dispatch;
+package com.liema.login.sdk.dispatch;
 
-import com.liema.global.Action;
-import com.liema.sdk.internal.controller.ActorLoginAction;
-import com.liema.sdk.internal.controller.ActorRegisterAction;
-import com.liema.utils.SpringContextUtils;
+import com.liema.common.global.Action;
+import com.liema.login.sdk.internal.controller.ActorLoginAction;
+import com.liema.login.sdk.internal.controller.ActorRegisterAction;
+import com.liema.common.utils.SpringContextUtils;
 
 import java.util.HashMap;
 import java.util.Map;

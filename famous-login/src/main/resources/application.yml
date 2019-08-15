@@ -19,5 +19,5 @@ redis:
 #RPC
 rpc:
   host: localhost
-  port: 10000
+  port: 9999
   rpc-type: Thrift

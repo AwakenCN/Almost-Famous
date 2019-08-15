@@ -1,9 +1,7 @@
-package com.liema.sdk.internal.entity;
+package com.liema.login.sdk.internal.entity;
 
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.Date;
 
 /**
  * @author Noseparte

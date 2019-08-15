@@ -1,6 +1,6 @@
-package com.liema.sdk.internal.config;
+package com.liema.login.sdk.internal.config;
 
-import com.liema.config.MongoDBAbstractFactory;
+import com.liema.common.config.MongoDBAbstractFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

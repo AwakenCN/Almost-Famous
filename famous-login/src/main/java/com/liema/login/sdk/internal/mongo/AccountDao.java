@@ -1,8 +1,7 @@
-package com.liema.sdk.internal.mongo;
+package com.liema.login.sdk.internal.mongo;
 
-import com.liema.sdk.internal.entity.Account;
+import com.liema.login.sdk.internal.entity.Account;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

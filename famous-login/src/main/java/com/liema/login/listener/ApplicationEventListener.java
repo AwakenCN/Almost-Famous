@@ -1,6 +1,6 @@
-package com.liema.listener;
+package com.liema.login.listener;
 
-import com.liema.rpc.ThriftClient;
+import com.liema.common.rpc.ThriftClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.context.event.ApplicationEnvironmentPreparedEvent;

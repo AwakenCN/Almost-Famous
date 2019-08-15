@@ -1,11 +1,11 @@
-package com.liema.sdk.dispatch.controller;
+package com.liema.login.sdk.dispatch.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.liema.exception.ErrorCode;
-import com.liema.global.Action;
-import com.liema.global.Resoult;
-import com.liema.sdk.dispatch.RegisterProtocol;
-import com.liema.utils.FastJsonUtils;
+import com.liema.login.sdk.dispatch.RegisterProtocol;
+import com.liema.common.exception.ErrorCode;
+import com.liema.common.global.Action;
+import com.liema.common.global.Resoult;
+import com.liema.common.utils.FastJsonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

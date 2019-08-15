@@ -1,6 +1,6 @@
-package com.liema.sdk.internal.service;
+package com.liema.login.sdk.internal.service;
 
-import com.liema.sdk.internal.entity.Account;
+import com.liema.login.sdk.internal.entity.Account;
 
 public interface AccountService {
 

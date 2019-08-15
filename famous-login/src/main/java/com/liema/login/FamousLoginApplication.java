@@ -1,6 +1,6 @@
-package com.liema;
+package com.liema.login;
 
-import com.liema.listener.ApplicationEventListener;
+import com.liema.login.listener.ApplicationEventListener;
 import org.redisson.spring.starter.RedissonAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
  * @Description
  */
 @ImportAutoConfiguration(RedissonAutoConfiguration.class)
-@SpringBootApplication(exclude = { MongoAutoConfiguration.class })
+@SpringBootApplication(exclude = {MongoAutoConfiguration.class})
 public class FamousLoginApplication {
 
     public static void main(String[] args) {

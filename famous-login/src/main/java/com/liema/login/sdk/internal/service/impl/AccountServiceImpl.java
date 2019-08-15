@@ -1,11 +1,11 @@
-package com.liema.sdk.internal.service.impl;
+package com.liema.login.sdk.internal.service.impl;
 
-import com.liema.global.KeyPrefix;
-import com.liema.rpc.RpcClient;
-import com.liema.sdk.internal.entity.Account;
-import com.liema.sdk.internal.mongo.AccountDao;
-import com.liema.sdk.internal.service.AccountService;
-import com.liema.utils.TokenGenerator;
+import com.liema.common.global.KeyPrefix;
+import com.liema.common.rpc.RpcClient;
+import com.liema.login.sdk.internal.entity.Account;
+import com.liema.login.sdk.internal.mongo.AccountDao;
+import com.liema.login.sdk.internal.service.AccountService;
+import com.liema.common.utils.TokenGenerator;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
