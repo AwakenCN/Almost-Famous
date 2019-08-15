@@ -1,7 +1,7 @@
-package com.liema.service;
+package com.liema.unique.service;
 
-import com.liema.baidu.UidGenerator;
-import com.liema.rpc.protocol.RPCUniqueIdService;
+import com.liema.common.baidu.UidGenerator;
+import com.liema.common.rpc.protocol.RPCUniqueIdService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
 import org.springframework.beans.factory.annotation.Autowired;

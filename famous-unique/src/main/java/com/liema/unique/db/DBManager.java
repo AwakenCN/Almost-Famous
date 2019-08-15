@@ -1,9 +1,9 @@
-package com.liema.db;
+package com.liema.unique.db;
 
-import com.liema.bean.BatchObject;
-import com.liema.bean.BatchObjectEnum;
-import com.liema.exception.UninitializedException;
-import com.liema.global.ConfigManager;
+import com.liema.common.bean.BatchObject;
+import com.liema.common.bean.BatchObjectEnum;
+import com.liema.common.exception.UninitializedException;
+import com.liema.common.global.ConfigManager;
 import lombok.extern.slf4j.Slf4j;
 import org.iq80.leveldb.*;
 import org.iq80.leveldb.impl.Iq80DBFactory;

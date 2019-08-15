@@ -1,10 +1,10 @@
-package com.liema.service;
+package com.liema.unique.service;
 
-import com.liema.db.DBManager;
-import com.liema.global.KeyPrefix;
-import com.liema.global.Misc;
-import com.liema.rpc.protocol.RPCUniqueNameService;
-import com.liema.rpc.protocol.UniqueNameEnum;
+import com.liema.unique.db.DBManager;
+import com.liema.common.global.KeyPrefix;
+import com.liema.common.global.Misc;
+import com.liema.common.rpc.protocol.RPCUniqueNameService;
+import com.liema.common.rpc.protocol.UniqueNameEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
 

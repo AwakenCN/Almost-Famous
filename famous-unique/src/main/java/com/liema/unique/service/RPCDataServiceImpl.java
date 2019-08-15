@@ -1,6 +1,6 @@
-package com.liema.service;
+package com.liema.unique.service;
 
-import com.liema.rpc.protocol.RPCDateService;
+import com.liema.common.rpc.protocol.RPCDateService;
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.thrift.TException;
 

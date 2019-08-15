@@ -1,18 +1,18 @@
-package com.liema;/**
+package com.liema.unique;/**
  * @author Noseparte
  * @date 2019/8/5 16:48
  * @Description
  */
 
-import com.liema.db.DBManager;
-import com.liema.global.ConfigManager;
-import com.liema.global.ExitHandler;
-import com.liema.rpc.protocol.RPCDateService;
-import com.liema.rpc.protocol.RPCUniqueIdService;
-import com.liema.rpc.protocol.RPCUniqueNameService;
-import com.liema.service.RPCDataServiceImpl;
-import com.liema.service.RPCUniqueIdServiceImpl;
-import com.liema.service.RPCUniqueNameServiceImpl;
+import com.liema.unique.db.DBManager;
+import com.liema.common.global.ConfigManager;
+import com.liema.common.global.ExitHandler;
+import com.liema.common.rpc.protocol.RPCDateService;
+import com.liema.common.rpc.protocol.RPCUniqueIdService;
+import com.liema.common.rpc.protocol.RPCUniqueNameService;
+import com.liema.unique.service.RPCDataServiceImpl;
+import com.liema.unique.service.RPCUniqueIdServiceImpl;
+import com.liema.unique.service.RPCUniqueNameServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TMultiplexedProcessor;
 import org.apache.thrift.protocol.TBinaryProtocol;
