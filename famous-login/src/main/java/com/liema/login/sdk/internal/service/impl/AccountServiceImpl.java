@@ -11,7 +11,6 @@ import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.Date;
 import java.util.Objects;
 
@@ -20,15 +19,15 @@ import java.util.Objects;
  * @date 2019/8/12 18:15
  * @Description
  */
-@Service
+@Service("accountService")
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
     AccountDao accountDao;
     @Autowired
     private RedissonClient redissonClient;
-    @Resource
-    RpcClient rpcClient;
+    @Autowired
+    private RpcClient rpcClient;
 
     @Override
     public boolean register(Account account) {
