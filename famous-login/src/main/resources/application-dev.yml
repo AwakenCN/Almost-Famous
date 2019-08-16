@@ -1,0 +1,15 @@
+spring:
+  data:
+    mongodb:
+      login:
+        host: localhost
+        port: 27017
+        database: famous-login
+        username:
+        password:
+
+#RPC
+rpc:
+  host: localhost
+  port: 9999
+  rpc-type: Thrift
