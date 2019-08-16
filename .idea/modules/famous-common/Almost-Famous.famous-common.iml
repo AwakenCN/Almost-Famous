@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":famous-common" external.linked.project.path="$MODULE_DIR$/../../../famous-common" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="Almost-Famous" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../famous-common">
+      <excludeFolder url="file://$MODULE_DIR$/../../../famous-common/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../famous-common/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../famous-common/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

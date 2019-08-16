@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Almost-Famous.iml" filepath="$PROJECT_DIR$/.idea/Almost-Famous.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-battle/Almost-Famous.famous-battle.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-battle/Almost-Famous.famous-battle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-battle/Almost-Famous.famous-battle.main.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-battle/Almost-Famous.famous-battle.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-battle/Almost-Famous.famous-battle.test.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-battle/Almost-Famous.famous-battle.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-common/Almost-Famous.famous-common.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-common/Almost-Famous.famous-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-common/Almost-Famous.famous-common.main.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-common/Almost-Famous.famous-common.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-common/Almost-Famous.famous-common.test.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-common/Almost-Famous.famous-common.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-game/Almost-Famous.famous-game.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-game/Almost-Famous.famous-game.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-game/Almost-Famous.famous-game.main.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-game/Almost-Famous.famous-game.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-game/Almost-Famous.famous-game.test.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-game/Almost-Famous.famous-game.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-login/Almost-Famous.famous-login.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-login/Almost-Famous.famous-login.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-login/Almost-Famous.famous-login.main.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-login/Almost-Famous.famous-login.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-login/Almost-Famous.famous-login.test.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-login/Almost-Famous.famous-login.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-unique/Almost-Famous.famous-unique.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-unique/Almost-Famous.famous-unique.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-unique/Almost-Famous.famous-unique.main.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-unique/Almost-Famous.famous-unique.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-unique/Almost-Famous.famous-unique.test.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-unique/Almost-Famous.famous-unique.test.iml" />
+    </modules>
+  </component>
+</project>

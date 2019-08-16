@@ -4,5 +4,17 @@
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Almost-Famous.famous-battle.main" target="1.8" />
+      <module name="Almost-Famous.famous-battle.test" target="1.8" />
+      <module name="Almost-Famous.famous-common.main" target="1.8" />
+      <module name="Almost-Famous.famous-common.test" target="1.8" />
+      <module name="Almost-Famous.famous-game.main" target="1.8" />
+      <module name="Almost-Famous.famous-game.test" target="1.8" />
+      <module name="Almost-Famous.famous-login.main" target="1.8" />
+      <module name="Almost-Famous.famous-login.test" target="1.8" />
+      <module name="Almost-Famous.famous-unique.main" target="1.8" />
+      <module name="Almost-Famous.famous-unique.test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
