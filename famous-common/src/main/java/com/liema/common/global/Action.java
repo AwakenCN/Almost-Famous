@@ -1,8 +1,8 @@
 package com.liema.common.global;
 
 import com.alibaba.fastjson.JSONObject;
-import com.liema.common.config.RedissonConfig;
 import lombok.Data;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class Action {
 
     @Autowired
-    protected RedissonConfig redissonClient;
+    protected RedissonClient redissonClient;
 
     protected int cmd;
 
