@@ -1,4 +1,4 @@
-logging.level.org.springframework.boot.autoconfigure: ERROR
+#logging.level.org.springframework.boot.autoconfigure: ERROR
 # Tomcat
 server:
   tomcat:
