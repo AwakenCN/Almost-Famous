@@ -4,12 +4,12 @@ package com.liema.unique;/**
  * @Description
  */
 
-import com.liema.unique.db.DBManager;
 import com.liema.common.global.ConfigManager;
 import com.liema.common.global.ExitHandler;
 import com.liema.common.rpc.protocol.RPCDateService;
 import com.liema.common.rpc.protocol.RPCUniqueIdService;
 import com.liema.common.rpc.protocol.RPCUniqueNameService;
+import com.liema.unique.db.DBManager;
 import com.liema.unique.service.RPCDataServiceImpl;
 import com.liema.unique.service.RPCUniqueIdServiceImpl;
 import com.liema.unique.service.RPCUniqueNameServiceImpl;
@@ -77,11 +77,11 @@ public class RpcServer {
         }
     }
 
-    public static void shutDownHook(){
+    public static void shutDownHook() {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {
                 DBManager.getInstance().close();
-            }  catch(Exception e){
+            } catch (Exception e) {
                 log.error("Jvm shutDownHook ", e);
             }
         }));
