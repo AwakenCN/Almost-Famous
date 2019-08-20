@@ -1,0 +1,11 @@
+server:
+  port: 8909
+
+
+spring:
+  profiles:
+    active: dev
+
+  redis:
+    redisson:
+      config: classpath:redisson-dev.yaml
