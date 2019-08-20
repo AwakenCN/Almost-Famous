@@ -2,6 +2,7 @@ buildscript {
     ext {
         set('springBootVersion', '2.1.3.RELEASE')
         set('springCloudVersion', 'Greenwich.RELEASE')
+        set('druidVersion', '1.1.13')
     }
 
     repositories {
@@ -23,37 +24,15 @@ subprojects {
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
 
-    // java编译的时候缺省状态下会因为中文字符而失败
-    [compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
-
-    configurations.all {
-        exclude group: "ch.qos.logback", module: "logback-core"
-        exclude group: "ch.qos.logback", module: "logback-classic"
-        exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
     }
 
     repositories {
         mavenCentral()
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
-    }
-
-
-//    jar {
-//        manifest {
-//            attributes("Implementation-Title": "Gradle")
-//        }
-//    }
-//
-//    // 显示当前项目下所有用于 compile 的 jar.
-//    task listJars(description: 'Display all compile jars.') << {
-//        configurations.compile.each { File file -> println file.name }
-//    }
-
-    gradle.projectsEvaluated {
-        tasks.withType(JavaCompile) {
-            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
-        }
+        maven { url 'https://repo.spring.io/libs-snapshot/' }
     }
 
     dependencies {
@@ -64,10 +43,10 @@ subprojects {
                 'commons-lang:commons-lang:2.6',
                 'org.apache.thrift:libthrift:0.12.0',
                 ////////log42/////
-                'org.apache.logging.log4j:log4j-api:2.6.2',
-                'org.apache.logging.log4j:log4j-core:2.6.2',// 生成代码的时候要把他注释掉
-                'org.apache.logging.log4j:log4j-slf4j-impl:2.6.2',
-                'org.apache.logging.log4j:log4j-web:2.6.2',
+//                'org.apache.logging.log4j:log4j-api:2.6.2',
+//                'org.apache.logging.log4j:log4j-core:2.6.2',// 生成代码的时候要把他注释掉
+//                'org.apache.logging.log4j:log4j-slf4j-impl:2.6.2',
+//                'org.apache.logging.log4j:log4j-web:2.6.2',
                 'com.lmax:disruptor:3.3.6',
                 ////////////httpclient///////////////
                 'org.apache.httpcomponents:httpclient:4.5.8',
@@ -86,6 +65,9 @@ subprojects {
                 'org.apache.commons:commons-collections4:4.1',
                 'com.google.protobuf:protobuf-java:3.7.1'
     }
+
+//    jar { enabled = true }
+//    bootJar { enabled = false }
 
 }
 
