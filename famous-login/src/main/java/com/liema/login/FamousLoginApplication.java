@@ -5,7 +5,9 @@ import org.redisson.spring.starter.RedissonAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author Noseparte
@@ -13,7 +15,8 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
  * @Description
  */
 @ImportAutoConfiguration(RedissonAutoConfiguration.class)
-@SpringBootApplication(exclude = {MongoAutoConfiguration.class})
+@SpringBootApplication(exclude = {MongoAutoConfiguration.class, DataSourceAutoConfiguration.class})
+@ComponentScan({"com.liema.login.*", "com.liema.common.*"})
 public class FamousLoginApplication {
 
     public static void main(String[] args) {
