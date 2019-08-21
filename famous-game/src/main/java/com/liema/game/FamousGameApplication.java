@@ -1,5 +1,6 @@
 package com.liema.game;
 
+import com.liema.game.base.listener.ApplicationEventListener;
 import org.redisson.spring.starter.RedissonAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
@@ -19,6 +20,9 @@ import org.springframework.context.annotation.ComponentScan;
 public class FamousGameApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FamousGameApplication.class, args);
+        SpringApplication application = new SpringApplication(FamousGameApplication.class);
+        application.addListeners(new ApplicationEventListener());
+        application.run(args);
     }
+
 }
