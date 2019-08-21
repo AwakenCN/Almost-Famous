@@ -49,4 +49,8 @@ public class ConfigManager {
             log.error("loadProp occur IOException, ", e);
         }
     }
+
+    public static void loadGameData(String path) {
+
+    }
 }
