@@ -1,5 +1,6 @@
 package com.liema.battle.server;
 
+import com.liema.battle.BattleServerConfig;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;

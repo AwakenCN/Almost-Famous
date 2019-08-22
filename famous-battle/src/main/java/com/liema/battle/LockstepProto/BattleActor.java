@@ -9,7 +9,7 @@ package LockstepProto;
 public  final class BattleActor extends
     com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:LockstepProto.BattleActor)
-    BattleActorOrBuilder {
+        LockstepProto.BattleActorOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use BattleActor.newBuilder() to construct.
   private BattleActor(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {

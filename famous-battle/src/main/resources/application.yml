@@ -1,60 +1,27 @@
-#logging.level.org.springframework.boot.autoconfigure: ERROR
-# Tomcat
-server:
-  tomcat:
-    uri-encoding: UTF-8
-    max-threads: 1000
-    min-spare-threads: 30
-  port: 8808
-  compression:
-    enabled: false
-    min-response-size: 1
-    mime-types: application/json
-  servlet:
-    context-path: /battle
+logging.level.org.springframework.boot.autoconfigure: ERROR
 
 spring:
-  profiles:
-    active: dev
-    jackson:
-      date-format: yyyy-MM-dd HH:mm:ss
-      time-zone: GMT+8
-    servlet:
-      multipart:
-        max-file-size: 100MB
-        max-request-size: 100MB
-        enabled: true
+  redis:
+    redisson:
+      config: classpath:redisson-dev.yaml
 
-#  data:
-#    mongodb:
-#      option:
-#        min-connection-per-host: 0
-#        max-connection-per-host: 100
-#        threads-allowed-to-block-for-connection-multiplier: 5
-#        server-selection-timeout: 30000
-#        max-wait-time: 120000
-#        max-connection-idle-time: 0
-#        max-connection-life-time: 0
-#        connect-timeout: 10000
-#        socket-timeout: 0
-#
-#        socket-keep-alive: false
-#        ssl-enabled: false
-#        ssl-invalid-host-name-allowed: false
-#        always-use-m-beans: false
-#
-#        heartbeat-socket-timeout: 20000
-#        heartbeat-connect-timeout: 20000
-#        min-heartbeat-frequency: 500
-#        heartbeat-frequency: 10000
-#        local-threshold: 15
+battle:
+  host: localhost
+  port: 9981
 
-#redisson
-redis:
-  redisson:
-    config: classpath:redisson.yaml
+  threadCount: 10
 
-freemarker:
-  suffix: .html
-  request-context-attribute: request
+  adminUrl: http://localhost:8808/login/dispatch/a
+  verifyUserLoginCmd: 20001
+  gameCoreUrl: http://localhost:8909/game/dispatch/a
+  pullActorCmd: 20003
+  battleStartCmd: 20005
+  battleEndCmd: 20007
 
+  matchers: 2
+  frameSpeed: 4
+  lifecycle: 8
+  redundancy: 2
+
+  otherActorBattleResult: 3000
+  heartBeatTime: 30

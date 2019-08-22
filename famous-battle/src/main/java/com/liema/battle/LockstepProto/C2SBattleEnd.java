@@ -9,7 +9,7 @@ package LockstepProto;
 public  final class C2SBattleEnd extends
     com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:LockstepProto.C2SBattleEnd)
-    C2SBattleEndOrBuilder {
+        LockstepProto.C2SBattleEndOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use C2SBattleEnd.newBuilder() to construct.
   private C2SBattleEnd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
