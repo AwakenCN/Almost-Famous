@@ -1,0 +1,87 @@
+syntax = "proto3" ;
+package LockstepProto;
+
+option java_multiple_files = true;
+
+enum DataType
+{
+    Int = 0;
+    UInt = 1;
+    UShort = 2;
+    Long = 3;
+    Byte = 4;
+    Bool = 5;
+    String = 6;
+    ByteArray = 7;
+}
+
+enum State
+{
+    STATE_DEFAULT = 0;
+    BATTLE_READY_GO = 1;
+    BROKEN_LINE = 2;
+    BATTLE_END_NORMAL = 3;
+    BATTLE_END_EXCEPTION = 4;
+}
+
+message DefaultData
+{
+    uint32 type = 1;//TData
+    oneof value {
+        int64 anyIntAndBool = 2;
+        bytes bytesAndString = 3;
+    }
+}
+
+message Coordinate
+{
+    sint32 x = 1 ;
+    sint32 y = 2 ;
+}
+
+message Selection
+{
+    repeated uint32 agentId = 1;
+}
+
+message Vector2d
+{
+    sint64 x = 1 ;
+    sint64 y = 2 ;
+}
+
+message Vector3d
+{
+    sint64 x = 1 ;
+    sint64 y = 2 ;
+    sint64 z = 3 ;
+}
+message Command
+{
+    int32 controlerID = 1;
+    int32 inputCode = 2;
+    repeated DefaultData defaultData = 3;
+    repeated Coordinate coordinate = 4;
+    repeated Selection selection = 5;
+    repeated Vector2d vector2d = 6;
+    repeated Vector3d vector3d = 7;
+}
+
+message Frame
+{
+    uint32 InfluenceFrameCount = 1;
+    repeated bytes commands = 2;
+}
+
+message BattleActor
+{
+    int64 roleId = 1;
+    sint32 iq = 2;
+    sint32 agi = 3;
+    sint32 str = 4;
+    repeated sint32 cardIds = 5;
+    sint32 school = 6;
+    string roleName = 7;
+    sint32 rankId = 8;
+    sint32 starCount = 9;
+}

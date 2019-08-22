@@ -1,0 +1,1 @@
+protoc --java_out=../../../famous-battle/src/main/java/com/liema/battle .\LSMessage.proto .\NetMessage.proto
