@@ -46,6 +46,16 @@ public class BattleServer {
                 work.shutdownGracefully();
             }
         }
-
     }
+
+    public void close(){
+        synchronized (waitLock) {
+            log.info("关闭服务器....");
+            //优雅退出
+            boss.shutdownGracefully();
+            work.shutdownGracefully();
+        }
+    }
+
+
 }

@@ -1,26 +1,21 @@
 package com.liema.battle.server;
 
-import io.netty.channel.ChannelHandler;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+
+import java.util.List;
 
 /**
  * @author Noseparte
  * @date 2019/8/22 12:05
  * @Description
  */
-public class Decoder implements ChannelHandler {
-    @Override
-    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+public class Decoder extends ByteToMessageDecoder {
 
-    }
 
     @Override
-    public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
-
-    }
-
-    @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
 
     }
 }
