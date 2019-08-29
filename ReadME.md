@@ -9,12 +9,14 @@
 
 ~~~
 
-## 1.1 项目架构
+## 项目介绍
 
 ~~~
-    使用Gradle+SpringBoot构建项目，为此还特意去完整的学习了Gradle整体的相关知识，包括编译Gradle脚本的Groovy语法、
-以及Gradle的生命周期，Gradle的核心模块Project、Task等，为此我也想将这部分的学习成果与大家分享    
+    Almost-Famous(成名之路) ——卡牌游戏开源项目，
+    架构使用SpringBoot+Netty+Gradle来搭建多进程分布式框架，包括Unique、Login、Game、Battle 四个服务器
 ~~~    
+
+## 项目组织模块
 
 ~~~
 Root project 'Almost-Famous'
@@ -30,31 +32,26 @@ Root project 'Almost-Famous'
 * [Game服务的介绍](./famous-game/README.md)
 * [Battle服务的介绍](./famous-battle/README.md)
 
-## 1.2 Gradle学习资料
 
-* [Gradle中文版](https://github.com/DONGChuan/GradleUserGuide)
-* [Gradle阅读地址](https://dongchuan.gitbooks.io/gradle-user-guide-/)
-    
-    
-## 1.3 Thrift RPC通信框架    
+## 项目研发日志更新
 
-~~~
-    Thrift Facebook开源的通讯、rpc框架    
-~~~
+* [项目研发进度](./famous-static/doc/almost-famous/progress.md)
 
-* [Thrift生成规则](https://github.com/noseparte/thrift-server) 
+## 快速开始
 
-* [Banner生成器](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
+1. 使用git下载代码 git clone https://github.com/noseparte/Almost-Famous.git;
+2. 将代码导入带有gradle插件的IDE(推荐使用IntelliJ IDEA);
+3. 保证本地安装Gradle、mongodb、redis等服务;
+4. 启动Unique服务端，入口为RpcServer类;
+5. 启动Login服务端，入口为FamousLoginApplication类;
+5. 启动Game服务端，入口为FamousGameApplication类;
+5. 启动Battle服务端，入口为FamousBattleApplication类;
 
+## 一起交流
 
-
-
-
+    如果您发现bug，或者有任何疑问，请提交issue !!
+    或者加入QQ交流群：780465774
 
 * [QQ群 670252084](https://jq.qq.com/?_wv=1027&k=5gXmfE2)
 
  (Chinese ver.) 持续更新中，保持关注。
- 
-## 项目研发日志更新
-
-* [项目研发进度](./famous-static/doc/almost-famous/progress.md)
