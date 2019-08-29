@@ -1,0 +1,4 @@
+﻿id	礼包图标	礼包内容	最大堆叠数	礼包购买价格	是否自动打开礼包
+id	icon	drop	maxPileNum	price	isAuto
+int	string	string	int	int	int
+101		"1001,4;1002,1"	9999	100	0
