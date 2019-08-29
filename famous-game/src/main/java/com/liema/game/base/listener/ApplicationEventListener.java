@@ -33,8 +33,8 @@ public class ApplicationEventListener implements ApplicationListener {
         } else if (event instanceof ApplicationPreparedEvent) {
             LOG.debug("初始化完成");
             LOG.debug("初始GameData策划数据");
-//            String path = ApplicationEventListener.class.getResource("/gamedata").getFile();
-//            ConfigManager.loadGameData(path);
+            String path = ApplicationEventListener.class.getResource("/gamedata").getFile();
+            ConfigManager.loadGameData(path);
         } else if (event instanceof ContextRefreshedEvent) {
             LOG.debug("应用刷新");
         } else if (event instanceof ApplicationReadyEvent) {
