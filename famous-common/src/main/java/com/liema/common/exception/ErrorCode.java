@@ -14,8 +14,12 @@ public enum ErrorCode {
     UNKNOWN_PROTOCOL(4),
 
     /*服务器错误*/
-    SERVER_ERROR(500);
+    SERVER_ERROR(500),
 
+    /**
+     * 账号不存在
+     */
+    ACCOUNT_NOT_EXIST(1000);
 
     ErrorCode(int i) {
         this.value = i;
