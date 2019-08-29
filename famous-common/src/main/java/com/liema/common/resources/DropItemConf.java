@@ -1,7 +1,7 @@
 package com.liema.common.resources;
 
 import com.liema.common.bean.DropCode;
-import com.liema.common.utils.Misc;
+import com.liema.common.global.Misc;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
