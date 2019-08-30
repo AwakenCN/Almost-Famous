@@ -1,6 +1,5 @@
 package com.liema.game.role.mongo;
 
-import com.liema.game.role.entity.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -22,17 +21,6 @@ public class RoleDao {
     private MongoTemplate gameMongoTemplate;
 
 
-    public Role selectByRoleId(long rid) {
-        return null;
-    }
 
-    public Role selectById(Long uid) {
-        return null;
-    }
 
-    public void addRole(Role role) {
-    }
-
-    public void updateByRoleId(Role role) {
-    }
 }
