@@ -15,6 +15,20 @@
 * 【2019-08-14】 mongodb 简单工厂,集成spring-boot-starter-data-mongodb
 * 【2019-08-15】 famous-login服启动，登录服管理玩家登录、注册
 * 【2019-08-15】 Account 用户管理 login、register
-* 【2019-08-15】 register、login 接口调试 
+* 【2019-08-16】 register、login 接口调试 
+* 【2019-08-17】 register、login 接口调试 
+* 【2019-08-18】 register、login 接口调试 
+* 【2019-08-19】 register、login 接口调试 
+* 【2019-08-20】 register、login 接口调试 
+* 【2019-08-21】 register、login 接口调试 
+* 【2019-08-22】 register、login 接口调试 
+* 【2019-08-23】 register、login 接口调试 
+* 【2019-08-24】 register、login 接口调试 
+* 【2019-08-25】 register、login 接口调试 
+* 【2019-08-26】 register、login 接口调试 
+* 【2019-08-27】 register、login 接口调试 
+* 【2019-08-28】 register、login 接口调试 
+* 【2019-08-29】 game服 角色功能模块实现(新手引导记录、玩家战斗记录、货币GM、玩家上次出战记录、玩家信息、保存玩家新手引导记录)
+* 【2019-08-30】 game服 签到奖励的功能模块实现(玩家签到记录、玩家签到)
 
 
