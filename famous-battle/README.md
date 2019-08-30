@@ -95,6 +95,9 @@ A: 这个图画的不形象
 
 * 状态同步  
 
+* [网络游戏中的帧同步与状态同步](../famous-static/doc/almost-famous/frame.md)
+
+
 ### 精选文章 
 
 -- 微信公众号 大码侯
