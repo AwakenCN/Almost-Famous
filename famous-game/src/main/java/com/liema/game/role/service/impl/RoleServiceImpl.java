@@ -1,8 +1,11 @@
 package com.liema.game.role.service.impl;
 
+import com.liema.game.item.HoldItem;
 import com.liema.game.role.entity.Role;
 import com.liema.game.role.service.RoleService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Noseparte
@@ -35,5 +38,10 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void currencyChangeGM(Role role) {
 
+    }
+
+    @Override
+    public boolean distributeAwardToActor(Role role, List<HoldItem> holdItems) {
+        return false;
     }
 }

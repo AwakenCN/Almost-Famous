@@ -1,6 +1,9 @@
 package com.liema.game.role.service;
 
+import com.liema.game.item.HoldItem;
 import com.liema.game.role.entity.Role;
+
+import java.util.List;
 
 public interface RoleService {
 
@@ -14,5 +17,6 @@ public interface RoleService {
 
     void currencyChangeGM(Role role);
 
+    boolean distributeAwardToActor(Role role, List<HoldItem> holdItems);
 
 }
