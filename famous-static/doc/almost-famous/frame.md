@@ -51,7 +51,7 @@
 1. 随机值 &  伪随机算法。
 2. UDP协议的安全使用方式。
 
-    ![Image text](../../images/u=3188343038,2062745717&fm=173&app=25&f=JPEG.jpg)
+    ![Image text](https://github.com/noseparte/Almost-Famous/blob/master/famous-static/images/u=3188343038,2062745717&fm=173&app=25&f=JPEG.jpg?raw=true)
 
 
 ```
