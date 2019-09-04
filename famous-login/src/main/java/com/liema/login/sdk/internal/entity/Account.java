@@ -1,6 +1,5 @@
 package com.liema.login.sdk.internal.entity;
 
-import com.liema.common.db.pojo.GeneralBean;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Data
 @Document(collection = "famous-login-account")
-public class Account extends GeneralBean {
+public class Account {
 
     private Long uid;
 
@@ -24,6 +23,11 @@ public class Account extends GeneralBean {
      * 密码
      */
     private String password;
+
+    /**
+     * 创建时间
+     */
+    private Long createTime;
 
     private String token;
 }

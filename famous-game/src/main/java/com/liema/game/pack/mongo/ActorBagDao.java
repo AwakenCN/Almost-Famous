@@ -1,26 +1,12 @@
 package com.liema.game.pack.mongo;
 
 import com.liema.game.pack.entity.ActorBag;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.stereotype.Repository;
 
-import javax.annotation.Resource;
+public interface ActorBagDao {
 
-@Repository
-public class ActorBagDao {
+    void updateActorBag(ActorBag pack);
 
-    @Resource
-    @Qualifier("gameMongoTemplate")
-    private MongoTemplate gameMongoTemplate;
+    void insertActorBag(ActorBag card);
 
-    public void updateActorBag(ActorBag pack){}
-
-
-    public void insertActorBag(ActorBag card){
-
-    }
-
-    public ActorBag getSpecificBackpack(Long rid){ return null;}
-
+    ActorBag getSpecificBackpack(Long rid);
 }
