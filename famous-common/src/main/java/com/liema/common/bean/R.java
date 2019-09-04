@@ -1,43 +1,41 @@
 package com.liema.common.bean;
 
+
 import com.liema.common.exception.ErrorCode;
 import com.liema.common.global.KeyPrefix;
 
 import java.util.HashMap;
 
-public class Resoult extends HashMap<String, Object> {
-
+/**
+ * 返回数据
+ */
+public class R extends HashMap<String, Object> {
     private static final long serialVersionUID = 1L;
 
-    public Resoult() {
-    }
-
-    public Resoult(int cmd) {
-        put("cmd", cmd);
+    public R() {
         put("code", 0);
         put("msg", "success");
     }
 
-    public static Resoult error(int cmd, ErrorCode code, String msg) {
-        Resoult r = new Resoult(cmd);
+    public static R error(ErrorCode code, String msg) {
+        R r = new R();
         r.put("code", code.value());
         r.put("msg", msg);
         return r;
     }
 
-    public static Resoult ok(int cmd) {
-        return new Resoult(cmd);
+    public static R ok() {
+        return new R();
     }
 
     @Override
-    public Resoult put(String key, Object value) {
+    public R put(String key, Object value) {
         super.put(key, value);
         return this;
     }
 
-    public Resoult responseBody(Object value) {
+    public R responseBody(Object value) {
         super.put(KeyPrefix.RESPONSE, value);
         return this;
     }
-
 }
