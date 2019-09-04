@@ -1,26 +1,26 @@
-package com.liema.game.pack.mongo;
+package com.liema.game.occuption.mongo;
 
-import com.liema.game.pack.entity.ActorBag;
+import com.liema.game.occuption.entity.Occupation;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Repository
-public class ActorBagDao {
+public class OccupationDao {
 
     @Resource
     @Qualifier("gameMongoTemplate")
     private MongoTemplate gameMongoTemplate;
 
-    public void updateActorBag(ActorBag pack){}
 
-
-    public void insertActorBag(ActorBag card){
+    public void insert(Occupation target) {
 
     }
 
-    public ActorBag getSpecificBackpack(Long rid){ return null;}
-
+    public List<Occupation> getOccupationalGroup(int schoolId) {
+        return null;
+    }
 }

@@ -1,15 +1,15 @@
 package com.liema.login.sdk.internal.service.impl;
 
+import com.liema.common.db.service.GeneralServiceImpl;
 import com.liema.common.global.KeyPrefix;
 import com.liema.common.rpc.RpcClient;
+import com.liema.common.utils.TokenGenerator;
 import com.liema.login.sdk.internal.entity.Account;
 import com.liema.login.sdk.internal.mongo.AccountDao;
 import com.liema.login.sdk.internal.service.AccountService;
-import com.liema.common.utils.TokenGenerator;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -21,7 +21,7 @@ import java.util.Objects;
  * @Description
  */
 @Service("accountService")
-public class AccountServiceImpl implements AccountService {
+public class AccountServiceImpl extends GeneralServiceImpl<Account> implements AccountService {
 
     @Autowired
     AccountDao accountDao;
@@ -41,8 +41,13 @@ public class AccountServiceImpl implements AccountService {
             account.setUid(uid);
             account.setAccount(userName);
             account.setPassword(password);
-            account.setCreateTime(new Date().getTime());
-            return this.accountDao.save(account);
+            account.setCreateTime(new Date());
+            try {
+                accountDao.insert(account);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return true;
         }
         return false;
     }
