@@ -1,5 +1,6 @@
 package com.liema.login.sdk.internal.mongo;
 
+import com.liema.common.db.dao.GeneralDao;
 import com.liema.login.sdk.internal.entity.Account;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,41 +18,9 @@ import java.util.Objects;
  * @date 2019/8/12 18:10
  * @Description
  */
-@Slf4j
-@Repository
-public class AccountDao {
+public interface AccountDao extends GeneralDao<Account> {
 
-    @Resource
-    @Qualifier("accountMongoTemplate")
-    private MongoTemplate accountMongoTemplate;
+    Account getOne(Account account);
 
-    public Account getOne(Account account) {
-        Query query = new Query();
-        query.addCriteria(new Criteria()
-                .and("account").is(account.getAccount())
-                .and("password").is(account.getPassword()));
-        return accountMongoTemplate.findOne(query, Account.class);
-    }
-
-    public Account findById(Account account) {
-        return accountMongoTemplate.findById(account.getUid(), Account.class);
-    }
-
-    public boolean save(Account account) {
-        Account actor = accountMongoTemplate.insert(account);
-        if (Objects.nonNull(actor)) {
-            return true;
-        }
-        return false;
-    }
-
-    public void update(Account account) {
-        Query query = new Query();
-        Update update = new Update();
-        query.addCriteria(new Criteria()
-                .and("account").is(account.getAccount())
-                .and("password").is(account.getPassword()));
-        update.set("token", account.getToken());
-        accountMongoTemplate.updateFirst(query, update, Account.class);
-    }
+    void update(Account account);
 }
