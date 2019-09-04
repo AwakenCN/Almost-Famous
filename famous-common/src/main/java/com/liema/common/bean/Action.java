@@ -1,6 +1,7 @@
 package com.liema.common.bean;
 
 import com.alibaba.fastjson.JSONObject;
+import com.liema.common.global.Resoult;
 import lombok.Data;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
