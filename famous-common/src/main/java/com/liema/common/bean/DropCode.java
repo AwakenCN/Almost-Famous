@@ -7,7 +7,7 @@ public enum DropCode {
     CARD(5),
     ITEM(6),
     OTHER(8),
-    SELF(9);
+    SELF(9);// ������еĵ���id
 
     int value;
 
