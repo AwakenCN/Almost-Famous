@@ -1,5 +1,7 @@
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web',
-            'org.springframework.boot:spring-boot-starter-aop',
+    compile 'io.netty:netty-all:4.1.33.Final',
+            'org.quartz-scheduler:quartz:2.3.0',
+            'org.quartz-scheduler:quartz-jobs:2.3.0',
+            ///////////////////////////
             project(':famous-common')
 }
