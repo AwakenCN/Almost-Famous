@@ -3,7 +3,7 @@ logging.level.org.springframework.boot.autoconfigure: ERROR
 spring:
   redis:
     redisson:
-      config: classpath:redisson-dev.yaml
+      config: classpath:redisson.yaml
 
 battle:
   host: localhost
@@ -25,3 +25,9 @@ battle:
 
   otherActorBattleResult: 3000
   heartBeatTime: 30
+
+
+#RPC
+rpc:
+  host: localhost
+  port: 9999
