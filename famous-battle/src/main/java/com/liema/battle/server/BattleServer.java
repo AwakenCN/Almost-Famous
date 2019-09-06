@@ -8,6 +8,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * @author Noseparte
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @Description
  */
 @Slf4j
+@Component
 public class BattleServer {
 
     Object waitLock = new Object();
