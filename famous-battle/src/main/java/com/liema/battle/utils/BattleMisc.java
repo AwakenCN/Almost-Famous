@@ -1,6 +1,6 @@
 package com.liema.battle.utils;
 
-import com.liema.battle.LockstepProto.NetMessage;
+import LockstepProto.NetMessage;
 import io.netty.channel.Channel;
 
 /**
@@ -15,9 +15,9 @@ public class BattleMisc {
     }
 
     public static boolean isCheckLoginProtocol(int type) {
-        if(type == NetMessage.C2S_HeartBeat_VALUE ||
+        if (type == NetMessage.C2S_HeartBeat_VALUE ||
                 type == NetMessage.C2S_Reconnect_VALUE ||
-                type == NetMessage.C2S_Match_VALUE){
+                type == NetMessage.C2S_Match_VALUE) {
             return true;
         }
         return false;
