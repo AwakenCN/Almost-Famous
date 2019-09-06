@@ -19,6 +19,7 @@ public class BattleServerConfig {
     private String loginUrl;
     private int matchers;  //匹配人数
     private int frameSpeed; //每秒钟帧同步速度
+    private int lifecycle;// 房间定时器生命周期单位分钟
     private int redundancy; //冗余帧数
     private int verifyUserLoginCmd; //验证玩家登录
     private int pullActorCmd; //从game服务器拉取角色信息
