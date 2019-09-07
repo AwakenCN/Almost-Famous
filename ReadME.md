@@ -32,6 +32,9 @@ Root project 'Almost-Famous'
 * [Game服务的介绍](./famous-game/README.md)
 * [Battle服务的介绍](./famous-battle/README.md)
 
+## 项目架构图
+
+![Image file](famous-static/images/20190904174054.png)
 
 ## 项目研发日志更新
 
