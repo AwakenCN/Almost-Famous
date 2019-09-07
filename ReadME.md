@@ -50,6 +50,8 @@ Root project 'Almost-Famous'
 5. 启动Game服务端，入口为FamousGameApplication类;
 5. 启动Battle服务端，入口为FamousBattleApplication类;
 
+![Image file](https://github.com/noseparte/Almost-Famous/blob/master/famous-static/images/startServer.png?raw=true)
+
 ## 一起交流
 
     如果您发现bug，或者有任何疑问，请提交issue !!
