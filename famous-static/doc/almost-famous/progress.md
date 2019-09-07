@@ -16,5 +16,16 @@
 * 【2019-08-15】 famous-login服启动，登录服管理玩家登录、注册
 * 【2019-08-15】 Account 用户管理 login、register
 * 【2019-08-15】 register、login 接口调试 
+* 【2019-08-21】 ConfigManager 加载配表数据 
+* 【2019-08-21】 BattleServer netty服务
+* 【2019-08-24】 Game服 玩家role的业务逻辑实现
+* 【2019-08-25】 Game服 职业school的业务逻辑实现
+* 【2019-08-26】 Game服 任务mission的业务逻辑实现
+* 【2019-08-27】 Game服 卡牌card的业务逻辑实现
+* 【2019-08-28】 Game服 章节chapter的业务逻辑实现
+* 【2019-08-29】 Game服 对战记录battleRank的业务逻辑实现
+* 【2019-08-29】 Game服 签到sign的业务逻辑实现
+* 【2019-08-30】 Game服 商店store的业务逻辑实现
+* 【2019-09-07】 battle服发布
 
 
