@@ -6,6 +6,7 @@ import com.liema.common.utils.FastJsonUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 
@@ -19,6 +20,7 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@Document(collection = "famous-game-role")
 public class Role extends GeneralBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
