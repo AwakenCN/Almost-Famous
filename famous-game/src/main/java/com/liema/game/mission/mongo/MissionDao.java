@@ -1,8 +1,11 @@
 package com.liema.game.mission.mongo;
 
+import com.liema.common.db.dao.GeneralDao;
 import com.liema.game.mission.entity.Mission;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -15,22 +18,11 @@ import javax.annotation.Resource;
  * @author hyt
  * @since 2019-06-27
  */
-@Repository
-public class MissionDao {
+public interface MissionDao extends GeneralDao<Mission> {
 
-    @Resource
-    @Qualifier("gameMongoTemplate")
-    private MongoTemplate gameMongoTemplate;
+    Mission getActorMissionsByRole(Long rid);
 
-    public Mission getActorMissionsByRole(Long rid) {
-        return null;
-    }
+    void updateActorMission(Mission mission);
 
-    public void updateActorMission(Mission mission) {
-
-    }
-
-    public void insertActorMission(Mission mission) {
-
-    }
+    void insertActorMission(Mission mission);
 }
