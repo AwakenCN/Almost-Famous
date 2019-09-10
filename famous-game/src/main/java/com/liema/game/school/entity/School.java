@@ -6,6 +6,7 @@ import com.liema.common.global.Misc;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -23,6 +24,7 @@ import java.util.Map;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@Document(collection = "famous-game-school")
 public class School extends GeneralBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
