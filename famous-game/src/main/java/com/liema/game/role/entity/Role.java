@@ -1,6 +1,7 @@
 package com.liema.game.role.entity;
 
 import com.liema.common.bean.BattleRankBean;
+import com.liema.common.db.pojo.GeneralBean;
 import com.liema.common.utils.FastJsonUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -18,7 +19,7 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Role implements Serializable {
+public class Role extends GeneralBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
