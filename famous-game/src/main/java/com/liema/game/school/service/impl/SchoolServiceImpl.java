@@ -37,17 +37,18 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class SchoolServiceImpl implements SchoolService {
 
-    static Logger LOG = LoggerFactory.getLogger("GameCore");
+    private static Logger LOG = LoggerFactory.getLogger("GameCore");
+
     @Autowired
     RpcClient rpcClient;
     @Autowired
-    private RoleService roleService;
+    RoleService roleService;
     @Resource
-    private SchoolDao schoolDao;
+    SchoolDao schoolDao;
     @Autowired
-    private CardService cardService;
+    CardService cardService;
     @Autowired
-    private SendMessage sendMessage;
+    SendMessage sendMessage;
 
     @Override
     public boolean addSchoolByRoleId(long rid, int schoolId) {
@@ -59,14 +60,14 @@ public class SchoolServiceImpl implements SchoolService {
             school = new School();
             school.setRid(rid);
             school.setSchools(map);
-            return SchoolDao.addSchool(school);
+            return schoolDao.addSchool(school);
         }
         // 已有角色添加职业
         Map<Integer, SchoolBean> map = school.getSchools();
         if (!newSchool(map, rid, schoolId)) {
             return false;
         }
-        return SchoolDao.upSchool(school);
+        return schoolDao.upSchool(school);
     }
 
     @Override
@@ -281,7 +282,7 @@ public class SchoolServiceImpl implements SchoolService {
         return schoolBean;
     }
 
-    protected boolean newSchool(Map<Integer, SchoolBean> map, long rid, int schoolId) {
+    private boolean newSchool(Map<Integer, SchoolBean> map, long rid, int schoolId) {
         if (map.containsKey(schoolId)) {
             LOG.error("角色 {}，已存在新职业 {}", rid, schoolId);
             return false;

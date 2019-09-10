@@ -1,6 +1,7 @@
 package com.liema.game.school.entity;
 
 import com.liema.common.bean.SchoolBean;
+import com.liema.common.db.pojo.GeneralBean;
 import com.liema.common.global.Misc;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,16 +23,16 @@ import java.util.Map;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class School implements Serializable {
+public class School extends GeneralBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public School() {
     }
 
-    public School(Long rid, String json) {
+    public School(Long rid, Map<Integer, SchoolBean> schools) {
         this.rid = rid;
-        this.schools = Misc.parseToMap(json, Integer.class, SchoolBean.class);
+        this.schools = schools;
     }
 
     private Long rid;
@@ -39,7 +40,7 @@ public class School implements Serializable {
     /**
      * 多个职业
      */
-    private Map<Integer, SchoolBean> schools = new HashMap<>();
+    private Map<Integer, SchoolBean> schools;
 
 
 }

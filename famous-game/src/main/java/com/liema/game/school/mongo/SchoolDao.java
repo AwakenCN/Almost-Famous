@@ -1,5 +1,7 @@
 package com.liema.game.school.mongo;
 
+import com.liema.common.db.dao.GeneralDao;
+import com.liema.common.db.pojo.GeneralBean;
 import com.liema.game.school.entity.School;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -15,24 +17,11 @@ import javax.annotation.Resource;
  * @author liang
  * @since 2019-04-18
  */
-@Repository
-public class SchoolDao {
+public interface SchoolDao extends GeneralDao<School> {
 
-    @Resource
-    @Qualifier("gameMongoTemplate")
-    private MongoTemplate gameMongoTemplate;
+    boolean addSchool(School school);
 
+    boolean upSchool(School school);
 
-    public static boolean addSchool(School school) {
-
-        return false;
-    }
-
-    public static boolean upSchool(School school) {
-        return false;
-    }
-
-    public static School getSchool(long rid) {
-        return null;
-    }
+    School getSchool(long rid);
 }
