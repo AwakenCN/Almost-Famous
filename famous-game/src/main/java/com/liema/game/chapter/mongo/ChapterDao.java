@@ -1,11 +1,8 @@
 package com.liema.game.chapter.mongo;
 
+import com.liema.common.db.dao.GeneralDao;
 import com.liema.game.chapter.entity.Chapter;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
-
-import javax.annotation.Resource;
 
 /**
  * <p>
@@ -16,24 +13,12 @@ import javax.annotation.Resource;
  * @since 2019-06-18
  */
 @Repository
-public class ChapterDao {
+public interface ChapterDao extends GeneralDao<Chapter> {
 
+    void addChapter(Chapter chapter);
 
-    @Resource
-    @Qualifier("gameMongoTemplate")
-    private MongoTemplate gameMongoTemplate;
+    void updateChapter(Chapter chapter);
 
-    public void addChapter(Chapter chapter){
-
-    }
-
-
-    public void updateChapter(Chapter chapter){
-
-    }
-
-    public Chapter getChapterById(Long rid){
-        return null;
-    }
+    Chapter getChapterById(Long rid);
 
 }

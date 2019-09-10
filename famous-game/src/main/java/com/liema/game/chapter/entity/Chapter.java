@@ -1,11 +1,13 @@
 package com.liema.game.chapter.entity;
 
 import com.liema.common.bean.ChapterBean;
+import com.liema.common.db.pojo.GeneralBean;
 import com.liema.common.global.Misc;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -22,16 +24,17 @@ import java.util.Map;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @NoArgsConstructor
-public class Chapter implements Serializable {
+@Document(collection = "famous-game-chapter")
+public class Chapter extends GeneralBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Long rid;
-
-    public Chapter(Long rid, String json) {
+    public Chapter(Long rid, Map<Integer, ChapterBean> chapters) {
         this.rid = rid;
-        this.chapters = Misc.parseToMap(json, Integer.class, ChapterBean.class);
+        this.chapters = chapters;
     }
+
+    private Long rid;
 
     private Map<Integer, ChapterBean> chapters;
 
