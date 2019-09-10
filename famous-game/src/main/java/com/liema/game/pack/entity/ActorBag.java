@@ -1,17 +1,19 @@
 package com.liema.game.pack.entity;
 
 import com.liema.common.bean.BagBean;
-import com.liema.common.global.Misc;
+import com.liema.common.db.pojo.GeneralBean;
 import com.liema.game.pack.BagStrategyHandler;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Map;
 
 @Data
 @NoArgsConstructor
-public class ActorBag {
+@Document(collection = "famous-game-bag")
+public class ActorBag extends GeneralBean {
 
     @Transient
     private BagStrategyHandler bagStrategyHandler;
@@ -27,12 +29,11 @@ public class ActorBag {
 
     public Integer selectCount;
 
-    public ActorBag(Long rid, String json, Integer probability, Integer buyCount, Integer selectCount) {
+    public ActorBag(Long rid, Map<Integer, BagBean> packages, Integer probability, Integer buyCount, Integer selectCount) {
         this.rid = rid;
-        this.packages = Misc.parseToMap(json, Integer.class, BagBean.class);
+        this.packages = packages;
         this.probability = probability;
         this.buyCount = buyCount;
         this.selectCount = selectCount;
     }
-
 }
