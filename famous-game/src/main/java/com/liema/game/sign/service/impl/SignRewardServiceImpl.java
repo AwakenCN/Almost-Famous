@@ -17,7 +17,6 @@ import com.liema.game.sign.mongo.SignRewardDao;
 import com.liema.game.sign.service.SignRewardService;
 import jodd.time.TimeUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +33,6 @@ public class SignRewardServiceImpl implements SignRewardService {
 
     @Resource
     private SignRewardDao signRewardDao;
-    @Autowired
-    private RedissonClient redissonClient;
     @Autowired
     private RoleService roleService;
 
