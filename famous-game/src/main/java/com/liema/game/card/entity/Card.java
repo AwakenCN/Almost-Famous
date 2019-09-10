@@ -1,11 +1,12 @@
 package com.liema.game.card.entity;
 
 import com.liema.common.bean.CardBean;
-import com.liema.common.global.Misc;
+import com.liema.common.db.pojo.GeneralBean;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -22,23 +23,20 @@ import java.util.Map;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @NoArgsConstructor
-public class Card implements Serializable {
+@Document(collection = "famous-game-card")
+public class Card extends GeneralBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Card(Long rid, String json, Integer selectCnt, Integer buyCnt) {
+    public Card(Long rid, Map<Integer, CardBean> cards, int buyCnt) {
         this.rid = rid;
-        this.cards = Misc.parseToMap(json, Integer.class, CardBean.class);
-        this.selectCnt = selectCnt;
+        this.cards = cards;
         this.buyCnt = buyCnt;
     }
 
     private Long rid;
 
     private Map<Integer, CardBean> cards;
-
-    // 抽卡
-    private int selectCnt;
 
     // 买卡
     private int buyCnt;

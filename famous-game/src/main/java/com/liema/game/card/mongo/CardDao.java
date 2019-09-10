@@ -1,5 +1,6 @@
 package com.liema.game.card.mongo;
 
+import com.liema.common.db.dao.GeneralDao;
 import com.liema.game.card.entity.Card;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -15,23 +16,13 @@ import javax.annotation.Resource;
  * @author liang
  * @since 2019-03-18
  */
-@Repository
-public class CardDao {
-
-    @Resource
-    @Qualifier("gameMongoTemplate")
-    private MongoTemplate gameMongoTemplate;
-
-    public Card getCardById(Long rid) {
-        return null;
-    }
+public interface CardDao extends GeneralDao<Card> {
 
 
-    public void addCard(Card card) {
+    Card getCardById(Long rid);
 
-    }
+    void addCard(Card card);
 
-    public void updateCard(Card card) {
+    void updateCard(Card card);
 
-    }
 }
