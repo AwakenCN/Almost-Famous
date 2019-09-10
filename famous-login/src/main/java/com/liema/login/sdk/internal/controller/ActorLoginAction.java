@@ -31,7 +31,7 @@ public class ActorLoginAction extends Action {
         account = accountService.login(account);
 
         if (Objects.nonNull(account)) {
-            return Resoult.ok(RegisterProtocol.ACTOR_LOGIN_ACTION_RESP);
+            return Resoult.ok(RegisterProtocol.ACTOR_LOGIN_ACTION_RESP).responseBody(account);
         }
         return Resoult.error(RegisterProtocol.ACTOR_LOGIN_ACTION_RESP, ErrorCode.SERVER_ERROR, "");
     }
