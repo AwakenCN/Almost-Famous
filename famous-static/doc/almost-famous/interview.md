@@ -34,7 +34,7 @@
 
 ```
 List 是一个接口，它继承于Collection的接口。它代表着有序的队列。
-ArrayList, LinkedList是List的4个实现类
+ArrayList, LinkedList是List的2个实现类
 ArrayList 是一个数组队列，相当于动态数组。它由数组实现，随机访问效率高，随机插入、随机删除效率低。
 LinkedList 是一个双向链表。它也可以被当作堆栈、队列或双端队列进行操作。LinkedList随机访问效率低，但随机插入、随机删除效率低。
 ```
@@ -82,11 +82,11 @@ IOC容器(控制反转、依赖注入)，AOP(切面编程、动态代理)
 #### 线程的状态有那些？暂停线程方式，创建线程方式？
 
 ```
-1.新建状态(new)
-2.就绪状态(start)
-3.运行状态（running）
-4.阻塞状态（blocked）
-5.死亡状态（dead）
+1.新建状态(New)
+2.就绪状态(Runnable)
+3.运行状态（Running）
+4.阻塞状态（Blocked）
+5.死亡状态（Dead）
 ```
 #### 你对微服务限流的理解？
 

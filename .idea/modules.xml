@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Almost-Famous.iml" filepath="$PROJECT_DIR$/.idea/Almost-Famous.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-battle/Almost-Famous.famous-battle.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-battle/Almost-Famous.famous-battle.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-common/Almost-Famous.famous-common.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-common/Almost-Famous.famous-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-game/Almost-Famous.famous-game.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-game/Almost-Famous.famous-game.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/famous-login/Almost-Famous.famous-login.iml" filepath="$PROJECT_DIR$/.idea/modules/famous-login/Almost-Famous.famous-login.iml" />
