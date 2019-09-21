@@ -1,7 +1,7 @@
 
 <div align=center>
 
-![Image text](https://github.com/AwakenCN/Almost-Famous/blob/master/famous-static/images/almost-famous.jpg?raw=true)
+![Image text](https://github.com/AwakenCN/Almost-Famous/blob/master/famous-static/images/awakencn.jpg?raw=true)
 <br/><br/>
 
 [![build](https://img.shields.io/travis/AwakenCN/Almost-Famous)](https://travis-ci.org/AwakenCN/Almost-Famous)
