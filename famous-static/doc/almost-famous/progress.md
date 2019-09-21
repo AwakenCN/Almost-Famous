@@ -1,7 +1,7 @@
 # Almost-Famous 研发进度更新
 
 * 【2019-08-05】 创建Almost-Famous项目，作为游戏服务端(卡牌)开源项目
-* 【2019-08-06】 搭建Almost-Famous架构，使用Springboot+Gradle构建工程，项目结构详见[Almost-Famous项目](https://github.com/noseparte/Almost-Famous/ReadME.md)
+* 【2019-08-06】 搭建Almost-Famous架构，使用Springboot+Maven构建工程，项目结构详见[Almost-Famous项目](https://github.com/AwakenCN/Almost-Famous/ReadME.md)
 * 【2019-08-07】 famous-unique服启动，RPC服生成全局玩家ID，存储于levelDB
 * 【2019-08-07】 集成Thrift rpc服务，远程调用
 * 【2019-08-08】 定制Thrift Protocol, 用于Login服玩家注册时远程调用

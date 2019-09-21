@@ -12,8 +12,9 @@
 ## 项目介绍
 
 ~~~
-    Almost-Famous(成名之路) ——卡牌游戏开源项目，
-    架构使用SpringBoot+Netty+Gradle来搭建多进程分布式框架，包括Unique、Login、Game、Battle 四个服务器
+    Almost-Famous(成名之路) —— 架构使用 -> (
+        SpringBoot, Netty, Maven 
+    ).explain(多进程分布式框架卡牌游戏开源项目，包括Unique、Login、Game、Battle 四个服务器).
 ~~~    
 
 ## 项目组织模块
@@ -42,15 +43,15 @@ Root project 'Almost-Famous'
 
 ## 快速开始
 
-1. 使用git下载代码 git clone https://github.com/noseparte/Almost-Famous.git;
-2. 将代码导入带有gradle插件的IDE(推荐使用IntelliJ IDEA);
-3. 保证本地安装Gradle、mongodb、redis等服务;
+1. 使用git下载代码 git clone https://github.com/AwakenCN/Almost-Famous.git;
+2. 将代码导入带有maven插件的IDE(推荐使用IntelliJ IDEA);
+3. 保证本地安装Maven、mongodb、redis等服务;
 4. 启动Unique服务端，入口为RpcServer类;
 5. 启动Login服务端，入口为FamousLoginApplication类;
 5. 启动Game服务端，入口为FamousGameApplication类;
 5. 启动Battle服务端，入口为FamousBattleApplication类;
 
-![Image file](https://github.com/noseparte/Almost-Famous/blob/master/famous-static/images/startServer.png?raw=true)
+![Image file](https://github.com/AwakenCN/Almost-Famous/blob/master/famous-static/images/startServer.png?raw=true)
 
 ## 一起交流
 

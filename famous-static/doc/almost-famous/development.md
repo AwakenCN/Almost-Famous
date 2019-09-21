@@ -14,6 +14,6 @@
     Thrift Facebook开源的通讯、rpc框架    
 ~~~
 
-* [Thrift生成规则](https://github.com/noseparte/thrift-server) 
+* [Thrift生成规则](https://github.com/AwakenCN/thrift-server) 
 
 * [Banner生成器](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
