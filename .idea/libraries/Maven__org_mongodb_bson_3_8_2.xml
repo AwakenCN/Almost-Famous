@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.mongodb:bson:3.8.2">
+    <CLASSES>
+      <root url="jar://D:/Java/maven-repo/org/mongodb/bson/3.8.2/bson-3.8.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/Java/maven-repo/org/mongodb/bson/3.8.2/bson-3.8.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/Java/maven-repo/org/mongodb/bson/3.8.2/bson-3.8.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

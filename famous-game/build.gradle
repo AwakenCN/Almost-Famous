@@ -1,8 +1,0 @@
-dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web',
-            'org.springframework.boot:spring-boot-starter-aop',
-            'org.springframework.boot:spring-boot-starter-actuator',
-            'org.springframework.boot:spring-boot-starter-freemarker',
-            'org.springframework.boot:spring-boot-starter-data-redis',
-            project(':famous-common')
-}

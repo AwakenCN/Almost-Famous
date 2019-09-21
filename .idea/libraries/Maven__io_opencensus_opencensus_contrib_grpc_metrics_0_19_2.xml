@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: io.opencensus:opencensus-contrib-grpc-metrics:0.19.2">
+    <CLASSES>
+      <root url="jar://D:/Java/maven-repo/io/opencensus/opencensus-contrib-grpc-metrics/0.19.2/opencensus-contrib-grpc-metrics-0.19.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/Java/maven-repo/io/opencensus/opencensus-contrib-grpc-metrics/0.19.2/opencensus-contrib-grpc-metrics-0.19.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/Java/maven-repo/io/opencensus/opencensus-contrib-grpc-metrics/0.19.2/opencensus-contrib-grpc-metrics-0.19.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

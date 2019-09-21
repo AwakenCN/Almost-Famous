@@ -1,9 +1,10 @@
-package com.liema.unique;/**
+package com.liema.unique;
+
+/**
  * @author Noseparte
  * @date 2019/8/5 16:48
  * @Description
  */
-
 import com.liema.common.global.ConfigManager;
 import com.liema.common.global.ExitHandler;
 import com.liema.common.rpc.protocol.RPCDateService;

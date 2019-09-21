@@ -1,8 +1,0 @@
-rootProject.name = 'Almost-Famous'
-include ':famous-game'
-include ':famous-common'
-include ':famous-login'
-include ':famous-unique'
-
-println 'Gradle初始化阶段开始...'
-
