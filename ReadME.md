@@ -2,7 +2,6 @@
 <div align=center>
 
 ![Image text](https://github.com/AwakenCN/Almost-Famous/blob/master/famous-static/images/awakencn.jpg?raw=true)
-<br/><br/>
 
 [![build](https://img.shields.io/travis/AwakenCN/Almost-Famous)](https://travis-ci.org/AwakenCN/Almost-Famous)
 [![官网](https://img.shields.io/badge/%E5%AE%98%E7%BD%91-page-blue)](https://awakencn.github.io/Almost-Famous/)
