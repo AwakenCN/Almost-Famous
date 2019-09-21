@@ -1,21 +1,28 @@
-# 《成名之路》(Almost-Famous)
 
-~~~
-     _    _                     _        _____                               
-    / \  | |_ __ ___   ___  ___| |_     |  ___|_ _ _ __ ___   ___  _   _ ___ 
-   / _ \ | | '_ ` _ \ / _ \/ __| __|____| |_ / _` | '_ ` _ \ / _ \| | | / __|
-  / ___ \| | | | | | | (_) \__ \ ||_____|  _| (_| | | | | | | (_) | |_| \__ \
- /_/   \_\_|_| |_| |_|\___/|___/\__|    |_|  \__,_|_| |_| |_|\___/ \__,_|___/
+<div align=center>
 
-~~~
+![Image text](https://github.com/AwakenCN/Almost-Famous/blob/master/famous-static/images/almost-famous.jpg?raw=true)
 
-## 项目介绍
+![Image file](https://travis-ci.org/AwakenCN/Almost-Famous.svg?branch=master)
+[![官网](https://img.shields.io/badge/%E5%AE%98%E7%BD%91-page-blue)](https://awakencn.github.io/Almost-Famous/)
+[![QQ群](https://img.shields.io/badge/QQ%E7%BE%A4-628793702-yellow.svg)](https://jq.qq.com/?_wv=1027&k=5gXmfE2)
+[![作者](https://img.shields.io/badge/%E4%BD%9C%E8%80%85-MySelf-blue.svg)](https://github.com/noseparte)
+[![Netty入门](https://img.shields.io/badge/%E5%AD%A6%E4%B9%A0-Netty%E5%85%A5%E9%97%A8-ff69b4.svg)](doc/study/mulu.md)
 
-~~~
+
+</div>
+
+## 申明
+
+本项目入驻[**AwakenCN**](https://github.com/AwakenCN)开源组织，后续将继续更新调整，部分API后续会更改，感谢每一位朋友的支持与关注。
+
+## 简介
+
+***(Almost-Famous)Java GameServer Framework***
+
     Almost-Famous(成名之路) —— 架构使用 -> (
-        SpringBoot, Netty, Maven 
-    ).explain(多进程分布式框架卡牌游戏开源项目，包括Unique、Login、Game、Battle 四个服务器).
-~~~    
+            SpringBoot, Netty, Maven 
+        ).explain(多进程分布式框架卡牌游戏开源项目，包括Unique、Login、Game、Battle 四个服务器).
 
 ## 项目组织模块
 
