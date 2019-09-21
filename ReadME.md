@@ -2,11 +2,12 @@
 <div align=center>
 
 ![Image text](https://github.com/AwakenCN/Almost-Famous/blob/master/famous-static/images/almost-famous.jpg?raw=true)
+<br/><br/>
 
-![Image file](https://travis-ci.org/AwakenCN/Almost-Famous.svg?branch=master)
+[![build](https://img.shields.io/travis/AwakenCN/Almost-Famous)](https://travis-ci.org/AwakenCN/Almost-Famous)
 [![官网](https://img.shields.io/badge/%E5%AE%98%E7%BD%91-page-blue)](https://awakencn.github.io/Almost-Famous/)
-[![QQ群](https://img.shields.io/badge/QQ%E7%BE%A4-628793702-yellow.svg)](https://jq.qq.com/?_wv=1027&k=5gXmfE2)
-[![作者](https://img.shields.io/badge/%E4%BD%9C%E8%80%85-MySelf-blue.svg)](https://github.com/noseparte)
+[![QQ群](https://img.shields.io/badge/QQ%E7%BE%A4-670252084-yellow)](https://jq.qq.com/?_wv=1027&k=5gXmfE2)
+[![作者](https://img.shields.io/badge/%E4%BD%9C%E8%80%85-Noseparte-orange)](https://github.com/noseparte)
 [![Netty入门](https://img.shields.io/badge/%E5%AD%A6%E4%B9%A0-Netty%E5%85%A5%E9%97%A8-ff69b4.svg)](doc/study/mulu.md)
 
 

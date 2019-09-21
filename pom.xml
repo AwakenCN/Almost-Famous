@@ -4,7 +4,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.liema</groupId>
+    <groupId>com.noseparte</groupId>
     <artifactId>Almost-Famous</artifactId>
     <version>1.0.0-Release</version>
     <packaging>pom</packaging>
@@ -94,7 +94,7 @@
                 <version>3.7.1</version>
             </dependency>
             <dependency>
-                <groupId>com.liema</groupId>
+                <groupId>com.noseparte</groupId>
                 <artifactId>famous-common</artifactId>
                 <version>1.0.0-Release</version>
             </dependency>

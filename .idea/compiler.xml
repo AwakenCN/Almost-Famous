@@ -19,8 +19,6 @@
       <module name="famous-battle" target="1.8" />
       <module name="famous-common" target="1.8" />
       <module name="famous-game" target="1.8" />
-      <module name="famous-game (1)" target="1.8" />
-      <module name="famous-game (2)" target="1.5" />
       <module name="famous-login" target="1.8" />
       <module name="famous-unique" target="1.8" />
     </bytecodeTargetLevel>
@@ -30,7 +28,6 @@
       <module name="famous-battle" options="-parameters" />
       <module name="famous-common" options="-parameters" />
       <module name="famous-game" options="-parameters" />
-      <module name="famous-game (1)" options="-parameters" />
       <module name="famous-login" options="-parameters" />
       <module name="famous-unique" options="-parameters" />
     </option>
