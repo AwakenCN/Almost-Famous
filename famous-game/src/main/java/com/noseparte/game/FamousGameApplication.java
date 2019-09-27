@@ -7,13 +7,18 @@ import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
- * @author Noseparte
- * @date 2019/7/31 10:42
- * @Description
+ * @Auther: Noseparte
+ * @Date: 2019/9/27 17:19
+ * @Description: 
+ * 
+ *          <p>Famous-Game服务 启动类</p>
+ *          <p>注册到Eureka服务中心</p>
  */
+@EnableEurekaClient
 @ImportAutoConfiguration(RedissonAutoConfiguration.class)
 @SpringBootApplication(exclude = {MongoAutoConfiguration.class, DataSourceAutoConfiguration.class})
 @ComponentScan({"com.noseparte.game.*", "com.noseparte.common.*"})

@@ -14,6 +14,8 @@ server:
     context-path: /login
 
 spring:
+  application:
+    name: famous-login
   profiles:
     active: dev
     jackson:
@@ -25,30 +27,6 @@ spring:
         max-request-size: 100MB
         enabled: true
 
-#  data:
-#    mongodb:
-#      option:
-#        min-connection-per-host: 0
-#        max-connection-per-host: 100
-#        threads-allowed-to-block-for-connection-multiplier: 5
-#        server-selection-timeout: 30000
-#        max-wait-time: 120000
-#        max-connection-idle-time: 0
-#        max-connection-life-time: 0
-#        connect-timeout: 10000
-#        socket-timeout: 0
-#
-#        socket-keep-alive: false
-#        ssl-enabled: false
-#        ssl-invalid-host-name-allowed: false
-#        always-use-m-beans: false
-#
-#        heartbeat-socket-timeout: 20000
-#        heartbeat-connect-timeout: 20000
-#        min-heartbeat-frequency: 500
-#        heartbeat-frequency: 10000
-#        local-threshold: 15
-
 #redisson
 redis:
   redisson:
@@ -58,3 +36,7 @@ freemarker:
   suffix: .html
   request-context-attribute: request
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

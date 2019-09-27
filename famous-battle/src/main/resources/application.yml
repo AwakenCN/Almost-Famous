@@ -1,6 +1,8 @@
 logging.level.org.springframework.boot.autoconfigure: ERROR
 
 spring:
+  application:
+    name: famous-battle
   redis:
     redisson:
       config: classpath:redisson.yaml
@@ -31,3 +33,9 @@ battle:
 rpc:
   host: localhost
   port: 9999
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
