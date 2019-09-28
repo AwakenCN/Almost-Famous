@@ -19,3 +19,9 @@ rpc:
   host: localhost
   port: 9999
   rpc-type: Thrift
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream

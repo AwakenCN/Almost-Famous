@@ -7,7 +7,11 @@ import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -19,6 +23,10 @@ import org.springframework.context.annotation.ComponentScan;
  *          <p>注册到Eureka服务中心</p>
  */
 @EnableEurekaClient
+@EnableDiscoveryClient
+@EnableFeignClients
+@EnableHystrix
+@EnableHystrixDashboard
 @ImportAutoConfiguration(RedissonAutoConfiguration.class)
 @SpringBootApplication(exclude = {MongoAutoConfiguration.class, DataSourceAutoConfiguration.class})
 @ComponentScan({"com.noseparte.game.*", "com.noseparte.common.*"})
