@@ -17,3 +17,5 @@
 * [Thrift生成规则](https://github.com/AwakenCN/thrift-server) 
 
 * [Banner生成器](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
+
+- [清华大学邓俊辉 算法训练营](https://itvideos.github.io/2018/08/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E8%AE%AD%E7%BB%83%E8%90%A5/)

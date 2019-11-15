@@ -25,3 +25,16 @@ management:
     web:
       exposure:
         include: hystrix.stream
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+
+
+turbine:
+  app-config: famous-login,famous-game,famous-battle
+  aggregator:
+    clusterConfig: default
+  clusterNameExpression: new String("default")
+  combine-host: true
+  instanceUrlSuffix:
+    default: actuator/hystrix.stream
