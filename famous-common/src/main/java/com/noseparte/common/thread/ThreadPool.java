@@ -1,20 +1,20 @@
 package com.noseparte.common.thread;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @author Noseparte
- * @date 2019/8/23 16:01
- * @Description
+ * @Auther: Noseparte
+ * @Date: 2019/11/27 10:35
+ * @Description:
+ *
+ *          <p>定制协议网关线程池</p>
  */
 public class ThreadPool {
 
@@ -34,7 +34,9 @@ public class ThreadPool {
             throw new IllegalArgumentException();
 
         for (int i = 0; i < threadCount; i++) {
-            workers.add(Executors.newSingleThreadExecutor(threadFactory));
+            workers.add(new ThreadPoolExecutor(threadCount, 200,
+                    0L, TimeUnit.MILLISECONDS,
+                    new LinkedBlockingQueue<Runnable>(1024), threadFactory, new ThreadPoolExecutor.AbortPolicy()));
         }
     }
 
@@ -81,6 +83,7 @@ public class ThreadPool {
                 t.setPriority(Thread.NORM_PRIORITY);
             return t;
         }
+
     }
 
 
