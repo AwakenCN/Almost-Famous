@@ -8,9 +8,9 @@ import com.noseparte.battle.BattleServerConfig;
 import com.noseparte.battle.battle.BattleRoom;
 import com.noseparte.battle.battle.BattleRoomMgr;
 import com.noseparte.battle.battle.SLockStep;
-import com.noseparte.battle.server.LinkMgr;
-import com.noseparte.battle.server.Protocol;
-import com.noseparte.battle.server.Session;
+import com.noseparte.common.battle.server.LinkMgr;
+import com.noseparte.common.battle.server.Protocol;
+import com.noseparte.common.battle.server.Session;
 import com.noseparte.common.bean.Actor;
 import com.noseparte.common.bean.BattleRoomResult;
 import com.noseparte.common.utils.SpringContextUtils;
@@ -77,7 +77,7 @@ public class WatchBattleRoomJob implements Job {
             }
             // 时间到了没有结果，就都判定输
             for (Actor actor : battleRoom.getActors()) {
-                battleRoomResult.getLosers().add(actor.getRoleId());
+                battleRoomResult.getLosers().add(actor.getRid());
             }
         }
         // 解散房间
@@ -107,7 +107,7 @@ public class WatchBattleRoomJob implements Job {
         // 广播
         List<Actor> actors = battleRoom.getActors();
         for (Actor actor : actors) {
-            Session session = LinkMgr.getSession(actor.getRoleId());
+            Session session = LinkMgr.getSession(actor.getRid());
             if (null == session || !session.getChannel().isActive()) {
                 continue;
             }

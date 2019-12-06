@@ -2,24 +2,26 @@ package com.noseparte.battle.battle;
 
 import com.noseparte.battle.BattleServerConfig;
 import com.noseparte.battle.asynchttp.BattleEndRequest;
-import com.noseparte.battle.server.LinkMgr;
-import com.noseparte.battle.server.Protocol;
-import com.noseparte.battle.server.Session;
+import com.noseparte.common.battle.SimpleBattleRoom;
+import com.noseparte.common.battle.server.LinkMgr;
+import com.noseparte.common.battle.server.Protocol;
+import com.noseparte.common.battle.server.Session;
 import com.noseparte.common.bean.Actor;
 import com.noseparte.common.bean.BattleActorResult;
 import com.noseparte.common.bean.BattleRoomResult;
-import com.noseparte.common.global.ConfigManager;
+import com.noseparte.common.cache.RedissonUtils;
+import com.noseparte.common.global.KeyPrefix;
 import com.noseparte.common.global.Misc;
+import com.noseparte.common.rpc.RpcClient;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RedissonClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
@@ -30,6 +32,10 @@ public class BattleRoomMgr {
 
     @Autowired
     BattleServerConfig battleServerConfig;
+    @Autowired
+    RpcClient rpcClient;
+    @Autowired
+    private RedissonClient redissonClient;
 
     @Setter
     private volatile boolean stop = false;
@@ -38,31 +44,23 @@ public class BattleRoomMgr {
     private static final int B_ACTOR = 1;
 
     // 角色与战斗房间映射
-    public static Map<Long, Long> roleRelationRoomMap = new ConcurrentHashMap<>();
-
+    private Map<Long, Long> roleRelationRoomMap = new ConcurrentHashMap<>();
     // 战斗房间
-    public static Map<Long, BattleRoom> battleRoomMap = new ConcurrentHashMap<>();
+    private Map<Long, BattleRoom> battleRoomMap = new ConcurrentHashMap<>();
 
-    public BattleRoom createBattleRoom(List<Actor> actors) {
+    public void addBattleRoom(SimpleBattleRoom simpleBattleRoom) {
         BattleRoom battleRoom = new BattleRoom();
-        battleRoom.setActors(actors);
-        int seed = Misc.random(10000, 99999);
-        battleRoom.setSeed(seed);
-        int mapId = randomMap();
-        battleRoom.setMapId(mapId);
-        battleRoom.setCreateTime(System.currentTimeMillis());
-        battleRoom.setState(-1);
-        // TODO: RPC
-        long roomId = Misc.random(10000, 300000);
-        battleRoom.setRoomId(roomId);
-        return battleRoom;
-    }
+        battleRoom.setRoomId(simpleBattleRoom.getRoomId());
+        battleRoom.setMapId(simpleBattleRoom.getMapId());
+        battleRoom.setSeed(simpleBattleRoom.getSeed());
+        battleRoom.setActors(simpleBattleRoom.getActors());
+        battleRoom.setCreateTime(simpleBattleRoom.getCreateTime());
+        battleRoom.setBattleMode(simpleBattleRoom.getBattleMode());
 
-    public void addBattleRoom(BattleRoom battleRoom) {
         Long roomId = battleRoom.getRoomId();
         battleRoomMap.put(roomId, battleRoom);
         for (Actor actor : battleRoom.getActors()) {
-            roleRelationRoomMap.put(actor.getRoleId(), roomId);
+            roleRelationRoomMap.put(actor.getRid(), roomId);
         }
     }
 
@@ -75,33 +73,27 @@ public class BattleRoomMgr {
         return battleRoomMap.get(roomId);
     }
 
-    public boolean isHaveRoom(Long roleId) {
+    public boolean isLocalHaveBattleRoom(Long roleId) {
         return roleRelationRoomMap.containsKey(roleId);
     }
 
     public void disbandBattleRoom(Long roomId) {
         BattleRoom battleRoom = battleRoomMap.remove(roomId);
-        for (Actor actor : battleRoom.getActors()) {
-            roleRelationRoomMap.remove(actor.getRoleId());
-        }
-    }
+        String battle_room_key = KeyPrefix.BattleRedisPrefix.BATTLE_ROOM + roomId;
+        RedissonUtils.lock(redissonClient, battle_room_key);
+        RedissonUtils.delete(redissonClient, battle_room_key);
+        RedissonUtils.unlock(redissonClient, battle_room_key);
 
-    public int randomMap() {
-        int mapId = 0;
-        int size = ConfigManager.mapConfMap.size();
-        if (size > 0) {
-            int r = Misc.random(0, size);
-            Set<Integer> mapIdSet = ConfigManager.mapConfMap.keySet();
-            int i = 0;
-            for (Integer tmp : mapIdSet) {
-                if (i == r) {
-                    mapId = tmp;
-                    break;
-                }
-                i++;
-            }
+
+        for (Actor actor : battleRoom.getActors()) {
+            roleRelationRoomMap.remove(actor.getRid());
+
+            long roleId = actor.getRid();
+            String battle_room_by_role_key = KeyPrefix.BattleRedisPrefix.BATTLE_ROOM_BY_ROLE + roleId;
+            RedissonUtils.lock(redissonClient, battle_room_by_role_key);
+            RedissonUtils.delete(redissonClient, battle_room_by_role_key);
+            RedissonUtils.unlock(redissonClient, battle_room_by_role_key);
         }
-        return mapId;
     }
 
     public void roomOver(BattleRoom battleRoom) {
@@ -109,12 +101,12 @@ public class BattleRoomMgr {
             disbandBattleRoom(battleRoom.getRoomId());
             // 通知game core
             new BattleEndRequest(battleRoom.getRoomId(), battleRoom.getBattleRoomResult().getWinners(),
-                    battleRoom.getBattleRoomResult().getLosers()).execute();
+                    battleRoom.getBattleRoomResult().getLosers(), battleRoom.getBattleMode()).execute();
 
             // 通知客户端
             Protocol p = battleRoom.toS2CBattleEnd();
             for (Actor actor : battleRoom.getActors()) {
-                long roleId = actor.getRoleId();
+                long roleId = actor.getRid();
                 Session session = LinkMgr.getSession(roleId);
                 if (null == session)
                     continue;
@@ -160,7 +152,7 @@ public class BattleRoomMgr {
                         log.info("(3)---三秒内收到,有异常A和B都获胜(非正常情况要投递到验证服务器).");
                     }
                     for (Actor actor : battleRoom.getActors()) {
-                        battleRoomResult.getWinners().add(actor.getRoleId());
+                        battleRoomResult.getWinners().add(actor.getRid());
                     }
                     return false;
                 }
@@ -176,6 +168,10 @@ public class BattleRoomMgr {
             }
         }
         return true;
+    }
+
+    public int getBattleRoomCount() {
+        return this.battleRoomMap.size();
     }
 
 

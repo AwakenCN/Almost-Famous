@@ -1,11 +1,14 @@
 package com.noseparte.common.global;
 
+import LockstepProto.NetMessage;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.Channel;
 import io.netty.handler.codec.CorruptedFrameException;
 import org.apache.commons.lang.StringUtils;
 
+import java.lang.reflect.Field;
 import java.nio.charset.Charset;
 import java.security.SecureRandom;
 import java.util.List;
@@ -131,9 +134,10 @@ public class Misc {
 
     /**
      * 比较两个list元素是否一致
-     * @return  true=一致, false=不一致
+     *
+     * @return true=一致, false=不一致
      */
-    public static boolean isListEqual(List l0, List l1){
+    public static boolean isListEqual(List l0, List l1) {
         if (l0 == l1)
             return true;
         if (l0 == null && l1 == null)
@@ -149,6 +153,50 @@ public class Misc {
         for (Object o : l1) {
             if (!l0.contains(o))
                 return false;
+        }
+        return true;
+    }
+
+    public static Field[] getField(Object object) {
+        Class clazz = object.getClass();
+        Field[] fields = clazz.getDeclaredFields();
+        return fields;
+    }
+
+    public static Field[] getAllField(Object object) {
+        Class clazz = object.getClass();
+        Field[] fields = clazz.getFields();
+        return fields;
+    }
+
+    //第一个字母大写
+    public static String getMethodName(String fildeName) throws Exception {
+        byte[] items = fildeName.getBytes();
+        items[0] = (byte) ((char) items[0] - 'a' + 'A');
+        return new String(items);
+    }
+
+    // 获取常量表中的某一项 (String类型)
+    public static String getStringVariable(int globalId) {
+        return ConfigManager.globalVariableConfMap.get(globalId).getValue();
+    }
+
+    // 获取常量表中的某一项 (Integer类型)
+    public static Integer getIntegerVariable(int globalId) {
+        String variable = ConfigManager.globalVariableConfMap.get(globalId).getValue();
+        return Integer.parseInt(variable);
+    }
+
+    public static int getSid(Channel channel) {
+        return channel.id().asShortText().hashCode();
+    }
+
+    public static boolean isCheckLoginProtocol(int type) {
+        if (type == NetMessage.C2S_HeartBeat_VALUE
+                || type == NetMessage.C2S_Reconnect_VALUE
+                || type == NetMessage.C2S_Match_VALUE
+        ) {
+            return false;
         }
         return true;
     }

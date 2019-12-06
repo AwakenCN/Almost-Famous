@@ -4,9 +4,9 @@ import LockstepProto.C2SPullFrame;
 import LockstepProto.Frame;
 import LockstepProto.NetMessage;
 import LockstepProto.S2CPullFrame;
-import com.noseparte.battle.server.LinkMgr;
-import com.noseparte.battle.server.Protocol;
-import com.noseparte.battle.server.Session;
+import com.noseparte.common.battle.server.LinkMgr;
+import com.noseparte.common.battle.server.Protocol;
+import com.noseparte.common.battle.server.Session;
 import com.noseparte.common.utils.SpringContextUtils;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,7 +23,7 @@ public class CPullFrame extends Protocol {
         int src = req.getFrameIdBegin();
         int dest = req.getFrameIdEnd();
         Session session = getSession();
-        long roleId = session.getRoleId();
+        long roleId = session.getRid();
         BattleRoomMgr battleMgr = SpringContextUtils.getBean("battleRoomMgr", BattleRoomMgr.class);
         BattleRoom battleRoom = battleMgr.getBattleRoomByRoleId(roleId);
         //get range frame

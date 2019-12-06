@@ -1,6 +1,5 @@
 package com.noseparte.common.thread;
 
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,8 +22,8 @@ public class ThreadPool {
     private int threadCount;
     private ThreadFactory threadFactory;
 
-    public ThreadPool(int threadCount) {
-        this(threadCount, new UserThreadFactory("网关游戏逻辑协议线程池"));
+    public ThreadPool(int threadCount, String poolName) {
+        this(threadCount, new UserThreadFactory(poolName));
     }
 
     public ThreadPool(int threadCount, ThreadFactory threadFactory) {

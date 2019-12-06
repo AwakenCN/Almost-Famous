@@ -1,6 +1,8 @@
 package com.noseparte.battle.server;
 
 import com.noseparte.battle.BattleServerConfig;
+import com.noseparte.common.battle.server.Decoder;
+import com.noseparte.common.battle.server.Encoder;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;

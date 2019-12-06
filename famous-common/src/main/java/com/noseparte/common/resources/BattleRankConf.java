@@ -7,31 +7,37 @@ public class BattleRankConf implements java.io.Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /********** attribute ***********/
+/********** attribute ***********/
     private Integer id;
 
     private String name;
 
     private Integer icon;
 
+    private Integer minstar;
+
+    private Integer maxstar;
+
     private Integer starLimit;
 
     private Integer isProtect;
 
-    /********** constructors ***********/
+/********** constructors ***********/
     public BattleRankConf() {
 
     }
 
-    public BattleRankConf(Integer id, String name, Integer icon, Integer starLimit, Integer isProtect) {
+    public BattleRankConf(Integer id, String name, Integer icon, Integer minstar, Integer maxstar, Integer starLimit, Integer isProtect) {
         this.id = id;
         this.name = name;
         this.icon = icon;
+        this.minstar = minstar;
+        this.maxstar = maxstar;
         this.starLimit = starLimit;
         this.isProtect = isProtect;
     }
 
-    /********** get/set ***********/
+/********** get/set ***********/
     public Integer getId() {
         return id;
     }
@@ -54,6 +60,22 @@ public class BattleRankConf implements java.io.Serializable {
 
     public void setIcon(Integer icon) {
         this.icon = icon;
+    }
+
+    public Integer getMinstar() {
+        return minstar;
+    }
+
+    public void setMinstar(Integer minstar) {
+        this.minstar = minstar;
+    }
+
+    public Integer getMaxstar() {
+        return maxstar;
+    }
+
+    public void setMaxstar(Integer maxstar) {
+        this.maxstar = maxstar;
     }
 
     public Integer getStarLimit() {

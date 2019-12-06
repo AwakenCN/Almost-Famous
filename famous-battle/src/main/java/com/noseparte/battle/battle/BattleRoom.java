@@ -1,10 +1,12 @@
 package com.noseparte.battle.battle;
 
 
-import LockstepProto.*;
-import com.noseparte.battle.match.SMatch;
-import com.noseparte.battle.server.Protocol;
+import LockstepProto.Frame;
+import LockstepProto.NetMessage;
+import LockstepProto.S2CBattleEnd;
 import com.noseparte.battle.utils.JobEntity;
+import com.noseparte.common.battle.BattleModeEnum;
+import com.noseparte.common.battle.server.Protocol;
 import com.noseparte.common.bean.Actor;
 import com.noseparte.common.bean.BattleActorResult;
 import com.noseparte.common.bean.BattleRoomResult;
@@ -29,6 +31,7 @@ public class BattleRoom {
     int state;
     int mapId;
     JobEntity quartzEntity;
+    BattleModeEnum battleMode;
 
     List<BattleActorResult> battleActorResults = new ArrayList<>(2);//  演员战斗结果
     BattleRoomResult battleRoomResult = new BattleRoomResult();// 房间战斗结果
@@ -99,25 +102,6 @@ public class BattleRoom {
         return frameCount.getAndIncrement();
     }
 
-    /**
-     * 拼装房间信息协议
-     */
-    public Protocol toS2CMatch() {
-        S2CMatch.Builder s2CMatch = S2CMatch.newBuilder();
-        for (Actor actor : this.actors) {
-            BattleActor.Builder battleActor = BattleActor.newBuilder().setRoleId(actor.getRoleId()).addAllCardIds(actor.getUserCards())
-                    .setAgi(actor.getAgi()).setIq(actor.getIq()).setStr(actor.getStr()).setRoleName(actor.getRoleName()).setSchool(actor.getSchoolId())
-                    .setRankId(actor.getBattleRankBean().getRankId()).setStarCount(actor.getBattleRankBean().getStarCount());
-            s2CMatch.addActors(battleActor.build());
-        }
-        //
-        byte[] respMsg = s2CMatch.setSeed(this.seed).setMapId(this.mapId).setBattleStartTime(this.createTime).build().toByteArray();
-        Protocol p = new SMatch();
-        p.setType(NetMessage.S2C_Match_VALUE);
-        p.setMsg(respMsg);
-
-        return p;
-    }
 
     public void collectBattleResult(BattleActorResult battleActorResult) {
         battleActorResults.add(battleActorResult);

@@ -1,0 +1,17 @@
+﻿id	字典名称	道具介绍	道具类型	图标	掉落内容	特殊值增量	特殊事件掉落	道具最大堆叠数	道具购买价格	是否自动打开
+id	name	introduction	type	icon	drop	increment	specialDrop	maxPileNum	price	isAuto
+int	string	string	int	string	string	string	string	int	int	int
+1001	card_package_1	card_package_1_intro	7		"1001,4;1002,1"	"30,70"	"90004,1"	9999	100	0
+1002	card_package_1	card_package_1_intro	7		"90005,1;90006,1;90007,1;90008,1;90009,1"			9999	100000	0
+1	default_gold	default_gold_intro	1					9999999		0
+2	default_silver	default_silver_intro	2					9999999		0
+3	default_diamond	default_diamond_intro	3					9999999		0
+4	default_exp	default_exp_intro	4					9999999		1
+5	default_card	default_card_intro	5					9999999		1
+1101	packages_day1	packages_day1_inro	8		"2001,5;90003,1;2,500;3,500"			9999	9999	1
+1102	packages_day2	packages_day2_inro	8		"90000,1"			9999	9999	1
+1103	packages_day3	packages_day3_inro	8		"3,1000"			9999	9999	1
+1104	packages_day4	packages_day4_inro	8		"3,1000"			9999	9999	1
+1105	packages_day5	packages_day5_inro	8		"3,1000"			9999	9999	1
+1106	packages_day6	packages_day6_inro	8		"3,1000"			9999	9999	1
+1107	packages_day7	packages_day7_inro	8		"3,2000"			9999	9999	1

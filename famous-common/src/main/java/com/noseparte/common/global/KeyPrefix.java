@@ -21,9 +21,19 @@ public class KeyPrefix {
         public static final String ROLE_MESSAGE_QUEUE = "role_message_queue:";
     }
 
-    public static class GameLandingRewardsPrefix {
-        public static final String GAME_LANDING_REWARDS = "game_landing_rewards:";
+    public static class BattleRedisPrefix {
+        public static final String MATCH_RANK_MODE_QUEUE = "match_rank_mode_queue:";
+        public static final String MATCH_QUEUE_BY_ROLE = "match_queue_by_role:";
+        public static final String MATCH_LEISURE_MODE_QUEUE = "match_leisure_mode_queue:";
+        public static final String BATTLE_ROOM = "battle_room:";
+        public static final String BATTLE_ROOM_BY_ROLE = "battle_room_by_role:";
+        public static final String MATCH_SESSION = "match_session:";
+        public static final String MATCH_SESSION_BY_ROLE = "match_session_by_role:";
+        public static final String BATTLE_SERVER_SERVICE = "battle_server_service:";
+        public static final String BATTLE_SERVER_SERVICE_LIST = "battle_server_service_list";
     }
+
+    public static final String REDISSON_LOCK = "redisson_lock_";
 
     /************************level db***********************/
     public static class UniqueLevelDBPrefix {

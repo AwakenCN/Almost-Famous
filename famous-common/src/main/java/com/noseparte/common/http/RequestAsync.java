@@ -1,6 +1,7 @@
 package com.noseparte.common.http;
 
 import com.alibaba.fastjson.JSONObject;
+import com.noseparte.common.utils.FastJsonUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
@@ -29,7 +30,9 @@ public abstract class RequestAsync {
 
     protected void async(String baseUrl, boolean isPost,
                          List<KeyValuePair> urlParams,
-                         List<KeyValuePair> postBody, FutureCallback callback)
+                         List<KeyValuePair> postBody,
+                         List<KeyValuePair> headers,
+                         FutureCallback callback)
             throws Exception {
 
         if (baseUrl == null) {
@@ -70,8 +73,14 @@ public abstract class RequestAsync {
                 }
             }
 
+            if (null != headers) {
+                for (KeyValuePair keyValuePair : headers) {
+                    httpMethod.addHeader(keyValuePair.getName(), keyValuePair.getValue());
+                }
+            }
+
             if (LOG.isDebugEnabled()) {
-                LOG.debug("async getparams:" + httpMethod.getURI());
+                LOG.debug("async get params: " + httpMethod.getURI());
             }
             localContext.setAttribute(HttpClientContext.COOKIE_STORE,
                     cookieStore);
@@ -83,10 +92,16 @@ public abstract class RequestAsync {
 
     }
 
+    protected void async(String baseUrl, List<KeyValuePair> postBody, List<KeyValuePair> headers, FutureCallback callback)
+            throws Exception {
+        this.async(baseUrl, true, null, postBody, headers, callback);
+    }
+
     protected void async(String baseUrl, List<KeyValuePair> postBody, FutureCallback callback)
             throws Exception {
-        this.async(baseUrl, true, null, postBody, callback);
+        this.async(baseUrl, true, null, postBody, null, callback);
     }
+
 
     protected String getHttpContent(HttpResponse response) {
 
@@ -99,12 +114,20 @@ public abstract class RequestAsync {
 
         try {
             body = EntityUtils.toString(entity, "utf-8");
-        } catch (ParseException e) {
-            LOG.error("the response's content inputstream is corrupt", e);
-        } catch (IOException e) {
-            LOG.error("the response's content inputstream is corrupt", e);
+        } catch (ParseException | IOException e) {
+            LOG.error("the response's content input stream is corrupt", e);
         }
         return body;
+    }
+
+    protected JSONObject getJSONObject(HttpResponse result) {
+
+        String response = getHttpContent(result);
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("返回状态码{}, 返回内容{}", result.getStatusLine().getStatusCode(), response);
+        }
+
+        return FastJsonUtils.parseObject(response);
     }
 
 }

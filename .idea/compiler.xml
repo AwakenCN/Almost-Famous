@@ -7,12 +7,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="famous-battle" />
-        <module name="famous-cloud" />
         <module name="famous-common" />
-        <module name="famous-game" />
-        <module name="famous-login" />
+        <module name="famous-match" />
         <module name="famous-unique" />
+        <module name="famous-cloud" />
+        <module name="famous-login" />
+        <module name="famous-battle" />
+        <module name="famous-game" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,6 +23,7 @@
       <module name="famous-common" target="1.8" />
       <module name="famous-game" target="1.8" />
       <module name="famous-login" target="1.8" />
+      <module name="famous-match" target="1.8" />
       <module name="famous-unique" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -32,6 +34,7 @@
       <module name="famous-common" options="-parameters" />
       <module name="famous-game" options="-parameters" />
       <module name="famous-login" options="-parameters" />
+      <module name="famous-match" options="-parameters" />
       <module name="famous-unique" options="-parameters" />
     </option>
   </component>

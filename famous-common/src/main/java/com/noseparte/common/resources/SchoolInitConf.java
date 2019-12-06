@@ -7,8 +7,10 @@ public class SchoolInitConf implements java.io.Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /********** attribute ***********/
+/********** attribute ***********/
     private Integer id;
+
+    private Integer occupation;
 
     private Integer isLock;
 
@@ -26,13 +28,14 @@ public class SchoolInitConf implements java.io.Serializable {
 
     private Integer intelligence;
 
-    /********** constructors ***********/
+/********** constructors ***********/
     public SchoolInitConf() {
 
     }
 
-    public SchoolInitConf(Integer id, Integer isLock, Integer defaultWeapon, String cardDeck, String deckName, String checkCard, Integer strength, Integer agility, Integer intelligence) {
+    public SchoolInitConf(Integer id, Integer occupation, Integer isLock, Integer defaultWeapon, String cardDeck, String deckName, String checkCard, Integer strength, Integer agility, Integer intelligence) {
         this.id = id;
+        this.occupation = occupation;
         this.isLock = isLock;
         this.defaultWeapon = defaultWeapon;
         this.cardDeck = cardDeck;
@@ -43,13 +46,21 @@ public class SchoolInitConf implements java.io.Serializable {
         this.intelligence = intelligence;
     }
 
-    /********** get/set ***********/
+/********** get/set ***********/
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(Integer occupation) {
+        this.occupation = occupation;
     }
 
     public Integer getIsLock() {

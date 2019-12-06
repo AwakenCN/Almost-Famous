@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/famous-common/famous-common.iml" filepath="$PROJECT_DIR$/famous-common/famous-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/famous-game/famous-game.iml" filepath="$PROJECT_DIR$/famous-game/famous-game.iml" />
       <module fileurl="file://$PROJECT_DIR$/famous-login/famous-login.iml" filepath="$PROJECT_DIR$/famous-login/famous-login.iml" />
+      <module fileurl="file://$PROJECT_DIR$/famous-match/famous-match.iml" filepath="$PROJECT_DIR$/famous-match/famous-match.iml" />
       <module fileurl="file://$PROJECT_DIR$/famous-unique/famous-unique.iml" filepath="$PROJECT_DIR$/famous-unique/famous-unique.iml" />
     </modules>
   </component>

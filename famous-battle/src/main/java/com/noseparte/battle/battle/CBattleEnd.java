@@ -1,7 +1,7 @@
 package com.noseparte.battle.battle;
 
 import LockstepProto.C2SBattleEnd;
-import com.noseparte.battle.server.Protocol;
+import com.noseparte.common.battle.server.Protocol;
 import com.noseparte.common.bean.BattleActorResult;
 import com.noseparte.common.bean.BattleReportBean;
 import com.noseparte.common.utils.SpringContextUtils;

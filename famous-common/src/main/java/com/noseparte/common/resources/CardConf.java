@@ -7,24 +7,24 @@ public class CardConf implements java.io.Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /********** attribute ***********/
+/********** attribute ***********/
     private Integer id;
 
     private String name;
 
+    private Integer vocation;
+
     private Integer type;
+
+    private Integer cost;
 
     private Integer quality;
 
     private Integer level;
 
-    private Integer cost;
-
     private Integer sale;
 
     private Integer buy;
-
-    private Integer vocation;
 
     private Integer attack;
 
@@ -33,6 +33,8 @@ public class CardConf implements java.io.Serializable {
     private Integer rangeType;
 
     private Integer durability;
+
+    private String magicRange;
 
     private Integer damage;
 
@@ -68,25 +70,26 @@ public class CardConf implements java.io.Serializable {
 
     private String keyWord;
 
-    /********** constructors ***********/
+/********** constructors ***********/
     public CardConf() {
 
     }
 
-    public CardConf(Integer id, String name, Integer type, Integer quality, Integer level, Integer cost, Integer sale, Integer buy, Integer vocation, Integer attack, Integer range, Integer rangeType, Integer durability, Integer damage, Integer damageType, String module, String addCards, String subsidiaryCards, Integer lvUpExp, Integer disenchantExp, Integer lvUpID, Integer upgradeID, String draw, String play, String playCondition, Integer death, String discard, String deathRattle, String init, String keyWord) {
+    public CardConf(Integer id, String name, Integer vocation, Integer type, Integer cost, Integer quality, Integer level, Integer sale, Integer buy, Integer attack, Integer range, Integer rangeType, Integer durability, String magicRange, Integer damage, Integer damageType, String module, String addCards, String subsidiaryCards, Integer lvUpExp, Integer disenchantExp, Integer lvUpID, Integer upgradeID, String draw, String play, String playCondition, Integer death, String discard, String deathRattle, String init, String keyWord) {
         this.id = id;
         this.name = name;
+        this.vocation = vocation;
         this.type = type;
+        this.cost = cost;
         this.quality = quality;
         this.level = level;
-        this.cost = cost;
         this.sale = sale;
         this.buy = buy;
-        this.vocation = vocation;
         this.attack = attack;
         this.range = range;
         this.rangeType = rangeType;
         this.durability = durability;
+        this.magicRange = magicRange;
         this.damage = damage;
         this.damageType = damageType;
         this.module = module;
@@ -106,7 +109,7 @@ public class CardConf implements java.io.Serializable {
         this.keyWord = keyWord;
     }
 
-    /********** get/set ***********/
+/********** get/set ***********/
     public Integer getId() {
         return id;
     }
@@ -123,12 +126,28 @@ public class CardConf implements java.io.Serializable {
         this.name = name;
     }
 
+    public Integer getVocation() {
+        return vocation;
+    }
+
+    public void setVocation(Integer vocation) {
+        this.vocation = vocation;
+    }
+
     public Integer getType() {
         return type;
     }
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public Integer getCost() {
+        return cost;
+    }
+
+    public void setCost(Integer cost) {
+        this.cost = cost;
     }
 
     public Integer getQuality() {
@@ -147,14 +166,6 @@ public class CardConf implements java.io.Serializable {
         this.level = level;
     }
 
-    public Integer getCost() {
-        return cost;
-    }
-
-    public void setCost(Integer cost) {
-        this.cost = cost;
-    }
-
     public Integer getSale() {
         return sale;
     }
@@ -169,14 +180,6 @@ public class CardConf implements java.io.Serializable {
 
     public void setBuy(Integer buy) {
         this.buy = buy;
-    }
-
-    public Integer getVocation() {
-        return vocation;
-    }
-
-    public void setVocation(Integer vocation) {
-        this.vocation = vocation;
     }
 
     public Integer getAttack() {
@@ -209,6 +212,14 @@ public class CardConf implements java.io.Serializable {
 
     public void setDurability(Integer durability) {
         this.durability = durability;
+    }
+
+    public String getMagicRange() {
+        return magicRange;
+    }
+
+    public void setMagicRange(String magicRange) {
+        this.magicRange = magicRange;
     }
 
     public Integer getDamage() {

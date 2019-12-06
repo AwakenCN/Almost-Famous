@@ -7,10 +7,14 @@ public class OccupationConf implements java.io.Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /********** attribute ***********/
+/********** attribute ***********/
     private Integer id;
 
+    private Integer isOcc;
+
     private String name;
+
+    private Integer defaultWeapon;
 
     private Integer occupation;
 
@@ -24,38 +28,49 @@ public class OccupationConf implements java.io.Serializable {
 
     private Integer lvUpExp;
 
+    private Integer minExp;
+
+    private Integer maxExp;
+
+    private Integer lastLvID;
+
     private Integer nextLvID;
 
     private Integer guideID;
 
-    private String moveAI;
+    private Integer rankID;
 
-    private String waitAI;
+    private Integer star;
 
-    private String priority;
+    private Integer cardGroup;
 
-    /********** constructors ***********/
+/********** constructors ***********/
     public OccupationConf() {
 
     }
 
-    public OccupationConf(Integer id, String name, Integer occupation, Integer level, Integer strength, Integer agility, Integer intelligence, Integer lvUpExp, Integer nextLvID, Integer guideID, String moveAI, String waitAI, String priority) {
+    public OccupationConf(Integer id, Integer isOcc, String name, Integer defaultWeapon, Integer occupation, Integer level, Integer strength, Integer agility, Integer intelligence, Integer lvUpExp, Integer minExp, Integer maxExp, Integer lastLvID, Integer nextLvID, Integer guideID, Integer rankID, Integer star, Integer cardGroup) {
         this.id = id;
+        this.isOcc = isOcc;
         this.name = name;
+        this.defaultWeapon = defaultWeapon;
         this.occupation = occupation;
         this.level = level;
         this.strength = strength;
         this.agility = agility;
         this.intelligence = intelligence;
         this.lvUpExp = lvUpExp;
+        this.minExp = minExp;
+        this.maxExp = maxExp;
+        this.lastLvID = lastLvID;
         this.nextLvID = nextLvID;
         this.guideID = guideID;
-        this.moveAI = moveAI;
-        this.waitAI = waitAI;
-        this.priority = priority;
+        this.rankID = rankID;
+        this.star = star;
+        this.cardGroup = cardGroup;
     }
 
-    /********** get/set ***********/
+/********** get/set ***********/
     public Integer getId() {
         return id;
     }
@@ -64,12 +79,28 @@ public class OccupationConf implements java.io.Serializable {
         this.id = id;
     }
 
+    public Integer getIsOcc() {
+        return isOcc;
+    }
+
+    public void setIsOcc(Integer isOcc) {
+        this.isOcc = isOcc;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getDefaultWeapon() {
+        return defaultWeapon;
+    }
+
+    public void setDefaultWeapon(Integer defaultWeapon) {
+        this.defaultWeapon = defaultWeapon;
     }
 
     public Integer getOccupation() {
@@ -120,6 +151,30 @@ public class OccupationConf implements java.io.Serializable {
         this.lvUpExp = lvUpExp;
     }
 
+    public Integer getMinExp() {
+        return minExp;
+    }
+
+    public void setMinExp(Integer minExp) {
+        this.minExp = minExp;
+    }
+
+    public Integer getMaxExp() {
+        return maxExp;
+    }
+
+    public void setMaxExp(Integer maxExp) {
+        this.maxExp = maxExp;
+    }
+
+    public Integer getLastLvID() {
+        return lastLvID;
+    }
+
+    public void setLastLvID(Integer lastLvID) {
+        this.lastLvID = lastLvID;
+    }
+
     public Integer getNextLvID() {
         return nextLvID;
     }
@@ -136,28 +191,28 @@ public class OccupationConf implements java.io.Serializable {
         this.guideID = guideID;
     }
 
-    public String getMoveAI() {
-        return moveAI;
+    public Integer getRankID() {
+        return rankID;
     }
 
-    public void setMoveAI(String moveAI) {
-        this.moveAI = moveAI;
+    public void setRankID(Integer rankID) {
+        this.rankID = rankID;
     }
 
-    public String getWaitAI() {
-        return waitAI;
+    public Integer getStar() {
+        return star;
     }
 
-    public void setWaitAI(String waitAI) {
-        this.waitAI = waitAI;
+    public void setStar(Integer star) {
+        this.star = star;
     }
 
-    public String getPriority() {
-        return priority;
+    public Integer getCardGroup() {
+        return cardGroup;
     }
 
-    public void setPriority(String priority) {
-        this.priority = priority;
+    public void setCardGroup(Integer cardGroup) {
+        this.cardGroup = cardGroup;
     }
 
 }

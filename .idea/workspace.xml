@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b9b8dcb1-88f8-4baa-ba38-57522f248f8c" name="Default Changelist" comment="= Almost-Famous 拆分服务 新增match服务器">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_util_3_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_grpc_grpc_api_1_23_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_grpc_grpc_core_1_23_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_grpc_grpc_stub_1_23_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_perfmark_perfmark_api_0_17_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/battle/BattleModeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/battle/BattleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/battle/ConnectCloseObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/battle/MatchEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/battle/SimpleActor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/battle/SimpleBattleRoom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/battle/server/Decoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/battle/server/Encoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/battle/server/RegistryProtocol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/cache/RedissonUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/resources/CardAttrConf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/resources/CardGroupConf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/resources/GMConf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/resources/GuideQuestConf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/GM.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/card.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/card_attr.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/card_group.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/chapter.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/drop_item.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/globalparameter.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/guide_quest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/init_voc.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/item.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/map.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/mask_word.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/mission.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/occupation.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/package.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/data/rank.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-game/src/main/resources/gamedata/gamedata/resource.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/FamousMatchApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/MatchServerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/asynchttp/ConsulServicesRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/asynchttp/LoadActorRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/asynchttp/RegistryConsulRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/asynchttp/VerifyUserRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/match/AbstractMatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/match/LeisureMatchMgr.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/match/RankMatchMgr.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/server/MatchServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/server/MatchServerHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/server/MatchServerInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/server/RequestDispatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/resources/banner.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/resources/gamedata/data/map.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/resources/gamedata/data/rank.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/resources/gamedata/resource.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-match/src/main/resources/redisson.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/famous-static/doc/almost-famous/app-token.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Almost-Famous.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Almost-Famous.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_grpc_grpc_context_1_20_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_grpc_grpc_context_1_23_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_grpc_grpc_core_1_20_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_grpc_grpc_netty_1_20_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_grpc_grpc_netty_1_23_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_grpc_grpc_protobuf_1_20_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_grpc_grpc_protobuf_1_23_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_grpc_grpc_protobuf_lite_1_20_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_grpc_grpc_protobuf_lite_1_23_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_grpc_grpc_stub_1_20_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_opencensus_opencensus_api_0_19_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_opencensus_opencensus_api_0_21_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_opencensus_opencensus_contrib_grpc_metrics_0_19_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_opencensus_opencensus_contrib_grpc_metrics_0_21_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/famous-battle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/famous-battle.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/BattleActor.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/BattleActor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/BattleActorOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/BattleActorOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SBattleEnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SBattleEnd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SBattleEndOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SBattleEndOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SHeartBeat.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SHeartBeat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SHeartBeatOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SHeartBeatOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SLockStep.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SLockStep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SLockStepInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SLockStepInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SLockStepInitOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SLockStepInitOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SLockStepOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SLockStepOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SMatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SMatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SMatchCancel.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SMatchCancel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SMatchCancelOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SMatchCancelOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SMatchOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SMatchOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SPullFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SPullFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SPullFrameOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SPullFrameOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SReconnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SReconnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SReconnectOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SReconnectOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SState.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/C2SStateOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/C2SStateOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/CommandOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/CommandOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/Coordinate.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/Coordinate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/CoordinateOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/CoordinateOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/DataType.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/DataType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/DefaultData.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/DefaultData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/DefaultDataOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/DefaultDataOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/Frame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/FrameOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/FrameOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/LSMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/LSMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/NetMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/NetMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/NetMessageOuterClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/NetMessageOuterClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CBattleEnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CBattleEnd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CBattleEndOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CBattleEndOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CHeartBeat.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CHeartBeat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CHeartBeatOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CHeartBeatOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CLockStep.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CLockStep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CLockStepInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CLockStepInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CLockStepInitOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CLockStepInitOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CLockStepOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CLockStepOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CMatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CMatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CMatchCancel.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CMatchCancel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CMatchCancelOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CMatchCancelOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CMatchOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CMatchOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CPullFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CPullFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CPullFrameOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CPullFrameOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CReconnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CReconnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CReconnectOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CReconnectOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CState.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/S2CStateOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/S2CStateOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/Selection.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/Selection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/SelectionOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/SelectionOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/Vector2d.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/Vector2d.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/Vector2dOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/Vector2dOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/Vector3d.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/Vector3d.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/LockstepProto/Vector3dOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/LockstepProto/Vector3dOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/BattleServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/BattleServerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/BattleServerEventListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/FamousBattleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/FamousBattleApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/asynchttp/BattleEndRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/asynchttp/BattleEndRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/asynchttp/BattleStartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/asynchttp/BattleStartRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/asynchttp/LoadActorRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/asynchttp/VerifyUserRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/BattleRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/BattleRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/BattleRoomMgr.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/BattleRoomMgr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/CBattleEnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/CBattleEnd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/CLockStep.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/CLockStep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/CPullFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/CPullFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/CReconnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/match/CReconnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/CState.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/CState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/SBattleEnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/SBattleEnd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/SLockStep.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/SLockStep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/SPullFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/SPullFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/SReconnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/match/SReconnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/SState.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/battle/SState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/match/CMatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/match/CMatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/match/CMatchCancel.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/match/CMatchCancel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/match/MatchMgr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/match/SMatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/match/SMatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/match/SMatchCancel.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-match/src/main/java/com/noseparte/match/match/SMatchCancel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/server/BattleServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/server/BattleServerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/server/BattleServerInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/server/BattleServerInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/server/CHeartBeat.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/battle/server/CHeartBeat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/server/Decoder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/server/Encoder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/server/LinkMgr.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/battle/server/LinkMgr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/server/Protocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/battle/server/Protocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/server/RequestDispatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/server/RequestDispatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/server/SHeartBeat.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/battle/server/SHeartBeat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/server/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/battle/server/Session.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/utils/ConnState.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/battle/server/ConnState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/utils/WatchBattleRoomJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-battle/src/main/java/com/noseparte/battle/utils/WatchBattleRoomJob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-cloud/famous-cloud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/famous-cloud/famous-cloud.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-common/famous-common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/famous-common.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/bean/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/bean/Actor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/global/KeyPrefix.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/global/KeyPrefix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/global/Misc.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/global/Misc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/http/RequestAsync.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/http/RequestAsync.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/resources/BattleRankConf.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/resources/BattleRankConf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/resources/CardConf.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/resources/CardConf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/resources/DropItemConf.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/resources/DropItemConf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/resources/OccupationConf.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/resources/OccupationConf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/resources/SchoolInitConf.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/resources/SchoolInitConf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/thread/ThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/famous-common/src/main/java/com/noseparte/common/thread/ThreadPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-game/famous-game.iml" beforeDir="false" afterPath="$PROJECT_DIR$/famous-game/famous-game.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-game/src/main/java/com/noseparte/game/base/controller/ThirdBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-game/src/main/java/com/noseparte/game/base/controller/ThirdController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-login/famous-login.iml" beforeDir="false" afterPath="$PROJECT_DIR$/famous-login/famous-login.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/famous-unique/famous-unique.iml" beforeDir="false" afterPath="$PROJECT_DIR$/famous-unique/famous-unique.iml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Java\maven-repo" />
+        <option name="mavenHome" value="D:/JavaEnvironment/apache-maven-3.6.1" />
+        <option name="userSettingsFile" value="D:\JavaEnvironment\apache-maven-3.6.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1UYld1kG7yKlph6joOT9XQ91VQt" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574829681542" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/famous-game/src/main/resources/gamedata" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.noseparte.battle.battle" />
+      <recent name="com.noseparte.battle" />
+      <recent name="com.noseparte.match.match" />
+      <recent name="com.noseparte.match.asynchttp" />
+      <recent name="com.noseparte.common.global" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github-repo\AwakenCN\Almost-Famous\famous-game\src\main\resources\gamedata" />
+      <recent name="D:\github-repo\AwakenCN\Almost-Famous\famous-match\src\main\resources" />
+      <recent name="D:\github-repo\AwakenCN\Almost-Famous\famous-battle\src\main\java\com\noseparte\battle\asynchttp" />
+      <recent name="D:\github-repo\AwakenCN\Almost-Famous\famous-match\src\main\java\com\noseparte\match\server" />
+      <recent name="D:\github-repo\AwakenCN\Almost-Famous\famous-match\src\main\java\com\noseparte\match\match" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.FamousMatchApplication">
+    <configuration name="RpcServer" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.noseparte.unique.RpcServer" />
+      <module name="famous-unique" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.noseparte.unique.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FamousBattleApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="famous-battle" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noseparte.battle.FamousBattleApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FamousCloudApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="famous-cloud" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noseparte.FamousCloudApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FamousGameApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="famous-game" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noseparte.game.FamousGameApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FamousLoginApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" singleton="false">
+      <module name="famous-login" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noseparte.login.FamousLoginApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FamousMatchApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="famous-match" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noseparte.match.FamousMatchApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.RpcServer" />
+      <item itemvalue="Spring Boot.FamousBattleApplication" />
+      <item itemvalue="Spring Boot.FamousCloudApplication" />
+      <item itemvalue="Spring Boot.FamousGameApplication" />
+      <item itemvalue="Spring Boot.FamousLoginApplication" />
+      <item itemvalue="Spring Boot.FamousMatchApplication" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <option name="contentProportion" value="0.18831168" />
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b9b8dcb1-88f8-4baa-ba38-57522f248f8c" name="Default Changelist" comment="" />
+      <created>1569401510853</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1569401510853</updated>
+      <workItem from="1569401512100" duration="641000" />
+      <workItem from="1569402160245" duration="157000" />
+      <workItem from="1569570835747" duration="8390000" />
+      <workItem from="1569722453703" duration="8309000" />
+      <workItem from="1570498633496" duration="1327000" />
+      <workItem from="1570789844881" duration="239000" />
+      <workItem from="1570870101675" duration="902000" />
+      <workItem from="1572492733201" duration="1228000" />
+      <workItem from="1573465937023" duration="1883000" />
+      <workItem from="1573545198701" duration="161000" />
+      <workItem from="1573637222588" duration="108000" />
+      <workItem from="1573697163815" duration="793000" />
+      <workItem from="1573702418320" duration="15000" />
+      <workItem from="1573788071778" duration="4259000" />
+      <workItem from="1573955232073" duration="322000" />
+      <workItem from="1573955582193" duration="502000" />
+      <workItem from="1574135196768" duration="708000" />
+      <workItem from="1574750295660" duration="1868000" />
+      <workItem from="1574822009428" duration="5282000" />
+      <workItem from="1574934720744" duration="150000" />
+      <workItem from="1574935921104" duration="1037000" />
+      <workItem from="1575541494878" duration="669000" />
+      <workItem from="1575596221108" duration="1003000" />
+      <workItem from="1575614190691" duration="7588000" />
+    </task>
+    <task id="LOCAL-00001" summary="= Almost-Famous 集成spring-cloud Finchley版本">
+      <created>1569580233972</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1569580233972</updated>
+    </task>
+    <task id="LOCAL-00002" summary="= Almost-Famous 集成spring-cloud Finchley版本">
+      <created>1573791808271</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1573791808271</updated>
+    </task>
+    <task id="LOCAL-00003" summary="= Almost-Famous 游戏中的网关线程池是如何创建的">
+      <created>1574823533542</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574823533542</updated>
+    </task>
+    <task id="LOCAL-00004" summary="= Almost-Famous BlockingQueue致使OOM示意图">
+      <created>1574826128410</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574826128410</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="= Almost-Famous 集成spring-cloud Finchley版本" />
+    <MESSAGE value="= Almost-Famous 游戏中的网关线程池是如何创建的" />
+    <MESSAGE value="= Almost-Famous BlockingQueue致使OOM示意图" />
+    <MESSAGE value="= Almost-Famous 拆分服务 新增match服务器" />
+    <option name="LAST_COMMIT_MESSAGE" value="= Almost-Famous 拆分服务 新增match服务器" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="178" key="#Notifications" timestamp="1575622544268">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1575622544268" />
+    <state x="547" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1575624289000">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="547" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1575624289000" />
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1575627640354">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1575627640354" />
+    <state x="261" y="111" key="CommitChangelistDialog2" timestamp="1575628873876">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="261" y="111" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1575628873876" />
+    <state x="184" y="86" key="DiffContextDialog" timestamp="1575628731131">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1575628731131" />
+    <state width="1499" height="429" key="GridCell.Tab.0.bottom" timestamp="1575628676684">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1499" height="429" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1575628676684" />
+    <state width="1499" height="429" key="GridCell.Tab.0.center" timestamp="1575628676683">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1499" height="429" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1575628676683" />
+    <state width="1499" height="429" key="GridCell.Tab.0.left" timestamp="1575628676683">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1499" height="429" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1575628676683" />
+    <state width="1499" height="429" key="GridCell.Tab.0.right" timestamp="1575628676684">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1499" height="429" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1575628676684" />
+    <state width="1499" height="429" key="GridCell.Tab.1.bottom" timestamp="1575628676684">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1499" height="429" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1575628676684" />
+    <state width="1499" height="429" key="GridCell.Tab.1.center" timestamp="1575628676684">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1499" height="429" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1575628676684" />
+    <state width="1499" height="429" key="GridCell.Tab.1.left" timestamp="1575628676684">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1499" height="429" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1575628676684" />
+    <state width="1499" height="429" key="GridCell.Tab.1.right" timestamp="1575628676684">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1499" height="429" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1575628676684" />
+    <state width="1499" height="429" key="GridCell.Tab.2.bottom" timestamp="1575628676684">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1499" height="429" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1575628676684" />
+    <state width="1499" height="429" key="GridCell.Tab.2.center" timestamp="1575628676684">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1499" height="429" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1575628676684" />
+    <state width="1499" height="429" key="GridCell.Tab.2.left" timestamp="1575628676684">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1499" height="429" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1575628676684" />
+    <state width="1499" height="429" key="GridCell.Tab.2.right" timestamp="1575628676684">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1499" height="429" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1575628676684" />
+    <state x="440" y="94" key="SettingsEditor" timestamp="1575624051335">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1575624051335" />
+    <state x="644" y="311" key="git4idea.merge.GitPullDialog" timestamp="1575628673329">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="644" y="311" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1575628673329" />
+    <state x="334" y="221" key="new project wizard" timestamp="1575622518888">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="334" y="221" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1575622518888" />
+    <state x="616" y="173" width="672" height="676" key="search.everywhere.popup" timestamp="1575628208808">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="173" width="672" height="676" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1575628208808" />
+  </component>
+</project>

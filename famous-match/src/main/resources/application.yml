@@ -1,0 +1,41 @@
+logging.level.org.springframework.boot.autoconfigure: ERROR
+
+spring:
+  application:
+    name: famous-match
+  profiles:
+    active: dev
+  redis:
+    redisson:
+      config: classpath:redisson.yaml
+
+match:
+  host: localhost
+  port: 9872
+
+  threadCount: 10
+  adminUrl: http://localhost:8808/login/dispatch/a
+  verifyUserLoginCmd: 20001
+  gameCoreUrl: http://localhost:8909/game/dispatch/a
+  pullActorCmd: 20003
+  battleStartCmd: 20005
+  battleEndCmd: 20007
+
+  matchers: 2
+  frameSpeed: 4
+  lifecycle: 8
+  redundancy: 2
+
+  otherActorBattleResult: 3000
+  heartBeatTime: 30
+
+#RPC
+rpc:
+  host: localhost
+  port: 9999
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

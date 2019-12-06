@@ -171,32 +171,35 @@
     <orderEntry type="library" name="Maven: org.jodd:jodd-bean:5.0.10" level="project" />
     <orderEntry type="library" name="Maven: org.jodd:jodd-core:5.0.10" level="project" />
     <orderEntry type="library" name="Maven: org.redisson:redisson-spring-data-21:3.10.5" level="project" />
-    <orderEntry type="library" name="Maven: io.grpc:grpc-netty:1.20.0" level="project" />
-    <orderEntry type="library" name="Maven: io.grpc:grpc-core:1.20.0" level="project" />
-    <orderEntry type="library" name="Maven: io.grpc:grpc-context:1.20.0" level="project" />
-    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.5" level="project" />
-    <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.3.2" level="project" />
-    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
+    <orderEntry type="library" name="Maven: io.grpc:grpc-netty:1.23.0" level="project" />
+    <orderEntry type="library" name="Maven: io.grpc:grpc-core:1.23.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.android:annotations:4.1.1.4" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.17" level="project" />
-    <orderEntry type="library" name="Maven: io.opencensus:opencensus-api:0.19.2" level="project" />
-    <orderEntry type="library" name="Maven: io.opencensus:opencensus-contrib-grpc-metrics:0.19.2" level="project" />
+    <orderEntry type="library" name="Maven: io.perfmark:perfmark-api:0.17.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opencensus:opencensus-api:0.21.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opencensus:opencensus-contrib-grpc-metrics:0.21.0" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-codec-http2:4.1.33.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-codec-http:4.1.33.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-handler-proxy:4.1.33.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-codec-socks:4.1.33.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.grpc:grpc-protobuf:1.20.0" level="project" />
-    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.7.1" level="project" />
+    <orderEntry type="library" name="Maven: io.grpc:grpc-protobuf:1.23.0" level="project" />
+    <orderEntry type="library" name="Maven: io.grpc:grpc-api:1.23.0" level="project" />
+    <orderEntry type="library" name="Maven: io.grpc:grpc-context:1.23.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.17" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:26.0-android" level="project" />
     <orderEntry type="library" name="Maven: org.checkerframework:checker-compat-qual:2.5.2" level="project" />
     <orderEntry type="library" name="Maven: com.google.j2objc:j2objc-annotations:1.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.api.grpc:proto-google-common-protos:1.12.0" level="project" />
-    <orderEntry type="library" name="Maven: io.grpc:grpc-protobuf-lite:1.20.0" level="project" />
+    <orderEntry type="library" name="Maven: io.grpc:grpc-protobuf-lite:1.23.0" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.45" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-collections4:4.1" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="Maven: org.apache.thrift:libthrift:0.12.0" level="project" />
-    <orderEntry type="library" name="Maven: io.grpc:grpc-stub:1.20.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.7.1" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java-util:3.9.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.5" level="project" />
+    <orderEntry type="library" name="Maven: io.grpc:grpc-stub:1.23.0" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.9.9" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.8" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />

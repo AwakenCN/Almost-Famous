@@ -15,7 +15,7 @@ public class DropItemConf implements java.io.Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /********** attribute ***********/
+/********** attribute ***********/
     private Integer id;
 
     private String drop;
@@ -34,7 +34,7 @@ public class DropItemConf implements java.io.Serializable {
         this.drop = drop;
     }
 
-    /********** get/set ***********/
+/********** get/set ***********/
     public Integer getId() {
         return id;
     }

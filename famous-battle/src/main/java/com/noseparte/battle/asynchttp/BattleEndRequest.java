@@ -1,6 +1,7 @@
 package com.noseparte.battle.asynchttp;
 
 import com.noseparte.battle.BattleServerConfig;
+import com.noseparte.common.battle.BattleModeEnum;
 import com.noseparte.common.http.KeyValuePair;
 import com.noseparte.common.http.RequestAsync;
 import com.noseparte.common.http.ResponseCallBack;
@@ -24,6 +25,7 @@ public class BattleEndRequest extends RequestAsync {
     long roomId;
     List<Long> winners;
     List<Long> losers;
+    BattleModeEnum battleMode;
 
     @Override
     public void execute() throws Exception {
@@ -35,10 +37,11 @@ public class BattleEndRequest extends RequestAsync {
                 add(new KeyValuePair("roomId", Long.toString(roomId)));
                 add(new KeyValuePair("winners", FastJsonUtils.toJson(winners)));
                 add(new KeyValuePair("losers", FastJsonUtils.toJson(losers)));
+                add(new KeyValuePair("battleMode", Integer.toString(battleMode.getValue())));
             }
         };
 
-        async(battleServerConfig.getGameUrl(), postBody, new BattleEndResponse());
+        async(battleServerConfig.getGameCoreUrl(), postBody, new BattleEndResponse());
         if (log.isDebugEnabled()) {
             log.debug("Send battleEndRequest to gamecore, roomId={}", roomId);
         }

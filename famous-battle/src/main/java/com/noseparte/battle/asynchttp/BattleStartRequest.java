@@ -35,7 +35,7 @@ public class BattleStartRequest extends RequestAsync {
             }
         };
 
-        async(battleServerConfig.getGameUrl(), postBody, new BattleStartResponse());
+        async(battleServerConfig.getGameCoreUrl(), postBody, new BattleStartResponse());
         if (log.isDebugEnabled()) {
             log.debug("Send battleStartRequest to gamecore, roomId={}", roomId);
         }
@@ -49,6 +49,7 @@ public class BattleStartRequest extends RequestAsync {
             if (log.isDebugEnabled()) {
                 log.debug("返回状态码{}, 返回内容{}", result.getStatusLine().getStatusCode(), response);
             }
+
         }
 
         @Override

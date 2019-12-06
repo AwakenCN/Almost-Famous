@@ -1,7 +1,10 @@
 package com.noseparte.battle.server;
 
 import com.noseparte.battle.utils.BattleMisc;
-import com.noseparte.battle.utils.ConnState;
+import com.noseparte.common.battle.server.ConnState;
+import com.noseparte.common.battle.server.LinkMgr;
+import com.noseparte.common.battle.server.Protocol;
+import com.noseparte.common.battle.server.Session;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
