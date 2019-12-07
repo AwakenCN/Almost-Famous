@@ -3,17 +3,11 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/famous-battle" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/famous-battle/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/famous-cloud" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/famous-cloud/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/famous-common" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/famous-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/famous-game" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/famous-game/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/famous-login" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/famous-login/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/famous-match/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/famous-match" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/famous-unique" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/famous-unique/src/main/java" charset="UTF-8" />
   </component>
 </project>
