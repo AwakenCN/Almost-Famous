@@ -18,7 +18,7 @@
 
 ## 简介
 
-***(Almost-Famous)Java GameServer Framework***
+***(Almost-Famous)Java Game Framework***
 
     Almost-Famous(成名之路) —— 架构使用 -> (
             SpringBoot, Netty, Maven, SpringCloud
@@ -39,16 +39,16 @@ Root project 'Almost-Famous'
 ~~~
 
 * [famous-unique Unique服(so TM what? 用来生成唯一ID)](./famous-unique/README.md)
-* [famous-cloud 传说中的微服务(服务注册与发现)](./famous-unique/README.md)
+* [famous-cloud 传说中的微服务(服务注册与发现)](./famous-cloud/README.md)
 * [famous-Login 哪个游戏还没个登录啊](./famous-login/README.md)
 * [famous-Game 断剑重铸之日，其势归来之时。 哈撒给，面对疾风吧](./famous-game/README.md)
-* [famous-Match 上来就匹配一波, wo就知道你会选我](./famous-game/README.md)
-* [famous-Battle 战个痛快！Penta Kill! Legendary!](./famous-battle/README.md)
-* [famous-static Almost-Famous世界的藏宝图](./famous-battle/README.md)
+* [famous-Match 上来就匹配一波, wo就知道你会选我](./famous-match/README.md)
+* [famous-Battle 战个痛快！PentaKill! Legendary!](./famous-battle/README.md)
+* [famous-static Almost-Famous世界的藏宝图](./famous-static/README.md)
 
 ## 项目架构图
 
-![Image file](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/TIM%E5%9B%BE%E7%89%8720191214174229.png)
+![架构架构-架架构](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/TIM%E5%9B%BE%E7%89%8720191214174229.png)
 
 ## 项目研发日志更新
 
@@ -63,7 +63,7 @@ Root project 'Almost-Famous'
 5. 启动Unique服务端，入口为RpcServer类;
 6. 启动Login服务端，入口为FamousLoginApplication类;
 7. 启动Game服务端，入口为FamousGameApplication类;
-7. 启动Game服务端，入口为FamousMatchApplication类;
+7. 启动Match服务端，入口为FamousMatchApplication类;
 8. 启动Battle服务端，入口为FamousBattleApplication类;
 
 ![Almost-Famous服务启动界面](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/20191214182137.png)
