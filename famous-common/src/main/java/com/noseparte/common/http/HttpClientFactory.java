@@ -1,9 +1,10 @@
 package com.noseparte.common.http;
 
-
 public class HttpClientFactory {
 
     private static HttpAsyncClient httpAsyncClient = new HttpAsyncClient();
+
+    private static HttpSyncClient httpSyncClient = new HttpSyncClient();
 
     private HttpClientFactory() {
     }
@@ -16,6 +17,10 @@ public class HttpClientFactory {
 
     public HttpAsyncClient getHttpAsyncClientPool() {
         return httpAsyncClient;
+    }
+
+    public HttpSyncClient getHttpSyncClientPool() {
+        return httpSyncClient;
     }
 
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 public class BagBean {
 
     public int itemId;
+    public int code;
     public int num;
 
 }
