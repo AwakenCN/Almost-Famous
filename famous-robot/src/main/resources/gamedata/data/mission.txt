@@ -1,0 +1,78 @@
+﻿id	任务介绍	任务类型	任务子类型	完成任务条件	任务奖励	未完成提示	可完成该任务的模式
+id	introduction	type	subType	condition	drop	tips	mode
+int	string	int	int	int	string	string	string
+101	mission_101	1	1001	1	"3,200"	mission_tips_1	1
+102	mission_102	2	1002	2	"3,200"	mission_tips_1	
+103	mission_103	1	1003	3	"3,200"	mission_tips_1	1
+104	mission_104	7	0	1	"3,200"	mission_tips_1	
+105	mission_105	6	0	1	"3,200"	mission_tips_1	
+106	mission_106	5	0	1	"3,200"	mission_tips_1	"1,2,3"
+107	mission_107	2	1003	3	"3,200"	mission_tips_1	
+108	mission_108	1	1005	5	"3,200"	mission_tips_1	1
+109	mission_109	2	1005	5	"3,200"	mission_tips_1	
+110	mission_110	1	1008	8	"3,200"	mission_tips_1	1
+111	mission_111	1	1010	10	"3,200"	mission_tips_1	1
+112	mission_112	4	2001	1	"3,200"	mission_tips_1	"1,2,3"
+113	mission_113	5	0	3	"3,200"	mission_tips_1	"1,2,3"
+114	mission_114	9	1001	1	"3,200"	mission_tips_1	"1,2,3"
+115	mission_115	1	1012	12	"3,200"	mission_tips_1	1
+201	mission_201	8	2	1	"3,200"	mission_tips_1	3
+202	mission_202	5	0	10	"3,200"	mission_tips_1	"1,2,3"
+203	mission_203	9	2001	1	"3,200"	mission_tips_1	"1,2,3"
+204	mission_204	4	1001	5	"3,200"	mission_tips_1	"1,2,3"
+205	mission_205	1	1015	15	"3,200"	mission_tips_1	1
+206	mission_206	4	2001	5	"3,200"	mission_tips_1	"1,2,3"
+207	mission_207	1	1018	18	"3,200"	mission_tips_1	1
+208	mission_208	1	1021	21	"3,200"	mission_tips_1	1
+209	mission_209	3	10	10	"3,200"	mission_tips_1	
+210	mission_210	5	0	20	"3,200"	mission_tips_1	"1,2,3"
+301	mission_301	1	1024	24	"3,200"	mission_tips_1	1
+302	mission_302	7	0	15	"3,200"	mission_tips_1	
+303	mission_303	6	0	15	"3,200"	mission_tips_1	
+304	mission_304	3	15	15	"3,200"	mission_tips_1	
+305	mission_305	1	1036	36	"3,200"	mission_tips_1	1
+306	mission_306	8	3	1	"3,200"	mission_tips_1	3
+307	mission_307	4	3001	1	"3,200"	mission_tips_1	"1,2,3"
+308	mission_308	9	3001	1	"3,200"	mission_tips_1	"1,2,3"
+309	mission_309	4	3001	5	"3,200"	mission_tips_1	"1,2,3"
+310	mission_310	3	18	18	"3,200"	mission_tips_1	
+401	mission_401	3	20	20	"3,200"	mission_tips_1	
+402	mission_402	5	0	30	"3,200"	mission_tips_1	"1,2,3"
+403	mission_403	1	1040	40	"3,200"	mission_tips_1	1
+404	mission_404	3	22	22	"3,200"	mission_tips_1	
+405	mission_405	1	1048	48	"3,200"	mission_tips_1	1
+406	mission_406	7	0	20	"3,200"	mission_tips_1	
+407	mission_407	6	0	20	"3,200"	mission_tips_1	
+408	mission_408	1	1050	50	"3,200"	mission_tips_1	1
+409	mission_409	1	1055	55	"3,200"	mission_tips_1	1
+410	mission_410	3	24	24	"3,200"	mission_tips_1	
+501	mission_501	3	25	25	"3,200"	mission_tips_1	
+502	mission_502	5	0	50	"3,200"	mission_tips_1	"1,2,3"
+503	mission_503	4	1001	10	"3,200"	mission_tips_1	"1,2,3"
+504	mission_504	4	2001	10	"3,200"	mission_tips_1	"1,2,3"
+505	mission_505	4	3001	10	"3,200"	mission_tips_1	"1,2,3"
+506	mission_506	1	1060	60	"3,200"	mission_tips_1	1
+507	mission_507	5	0	100	"3,200"	mission_tips_1	"1,2,3"
+508	mission_508	1	1065	65	"3,200"	mission_tips_1	1
+509	mission_509	7	0	30	"3,200"	mission_tips_1	
+510	mission_510	5	0	120	"3,200"	mission_tips_1	"1,2,3"
+601	mission_601	1	1068	68	"3,200"	mission_tips_1	1
+602	mission_602	6	0	30	"3,200"	mission_tips_1	
+603	mission_603	7	0	50	"3,200"	mission_tips_1	
+604	mission_604	5	0	150	"3,200"	mission_tips_1	"1,2,3"
+605	mission_605	1	1072	72	"3,200"	mission_tips_1	1
+606	mission_606	3	27	27	"3,200"	mission_tips_1	
+607	mission_607	4	1001	20	"3,200"	mission_tips_1	"1,2,3"
+608	mission_608	6	0	50	"3,200"	mission_tips_1	
+609	mission_609	7	0	80	"3,200"	mission_tips_1	
+610	mission_610	6	0	80	"3,200"	mission_tips_1	
+701	mission_701	4	2001	20	"3,200"	mission_tips_1	"1,2,3"
+702	mission_702	4	3001	20	"3,200"	mission_tips_1	"1,2,3"
+703	mission_703	5	0	200	"3,200"	mission_tips_1	"1,2,3"
+704	mission_704	1	1084	84	"3,200"	mission_tips_1	1
+705	mission_705	3	30	30	"3,200"	mission_tips_1	
+706	mission_706	7	0	100	"3,200"	mission_tips_1	
+707	mission_707	6	0	100	"3,200"	mission_tips_1	
+708	mission_708	5	0	300	"3,200"	mission_tips_1	"1,2,3"
+709	mission_709	5	0	500	"3,200"	mission_tips_1	"1,2,3"
+710	mission_710	1	1100	100	"3,200"	mission_tips_1	1

@@ -1,0 +1,49 @@
+#logging.level.org.springframework.boot.autoconfigure: ERROR
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 8909
+  compression:
+    enabled: false
+    min-response-size: 1
+    mime-types: application/json
+  servlet:
+    context-path: /game
+
+spring:
+  application:
+    name: famous-robot
+  profiles:
+    active: dev
+    jackson:
+      date-format: yyyy-MM-dd HH:mm:ss
+      time-zone: GMT+8
+    servlet:
+      multipart:
+        max-file-size: 100MB
+        max-request-size: 100MB
+        enabled: true
+
+
+#redisson
+redis:
+  redisson:
+    config: classpath:redisson-dev.yaml
+
+freemarker:
+  suffix: .html
+  request-context-attribute: request
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
