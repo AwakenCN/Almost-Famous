@@ -34,6 +34,7 @@ Root project 'Almost-Famous'
 +--- Project ':famous-game'
 +--- Project ':famous-login'
 +--- Project ':famous-match'
++--- Project ':famous-robot'
 +--- Project ':famous-static'
 \--- Project ':famous-unique'
 ~~~
@@ -44,6 +45,7 @@ Root project 'Almost-Famous'
 * [famous-Game 断剑重铸之日，其势归来之时。 哈撒给，面对疾风吧](./famous-game/README.md)
 * [famous-Match 上来就匹配一波, wo就知道你会选我](./famous-match/README.md)
 * [famous-Battle 战个痛快！PentaKill! Legendary!](./famous-battle/README.md)
+* [famous-robot 有人说还缺个客户端? 我是个啥? 啥也不是](./famous-robot/README.md)
 * [famous-static Almost-Famous世界的藏宝图](./famous-static/README.md)
 
 ## 项目架构图
@@ -67,6 +69,8 @@ Root project 'Almost-Famous'
 8. 启动Battle服务端，入口为FamousBattleApplication类;
 
 ![Almost-Famous服务启动界面](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/20191214182137.png)
+
+![Eureka服务注册中心](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191217172829.png)
 
 ## 一起交流
 
