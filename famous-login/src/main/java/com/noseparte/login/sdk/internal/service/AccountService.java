@@ -7,5 +7,7 @@ public interface AccountService extends GeneralService<Account> {
 
     boolean register(Account account);
 
-    Account login(Account account);
+    Account login(Account account, String clientIp);
+
+    Account refreshAccessToken(Long uid, String clientIp, String refresh_token);
 }

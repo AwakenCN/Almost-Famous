@@ -13,4 +13,6 @@ public interface AccountDao extends GeneralDao<Account> {
     Account getOne(Account account);
 
     void update(Account account);
+
+    Account findById(Long uid);
 }

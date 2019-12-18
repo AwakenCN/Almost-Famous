@@ -60,4 +60,11 @@ public class AccountDaoImpl extends GeneralDaoImpl<Account> implements AccountDa
         update.set("token", account.getToken());
         accountMongoTemplate.updateFirst(query, update, Account.class);
     }
+
+    @Override
+    public Account findById(Long uid) {
+        Query query = new Query();
+        query.addCriteria(new Criteria().and("uid").is(uid));
+        return accountMongoTemplate.findOne(query, Account.class);
+    }
 }

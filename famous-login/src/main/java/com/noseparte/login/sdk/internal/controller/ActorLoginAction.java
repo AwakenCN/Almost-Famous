@@ -28,7 +28,8 @@ public class ActorLoginAction extends Action {
     @Override
     public Resoult execute(JSONObject jsonObject, HttpServletRequest request, HttpServletResponse response) {
         Account account = jsonObject.toJavaObject(Account.class);
-        account = accountService.login(account);
+        String clientIp = request.getRemoteAddr();
+        account = accountService.login(account, clientIp);
 
         if (Objects.nonNull(account)) {
             return Resoult.ok(RegisterProtocol.ACTOR_LOGIN_ACTION_RESP).responseBody(account);
