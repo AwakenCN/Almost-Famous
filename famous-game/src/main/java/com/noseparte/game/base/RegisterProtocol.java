@@ -126,4 +126,10 @@ public class RegisterProtocol {
         }
     };
 
+    public static boolean whiteList(int protocol){
+        if(protocol == CREATE_ROLE_ACTION_REQ){
+            return true;
+        }
+        return false;
+    }
 }
