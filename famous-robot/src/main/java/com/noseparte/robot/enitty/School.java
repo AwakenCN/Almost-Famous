@@ -1,15 +1,13 @@
 package com.noseparte.robot.enitty;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.noseparte.common.bean.SchoolBean;
-import com.noseparte.common.global.Misc;
+import com.noseparte.common.db.pojo.GeneralBean;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -24,26 +22,25 @@ import java.util.Map;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class School implements Serializable {
+@Document(collection = "famous-game-school")
+public class School extends GeneralBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public School() {
     }
 
-    public School(Long rid, String json) {
+    public School(Long rid, Map<Integer, SchoolBean> schools) {
         this.rid = rid;
-        this.schools = Misc.parseToMap(json, Integer.class, SchoolBean.class);
+        this.schools = schools;
     }
 
-    @TableId(type = IdType.INPUT)
     private Long rid;
 
     /**
      * 多个职业
      */
-    private Map<Integer, SchoolBean> schools = new HashMap<>();
-
+    private Map<Integer, SchoolBean> schools;
 
 
 }

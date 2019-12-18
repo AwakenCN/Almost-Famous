@@ -1,26 +1,24 @@
 package com.noseparte.robot.enitty;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.noseparte.common.bean.RewardBean;
-import com.noseparte.common.global.Misc;
+import com.noseparte.common.db.pojo.GeneralBean;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Map;
 
 @Data
 @NoArgsConstructor
-public class SignReward {
+@Document(collection = "famous-game-sign-reward")
+public class SignReward extends GeneralBean {
 
-    @TableId(type = IdType.INPUT)
     private Long rid;
 
     private Map<Integer, RewardBean> rewards;
 
-    public SignReward(Long rid, String json) {
+    public SignReward(Long rid, Map<Integer, RewardBean> rewards) {
         this.rid = rid;
-        this.rewards = Misc.parseToMap(json, Integer.class, RewardBean.class);
+        this.rewards = rewards;
     }
-
 }

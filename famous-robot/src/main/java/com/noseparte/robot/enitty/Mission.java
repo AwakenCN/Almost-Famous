@@ -1,11 +1,9 @@
 package com.noseparte.robot.enitty;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.noseparte.common.bean.MissionBean;
-import com.noseparte.common.global.Misc;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -20,16 +18,16 @@ import java.util.Map;
  */
 @Data
 @NoArgsConstructor
+@Document(collection = "famous-game-mission")
 public class Mission implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Mission(Long rid, String json) {
+    public Mission(Long rid, Map<Integer, MissionBean> missions) {
         this.rid = rid;
-        this.missions = Misc.parseToMap(json, Integer.class, MissionBean.class);
+        this.missions = missions;
     }
 
-    @TableId(type = IdType.INPUT)
     private Long rid;
 
     private Map<Integer, MissionBean> missions;
