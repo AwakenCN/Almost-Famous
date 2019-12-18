@@ -4,8 +4,6 @@ import com.noseparte.common.bean.AttrCode;
 import com.noseparte.common.utils.SpringContextUtils;
 import com.noseparte.robot.bag.BagListCmd;
 import com.noseparte.robot.bag.BagListRequest;
-import com.noseparte.robot.battlehistory.BattleHistoryCmd;
-import com.noseparte.robot.battlehistory.BattleHistoryRequest;
 import com.noseparte.robot.cardpackage.CardListCmd;
 import com.noseparte.robot.cardpackage.CardListRequest;
 import com.noseparte.robot.chapter.cmd.ProgressCmd;
@@ -39,10 +37,9 @@ public class Robot implements Runnable {
     public Long diamond;
     public Mission mission;
     public School occupation;
-    public CardPackage cardPackage;
+    public Card cardPackage;
     public Chapter chapter;
     public ActorBag actorBag;
-    public BattleHistory battleHistory;
     public SignReward signReward;
 
     @Override
@@ -132,16 +129,6 @@ public class Robot implements Runnable {
                         log.error("获取玩家背包列表失败: ", e);
                     }
                     break;
-                case RobotType.BATTLE:
-                    BattleHistoryCmd battleHistoryCmd = new BattleHistoryCmd();
-                    battleHistoryCmd.setCmd(RegisterProtocol.ROLE_BATTLE_REPORT_LIST_ACTION_REQ);
-                    battleHistoryCmd.setRid(getRid());
-                    try {
-                        new BattleHistoryRequest(battleHistoryCmd).execute();
-                    } catch (Exception e) {
-                        log.error("获取玩家战报列表失败: ", e);
-                    }
-                    break;
                 default:
                     break;
 
@@ -176,11 +163,6 @@ public class Robot implements Runnable {
             bagListCmd.setCmd(RegisterProtocol.CARD_BAG_LIST_REQ);
             bagListCmd.setRid(rid);
             new BagListRequest(bagListCmd).execute();
-            // 战绩
-            BattleHistoryCmd battleHistoryCmd = new BattleHistoryCmd();
-            battleHistoryCmd.setCmd(RegisterProtocol.ROLE_BATTLE_REPORT_LIST_ACTION_REQ);
-            battleHistoryCmd.setRid(rid);
-            new BattleHistoryRequest(battleHistoryCmd).execute();
             // 签到
             RewardListCmd rewardListCmd = new RewardListCmd();
             rewardListCmd.setCmd(RegisterProtocol.SIGN_REWARD_LIST_REQ);
