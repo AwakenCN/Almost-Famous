@@ -20,11 +20,17 @@ import org.apache.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @Auther: Noseparte
+ * @Date: 2019-12-22 12:59
+ * @Description:
+ *
+ *          <p>拉取角色出战数据</p>
+ *
+ */
+
 @Slf4j
 @RequiredArgsConstructor
-/**
- * 拉取角色出战数据
- */
 public class LoadActorRequest extends RequestAsync {
 
     @Getter
@@ -40,8 +46,7 @@ public class LoadActorRequest extends RequestAsync {
     @Override
     public void execute() throws Exception {
         MatchServerConfig matchServerConfig = SpringContextUtils.getBean("matchServerConfig", MatchServerConfig.class);
-        List<KeyValuePair> postBody = new ArrayList<KeyValuePair>()
-        {
+        List<KeyValuePair> postBody = new ArrayList<KeyValuePair>() {
             {
                 add(new KeyValuePair("cmd", Integer.toString(matchServerConfig.getPullActorCmd())));
                 add(new KeyValuePair("rid", Long.toString(session.getRid())));
@@ -50,8 +55,7 @@ public class LoadActorRequest extends RequestAsync {
             }
         };
 
-        List<KeyValuePair> headers = new ArrayList<KeyValuePair>()
-        {
+        List<KeyValuePair> headers = new ArrayList<KeyValuePair>() {
             {
                 add(new KeyValuePair("access_token", session.getToken()));
             }
@@ -71,7 +75,6 @@ public class LoadActorRequest extends RequestAsync {
             }
 
             JSONObject obj = FastJsonUtils.parseObject(response);
-            String msg = obj.getString("msg");
             int code = obj.getInteger("code");
             if (code != ErrorCode.SERVER_SUCCESS.value()) {
                 log.error("匹配获取角色信息失败.");
