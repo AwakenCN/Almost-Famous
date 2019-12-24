@@ -23,13 +23,20 @@ import org.apache.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @Auther: Noseparte
+ * @Date: 2019-12-22 12:47
+ * @Description:
+ *
+ *          <p>验证登录</p>
+ *          <p>异步获取用户信息</p>
+ *          <p>然后缓存到session中</p>
+ */
+
 @Slf4j
 @Setter
 @Getter
 @AllArgsConstructor
-/**
- * 验证登录
- */
 public class VerifyUserRequest extends RequestAsync {
     long userId;
     long roleId;
