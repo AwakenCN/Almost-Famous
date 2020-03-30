@@ -3,17 +3,13 @@ package com.noseparte.game.occuption.service.impl;
 import com.noseparte.common.bean.SchoolBean;
 import com.noseparte.common.global.ConfigManager;
 import com.noseparte.common.resources.OccupationConf;
-import com.noseparte.game.base.SendMessage;
-import com.noseparte.game.mission.service.MissionService;
 import com.noseparte.game.occuption.entity.Occupation;
 import com.noseparte.game.occuption.mongo.OccupationDao;
 import com.noseparte.game.occuption.service.OccupationService;
-import com.noseparte.game.role.service.RoleService;
 import com.noseparte.game.school.entity.School;
 import com.noseparte.game.school.mongo.SchoolDao;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -31,13 +27,6 @@ public class OccupationServiceImpl implements OccupationService {
     SchoolDao schoolDao;
     @Resource
     OccupationDao occupationDao;
-    @Autowired
-    private MissionService missionService;
-    @Autowired
-    private RoleService roleService;
-    @Autowired
-    private SendMessage sendMessage;
-
 
     @Override
     public void initOccupationConfig() {

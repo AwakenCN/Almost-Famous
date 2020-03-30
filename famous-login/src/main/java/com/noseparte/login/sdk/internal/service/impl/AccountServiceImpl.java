@@ -12,9 +12,9 @@ import com.noseparte.login.sdk.internal.mongo.AccountDao;
 import com.noseparte.login.sdk.internal.service.AccountService;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.Objects;
 
@@ -26,11 +26,11 @@ import java.util.Objects;
 @Service("accountService")
 public class AccountServiceImpl extends GeneralServiceImpl<Account> implements AccountService {
 
-    @Autowired
+    @Resource
     AccountDao accountDao;
-    @Autowired
+    @Resource
     private RedissonClient redissonClient;
-    @Autowired
+    @Resource
     private RpcClient rpcClient;
 
     @Override

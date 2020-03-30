@@ -1,7 +1,7 @@
 package com.noseparte.game.base.listener;
 
 import com.noseparte.common.global.ConfigManager;
-import com.noseparte.common.rpc.ThriftClient;
+import com.noseparte.common.rpc.GrpcClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.context.event.ApplicationEnvironmentPreparedEvent;
@@ -24,7 +24,7 @@ public class ApplicationEventListener implements ApplicationListener {
 
     public final static Logger LOG = LogManager.getLogger("GameCore");
 
-    private ThriftClient thriftClient;
+    private GrpcClient grpcClient;
 
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
@@ -45,8 +45,8 @@ public class ApplicationEventListener implements ApplicationListener {
             LOG.debug("应用停止");
         } else if (event instanceof ContextClosedEvent) {
             ApplicationContext applicationContext = ((ContextClosedEvent) event).getApplicationContext();
-            thriftClient = applicationContext.getBean(ThriftClient.class);
-            thriftClient.close();
+            grpcClient = applicationContext.getBean(GrpcClient.class);
+            grpcClient.close();
             LOG.debug("应用关闭");
         }
     }

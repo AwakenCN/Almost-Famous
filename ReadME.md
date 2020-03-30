@@ -9,7 +9,6 @@
 [![作者](https://img.shields.io/badge/%E4%BD%9C%E8%80%85-Noseparte-orange)](https://github.com/noseparte)
 [![Netty入门](https://img.shields.io/badge/%E5%AD%A6%E4%B9%A0-Netty%E5%85%A5%E9%97%A8-ff69b4.svg)](doc/study/mulu.md)
 
-
 </div>
 
 ## 申明
@@ -28,15 +27,16 @@
 
 ~~~
 Root project 'Almost-Famous'
-+--- Project ':famous-battle'
 +--- Project ':famous-cloud'
++--- Project ':famous-config'
+\--- Project ':famous-unique'
 +--- Project ':famous-common'
-+--- Project ':famous-game'
 +--- Project ':famous-login'
++--- Project ':famous-game'
 +--- Project ':famous-match'
++--- Project ':famous-battle'
 +--- Project ':famous-robot'
 +--- Project ':famous-static'
-\--- Project ':famous-unique'
 ~~~
 
 * [famous-unique Unique服(so TM what? 用来生成唯一ID)](./famous-unique/README.md)
@@ -50,7 +50,7 @@ Root project 'Almost-Famous'
 
 ## 项目架构图
 
-![架构架构-架架构](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/TIM%E5%9B%BE%E7%89%8720191214174229.png)
+![Almost-Famous架构图](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/TIM%E5%9B%BE%E7%89%8720191214174229.png)
 
 ## 项目研发日志更新
 
@@ -72,7 +72,7 @@ Root project 'Almost-Famous'
 
 ![Eureka服务注册中心](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191217172829.png)
 
-<video src="https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/2020-03-30%2015-28-57.mkv" controls="controls" width="500" height="300">您的浏览器不支持播放该视频！</video>
+![匹配](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/match.gif)![战斗](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/battle.gif)
 
 ## 一起交流
 

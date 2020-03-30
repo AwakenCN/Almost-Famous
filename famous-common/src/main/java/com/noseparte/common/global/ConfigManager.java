@@ -35,7 +35,6 @@ public class ConfigManager {
         return Integer.parseInt(value);
     }
 
-
     public static void init(String propDir) {
         for (File file : new File(propDir).listFiles()) {
             if (file.getName().endsWith(".properties")) {

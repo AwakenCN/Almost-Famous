@@ -10,7 +10,7 @@ import com.noseparte.common.global.Misc;
 import com.noseparte.common.global.Resoult;
 import com.noseparte.common.resources.GlobalVariableConf;
 import com.noseparte.common.rpc.RpcClient;
-import com.noseparte.common.rpc.protocol.UniqueNameEnum;
+import com.noseparte.common.rpc.service.UniqueNameEnum;
 import com.noseparte.game.base.RegisterProtocol;
 import com.noseparte.game.card.service.CardService;
 import com.noseparte.game.chapter.service.ChapterService;
@@ -26,6 +26,7 @@ import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -44,7 +45,7 @@ public class CreateRoleAction extends Action {
     CardService cardPackageService;
     @Autowired
     SchoolService schoolService;
-    @Autowired
+    @Resource
     private RpcClient rpcClient;
     @Autowired
     private RedissonClient redissonClient;

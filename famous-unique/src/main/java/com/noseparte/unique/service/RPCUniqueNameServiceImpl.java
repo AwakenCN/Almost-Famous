@@ -1,35 +1,50 @@
 package com.noseparte.unique.service;
 
-import com.noseparte.unique.db.DBManager;
 import com.noseparte.common.global.KeyPrefix;
 import com.noseparte.common.global.Misc;
-import com.noseparte.common.rpc.protocol.RPCUniqueNameService;
-import com.noseparte.common.rpc.protocol.UniqueNameEnum;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.thrift.TException;
+import com.noseparte.common.rpc.service.UniqueNameEnum;
+import com.noseparte.common.rpc.service.UniqueNameRequest;
+import com.noseparte.common.rpc.service.UniqueNameResponse;
+import com.noseparte.common.rpc.service.UniqueNameServiceGrpc;
+import com.noseparte.unique.db.DbManager;
+import io.grpc.stub.StreamObserver;
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.Objects;
 
-/**
- * @author Noseparte
- * @date 2019/8/8 12:38
- * @Description
- */
-@Slf4j
-public class RPCUniqueNameServiceImpl implements RPCUniqueNameService.Iface {
+public class RPCUniqueNameServiceImpl extends UniqueNameServiceGrpc.UniqueNameServiceImplBase {
+
+    protected static Logger LOG = LoggerFactory.getLogger("Unique");
+
     @Override
-    public UniqueNameEnum uniqueName(String name) throws TException {
-        if (log.isDebugEnabled()) {
-            log.debug("收到需要服务端校验的名称， {}", name);
+    public void uniqueName(UniqueNameRequest request, StreamObserver<UniqueNameResponse> responseObserver) {
+        String name = request.getName();
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("收到校验唯一名{}请求", name);
         }
+
+        if (StringUtils.isEmpty(name)) {
+            response(responseObserver, UniqueNameEnum.FAIL);
+            return;
+        }
+
         byte[] key = (KeyPrefix.UniqueLevelDBPrefix.UNIQUE_NAME + name).getBytes(Misc.CHARSET);
         byte[] value = name.getBytes(Misc.CHARSET);
-        byte[] bytes = DBManager.getInstance().get(key);
-        if (Objects.nonNull(bytes)) {
-            return UniqueNameEnum.REPEAT;
+        byte[] bytes = DbManager.getInstance().get(key);
+        // check unique name
+        if (bytes != null) {
+            response(responseObserver, UniqueNameEnum.REPEAT);
+            return;
         }
         // save name
-        DBManager.getInstance().putSync(key, value);
-        return UniqueNameEnum.SUCCESS;
+        DbManager.getInstance().putSync(key, value);
+        response(responseObserver, UniqueNameEnum.SUCCESS);
+    }
+
+    private void response(StreamObserver<UniqueNameResponse> responseObserver, UniqueNameEnum state) {
+        UniqueNameResponse build = UniqueNameResponse.newBuilder().setState(state).build();
+        responseObserver.onNext(build);
+        responseObserver.onCompleted();
     }
 }

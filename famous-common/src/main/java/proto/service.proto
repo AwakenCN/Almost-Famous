@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.noseparte.common.rpc.service";
+
+package idservice;
+
+service UniqueIdService {
+    // Sends a unique id
+    rpc getUniqueId (UniqueIdRequest) returns (UniqueIdResponse) {
+    }
+}
+
+//请求参数
+message UniqueIdRequest {
+}
+
+//响应参数
+message UniqueIdResponse {
+    sint64 uniqueId = 1;
+}
+
+service UniqueNameService {
+    // Sends a unique id
+    rpc uniqueName (UniqueNameRequest) returns (UniqueNameResponse) {
+    }
+}
+
+//请求参数
+message UniqueNameRequest {
+    string name = 1;
+}
+
+//响应参数
+message UniqueNameResponse {
+    UniqueNameEnum state = 1;
+}
+
+enum UniqueNameEnum {
+    UNIQUE_NAME_DEFAULT = 0;
+    REPEAT = 1;
+    SUCCESS = 2;
+    FAIL = 3;
+}

@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -32,7 +33,7 @@ public class BattleRoomMgr {
 
     @Autowired
     BattleServerConfig battleServerConfig;
-    @Autowired
+    @Resource
     RpcClient rpcClient;
     @Autowired
     private RedissonClient redissonClient;

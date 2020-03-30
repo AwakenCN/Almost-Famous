@@ -1,28 +1,25 @@
 package com.noseparte.unique.service;
 
-import com.noseparte.common.rpc.protocol.RPCUniqueIdService;
+import com.noseparte.common.rpc.service.UniqueIdRequest;
+import com.noseparte.common.rpc.service.UniqueIdResponse;
+import com.noseparte.common.rpc.service.UniqueIdServiceGrpc;
 import com.noseparte.common.utils.SnowflakeIdWorker;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.thrift.TException;
+import io.grpc.stub.StreamObserver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-/**
- * @author Noseparte
- * @date 2019/8/8 11:28
- * @Description
- */
-@Slf4j
-public class RPCUniqueIdServiceImpl implements RPCUniqueIdService.Iface {
+public class RPCUniqueIdServiceImpl extends UniqueIdServiceGrpc.UniqueIdServiceImplBase {
 
-//    @Autowired
-//    private UidGenerator uidGenerator;
+    protected static Logger LOG = LoggerFactory.getLogger("Unique");
 
     @Override
-    public long getUniqueId() throws TException {
-        long uid = SnowflakeIdWorker.getUniqueId();
-        if (log.isDebugEnabled()) {
-            log.debug("uid, {}", uid);
+    public void getUniqueId(UniqueIdRequest request, StreamObserver<UniqueIdResponse> responseObserver) {
+        long id = SnowflakeIdWorker.getUniqueId();
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("获得的唯一id={}", id);
         }
-        return uid;
+        UniqueIdResponse build = UniqueIdResponse.newBuilder().setUniqueId(id).build();
+        responseObserver.onNext(build);
+        responseObserver.onCompleted();
     }
-
 }

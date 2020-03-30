@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: famous-monitor
+server:
+  port:
+eureka:
+  instance:
+    #ip×¢²á
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+    #·þÎñµØÖ·1
+    hostname: ${spring.cloud.client.ip-address}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: false
+    fetch-registry: false

@@ -200,7 +200,6 @@
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.45" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-collections4:4.1" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.thrift:libthrift:0.12.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.7.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java-util:3.9.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.3.2" level="project" />

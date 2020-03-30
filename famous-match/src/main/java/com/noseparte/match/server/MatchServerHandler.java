@@ -13,6 +13,14 @@ import io.netty.handler.timeout.IdleStateEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+/**
+ * @Auther: Noseparte
+ * @Date: 2020/3/9 18:41
+ * @Version 1.0
+ * @Description: 
+ *
+ *          <p>Match Server Handler</p>
+ */
 @Slf4j
 @Component
 @ChannelHandler.Sharable

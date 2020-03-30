@@ -25,10 +25,10 @@ public class MatchServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel sc) throws Exception {
         ChannelPipeline cp = sc.pipeline();
-        cp.addLast(new IdleStateHandler(matchServerConfig.getHeartBeatTime(), 0, 0, TimeUnit.SECONDS));
+        cp.addLast(new IdleStateHandler(matchServerConfig.getHeartBeatTime(), 0, 0, TimeUnit.SECONDS));// 心跳
         cp.addLast(new LoggingHandler(LogLevel.INFO));
-        cp.addLast(new Decoder());
+        cp.addLast(new Decoder());// 解码
         cp.addLast("matchServerHandler", this.matchServerHandler);
-        cp.addLast(new Encoder());
+        cp.addLast(new Encoder());// 编码
     }
 }

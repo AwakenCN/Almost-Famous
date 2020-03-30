@@ -39,7 +39,7 @@ public class SchoolServiceImpl implements SchoolService {
 
     private static Logger LOG = LoggerFactory.getLogger("GameCore");
 
-    @Autowired
+    @Resource
     RpcClient rpcClient;
     @Autowired
     RoleService roleService;

@@ -1,22 +1,16 @@
 package com.noseparte.unique;
 
 import com.noseparte.common.global.ConfigManager;
-import com.noseparte.common.global.ExitHandler;
-import com.noseparte.common.rpc.protocol.RPCDateService;
-import com.noseparte.common.rpc.protocol.RPCUniqueIdService;
-import com.noseparte.common.rpc.protocol.RPCUniqueNameService;
-import com.noseparte.unique.db.DBManager;
-import com.noseparte.unique.service.RPCDataServiceImpl;
+import com.noseparte.unique.db.DbManager;
 import com.noseparte.unique.service.RPCUniqueIdServiceImpl;
 import com.noseparte.unique.service.RPCUniqueNameServiceImpl;
+import io.grpc.Server;
+import io.grpc.ServerBuilder;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.thrift.TMultiplexedProcessor;
-import org.apache.thrift.protocol.TBinaryProtocol;
-import org.apache.thrift.server.TServer;
-import org.apache.thrift.server.TThreadPoolServer;
-import org.apache.thrift.transport.TServerSocket;
-import org.apache.thrift.transport.TServerTransport;
-import org.apache.thrift.transport.TTransportFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 /**
  * @author Noseparte
@@ -26,79 +20,69 @@ import org.apache.thrift.transport.TTransportFactory;
 @Slf4j
 public class RpcServer {
 
-    private int port;
-    private int minThreads;
-    private int maxThreads;
+    public final static Logger LOG = LoggerFactory.getLogger("Unique");
 
-    private TBinaryProtocol.Factory protocolFactory;
-    private TTransportFactory transportFactory;
+    private Server server;
 
-    private RPCDateService.Iface rpcDataService = new RPCDataServiceImpl();
-    private RPCUniqueIdService.Iface rpcUniqueIdService = new RPCUniqueIdServiceImpl();
-    private RPCUniqueNameService.Iface rpcUniqueNameService = new RPCUniqueNameServiceImpl();
+    private int port = ConfigManager.getIntegerValue("unique", "gRpc_port");
 
-    public void init() {
-        port = ConfigManager.getIntegerValue("unique", "thrift_port");
-        minThreads = ConfigManager.getIntegerValue("unique", "thrift_min_threads");
-        maxThreads = ConfigManager.getIntegerValue("unique", "thrift_max_threads");
-        protocolFactory = new TBinaryProtocol.Factory();
-        transportFactory = new TTransportFactory();
+    private void start() throws IOException {
+        server = ServerBuilder.forPort(port)
+                .addService(new RPCUniqueIdServiceImpl())
+                .addService(new RPCUniqueNameServiceImpl())
+                .build()
+                .start();
+        LOG.info("Server started, listening on " + port);
     }
 
-    public void start() {
-        RPCDateService.Processor dateProcessor = new RPCDateService.Processor<>(rpcDataService);
-        RPCUniqueNameService.Processor uniqueNameProcessor = new RPCUniqueNameService.Processor<>(rpcUniqueNameService);
-        RPCUniqueIdService.Processor uniqueIdProcessor = new RPCUniqueIdService.Processor<>(rpcUniqueIdService);
-
-        TMultiplexedProcessor processor = new TMultiplexedProcessor();
-        processor.registerProcessor("date", dateProcessor);
-        processor.registerProcessor("unique_id", uniqueIdProcessor);
-        processor.registerProcessor("unique_name", uniqueNameProcessor);
-        ////////////////////////
-        init();
-        ////////////////////////
-        try {
-            TServerTransport transport = new TServerSocket(port);
-            TThreadPoolServer.Args tArgs = new TThreadPoolServer.Args(transport).processor(processor)
-                    .protocolFactory(protocolFactory)
-                    .transportFactory(transportFactory)
-                    .minWorkerThreads(minThreads)
-                    .maxWorkerThreads(maxThreads);
-            TServer server = new TThreadPoolServer(tArgs);
-            log.info("thrift服务启动成功， 端口={}", port);
-            log.info("最小线程数={}， 最大线程数={}", minThreads, maxThreads);
-            server.serve();
-        } catch (Exception e) {
-            log.error("thrift服务启动失败， {}", e);
+    private void stop() {
+        if (server != null) {
+            server.shutdown();
         }
     }
 
-    public static void shutDownHook() {
+    /**
+     * Await termination on the main thread since the grpc library uses daemon threads.
+     */
+    private void blockUntilShutdown() throws InterruptedException {
+        if (server != null) {
+            server.awaitTermination();
+        }
+    }
+
+    public void shutDownHook() {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {
-                DBManager.getInstance().close();
+                LOG.debug("*** shutting down gRPC com.liema.match.server since JVM is shutting down");
+                // close db
+                LOG.debug("*** close db");
+                DbManager.getInstance().close();
+                LOG.debug("*** com.liema.match.server shut down");
+                stop();
             } catch (Exception e) {
-                log.error("Jvm shutDownHook ", e);
+                LOG.error("Jvm shutDownHook ", e);
             }
         }));
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        String configPath;
+        if (args.length > 0) {
+            configPath = args[0] + "/properties";
+        } else {
+            configPath = RpcServer.class.getResource("/properties").getFile();
+        }
+        ConfigManager.init(configPath);
 
-        String path = RpcServer.class.getResource("/properties").getFile();
-        ConfigManager.init(path);
-
-        RpcServer server = new RpcServer();
-        ExitHandler exitHandler = new ExitHandler();
-        exitHandler.registerSignal("TERM");
-
+        RpcServer uniqueServer = new RpcServer();
         // exit hook
-        shutDownHook();
-        // levelDB
-        DBManager.getInstance().open("");
-        // levelDB browse data
-        DBManager.getInstance().iterator();
-        // thrift
-        server.start();
+        uniqueServer.shutDownHook();
+        // leveldb
+        DbManager.getInstance().open("");
+        // leveldb browse data
+        DbManager.getInstance().iterator();
+        // grpc
+        uniqueServer.start();
+        uniqueServer.blockUntilShutdown();
     }
 }

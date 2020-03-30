@@ -131,13 +131,16 @@
     </dependencyManagement>
 
     <modules>
-        <module>famous-battle</module>
-        <module>famous-match</module>
-        <module>famous-common</module>
-        <module>famous-game</module>
-        <module>famous-login</module>
-        <module>famous-unique</module>
         <module>famous-cloud</module>
+        <module>famous-config</module>
+        <module>famous-zuul</module>
+        <module>famous-monitor</module>
+        <module>famous-unique</module>
+        <module>famous-common</module>
+        <module>famous-login</module>
+        <module>famous-game</module>
+        <module>famous-match</module>
+        <module>famous-battle</module>
         <module>famous-robot</module>
     </modules>
 
