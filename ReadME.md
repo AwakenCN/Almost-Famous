@@ -72,6 +72,8 @@ Root project 'Almost-Famous'
 
 ![Eureka服务注册中心](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191217172829.png)
 
+<video src="https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/2020-03-30%2015-28-57.mkv" controls="controls" width="500" height="300">您的浏览器不支持播放该视频！</video>
+
 ## 一起交流
 
     如果您发现bug，或者有任何疑问，请提交issue !!
