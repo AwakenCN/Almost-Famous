@@ -2,15 +2,10 @@ package com.noseparte.game.mission.service.impl;
 
 import com.noseparte.common.bean.MissionBean;
 import com.noseparte.common.bean.StateCode;
-import com.noseparte.common.cache.RedissonUtils;
 import com.noseparte.common.exception.ErrorCode;
 import com.noseparte.common.global.ConfigManager;
-import com.noseparte.common.global.KeyPrefix;
-import com.noseparte.common.global.Misc;
 import com.noseparte.common.global.Resoult;
 import com.noseparte.common.resources.MissionConf;
-import com.noseparte.common.resources.OccupationConf;
-import com.noseparte.common.utils.DateUtils;
 import com.noseparte.game.base.RegisterProtocol;
 import com.noseparte.game.base.SendMessage;
 import com.noseparte.game.card.service.CardService;
@@ -25,14 +20,12 @@ import com.noseparte.game.role.entity.Role;
 import com.noseparte.game.role.service.RoleService;
 import com.noseparte.game.school.service.SchoolService;
 import lombok.extern.slf4j.Slf4j;
-import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -52,8 +45,6 @@ public class IMissionServiceImpl implements MissionService {
     SendMessage sendMessage;
     @Autowired
     BagCardStrategyService bagCardService;
-    @Resource
-    RedissonClient redissonClient;
 
 
     @Override
@@ -82,226 +73,141 @@ public class IMissionServiceImpl implements MissionService {
     }
 
     @Override
-    public Mission getMission(Long rid) {
-        Mission mission = RedissonUtils.get(redissonClient, KeyPrefix.GameCoreRedisPrefix.CACHE_MISSION + rid, Mission.class);
-        if (null != mission) {
-            return mission;
-        }
-        mission = missionDao.getActorMissionsByRole(rid);
-        if (null != mission) {
-            try {
-                if (RedissonUtils.lock(redissonClient, KeyPrefix.GameCoreRedisPrefix.CACHE_MISSION + rid)) {
-                    RedissonUtils.set(mission, redissonClient, KeyPrefix.GameCoreRedisPrefix.CACHE_MISSION + rid, KeyPrefix.GameCoreRedisPrefix.CACHE_MISSION_EXPIRE_TIME);
-                }
-            } finally {
-                RedissonUtils.unlock(redissonClient, KeyPrefix.GameCoreRedisPrefix.CACHE_MISSION + rid);
-            }
-        }
-        return mission;
-
+    public Mission getActorMissionById(Long rid) {
+        Mission actor = missionDao.getActorMissionsByRole(rid);
+        return Optional.ofNullable(actor).orElse(null);
     }
 
     @Override
-    public Mission getCurrentMission(Long rid) {
-        Mission mission = this.getMission(rid);
-        // 判定第几天的任务
-        // 开服时间
-        Long OnLineTime = Objects.requireNonNull(DateUtils.stringToDate(Misc.getStringVariable(1055), DateUtils.DATE_PATTERN)).getTime();
-        long current = System.currentTimeMillis();
-        long remaining = current - OnLineTime;
-        int today = remaining < 0L ? -1 : (int) (remaining / (3600*1000*24));
-
-        List<MissionBean> missionBeanList = new ArrayList<>();
-        for(MissionBean missionBean : mission.getMissions().values()){
-            // 第几日的任务
-            int whichDay = missionBean.getMissionId() / 100;
-            if(missionBean.getIsShow() == 1){
-                if(today + 1 > 0){
-                    if(today + 1 >= whichDay){
-                        missionBeanList.add(missionBean);
-                    }
-                }
-            }
-        }
-        Collections.sort(missionBeanList);
-
-        Map<Integer, MissionBean> resultMap = new LinkedHashMap<>(3);
-        if (missionBeanList.size() > MissionBean.MAX) {
-            List<MissionBean> missions = missionBeanList.subList(MissionBean.MIN, MissionBean.MAX);
-            missions.forEach(item -> resultMap.putIfAbsent(item.getMissionId(), item));
-            mission.setMissions(resultMap);
-        }else {
-            missionBeanList.forEach(item -> resultMap.putIfAbsent(item.getMissionId(), item));
-            mission.setMissions(resultMap);
-        }
-        return mission;
-    }
-
-    @Override
-    public void completionMission(Long rid, MissionBean bean) {
-        Mission mission = this.getMission(rid);
-        bean.setStatus(StateCode.IN_PROGRESS.value());
-        mission.getMissions().put(bean.getMissionId(), bean);
-        this.updateMission(mission);
-    }
-
-    @Override
-    public boolean addMission(Mission mission) {
-        boolean success = missionDao.insertActorMission(mission);
-        if (success) {
-            cacheMission(mission);
-        }
-        return success;
-    }
-
-    @Override
-    public boolean updateMission(Mission mission) {
-        boolean success = missionDao.updateActorMission(mission);
-        if (success) {
-            cacheMission(mission);
-        }
-        return success;
-    }
-
-    private void cacheMission(Mission mission) {
-        Long rid = mission.getRid();
-        String chapter_lock_key = KeyPrefix.GameCoreRedisPrefix.CACHE_MISSION + rid;
-        try {
-            if (RedissonUtils.lock(redissonClient, chapter_lock_key)) {
-                RedissonUtils.set(mission, redissonClient, chapter_lock_key, KeyPrefix.GameCoreRedisPrefix.CACHE_MISSION_EXPIRE_TIME);
-            }
-        } finally {
-            RedissonUtils.unlock(redissonClient, chapter_lock_key);
+    public void updateActorMission(Long rid, Integer missionId, boolean pass) {
+        Mission mission = missionDao.getActorMissionsByRole(rid);
+        if (pass) {
+            MissionBean missionBean = mission.getMissions().values()
+                    .stream().filter(miss -> miss.getMissionId() == missionId)
+                    .findFirst().get();
+            missionBean.setStatus(StateCode.IN_PROGRESS.value());
+            mission.getMissions().putIfAbsent(missionId, missionBean);
+            missionDao.updateActorMission(mission);
         }
     }
 
     @Override
-    public Mission actorMissionMgr(Role role, Mission mission, Integer missionType, Integer model) {
+    public void updateRoleMission(Mission mission) {
+        missionDao.updateActorMission(mission);
+    }
+
+    @Override
+    public Mission actorMissionMgr(Mission mission, Role role) {
         Long rid = role.getRid();
+        Map<Integer, MissionBean> actorMissions = new ConcurrentHashMap<>();
         // 从配置表中获取任务列表
         Map<Integer, MissionConf> documents = ConfigManager.missionConfMap;
-        List<MissionConf> missionList = documents.values().stream()
-                .filter(missionConf -> missionConf.getType().equals(missionType))
-                .collect(Collectors.toList());
-
-        List<MissionBean> roleMissionQueue = mission.getMissions().values().stream()
-                .filter(roleMission -> roleMission.getType() == missionType && roleMission.getIsShow() == 1)
-                .collect(Collectors.toList());
+        Map<Integer, MissionBean> roleQueue = mission.getMissions();
 
         boolean pass = false;
-        for (MissionBean bean : roleMissionQueue) {
-            MissionConf conf = missionList.stream().filter(miss -> miss.getId() == bean.getMissionId()).findFirst().get();
-            Integer subType = conf.getSubType();
-            switch (missionType) {
-                case MissionBean.MAIN_LEVEL_PROGRESS:
-                    // 关卡主线进度
-                    pass = iChapterService.hasPass(rid, subType, conf.getCondition());
-                    bean.setCondition(iChapterService.getActorChapterProgressMax(rid));
-                    break;
-                case MissionBean.GRADE_OF_OCCUPATIONS:
-                    // 某职业等级
-                    pass = iSchoolService.upgradeSucceed(rid, subType, conf.getCondition());
-                    bean.setCondition(iSchoolService.getSchoolLevelByRoleId(rid, subType));
-                    break;
-                case MissionBean.TOTAL_GRADE_OCCUPATIONS:
-                    // 总等级
-                    pass = iSchoolService.gltTotalLevel(rid, conf.getCondition());
-                    bean.setCondition(iSchoolService.getAlmostSchoolLevel(rid));
-                    break;
-                case MissionBean.NUMBER_OF_OCCUPATION:
-                    // 某职业对战次数
-                    Integer number = Misc.increase(bean.getCondition(), 1);
-                    Map<Integer, OccupationConf> occupationConfMap = ConfigManager.occupationConfMap;
-                    if (role.getLastBattleSchool() != null) {
-                        Integer occupation = occupationConfMap.get(role.getLastBattleSchool()).getOccupation();
-                        pass = number >= conf.getCondition() && conf.getSubType().equals(occupation);
-                        isCompleted(mission, occupation, pass, bean, conf, number);
+        for (MissionConf conf : documents.values()) {
+            for (MissionBean bean : roleQueue.values()) {
+                if (bean.getMissionId() == conf.getId() && bean.getIsShow() == 1) {
+                    Integer type = conf.getType();
+                    Integer subType = conf.getSubType();
+                    switch (type) {
+                        case MissionBean.MAIN_LEVEL_PROGRESS:
+                            pass = iChapterService.hasPass(rid, subType, conf.getCondition());
+                            bean.setCondition(iChapterService.getActorChapterProgressMax(rid));
+                            break;
+                        case MissionBean.GRADE_OF_OCCUPATIONS:
+                            // 某职业等级
+                            pass = iSchoolService.upgradeSuccessed(rid, subType, conf.getCondition());
+                            bean.setCondition(iSchoolService.getSchoolLevelByRoleId(rid, subType));
+                            break;
+                        case MissionBean.TOTAL_GRADE_OCCUPATIONS:
+                            // 总等级
+                            pass = iSchoolService.gltTotalLevel(rid, conf.getCondition());
+                            bean.setCondition(iSchoolService.getAlmostSchoolLevel(rid));
+                            break;
+                        case MissionBean.NUMBER_OF_OCCUPATION:
+                            break;
+                        case MissionBean.NUMBER_OF_PARTICULAR_MODE:
+                            break;
+                        case MissionBean.DRAW_CARD:
+                            // 抽卡
+                            pass = bagCardService.compareSelectCnt(rid, conf.getCondition());
+                            bean.setCondition(bagCardService.getSelectCardTimes(rid));
+                            break;
+                        case MissionBean.PURCHASE_CARD_PACKAGE:
+                            // 购买卡包
+                            pass = bagCardService.totalBuyCount(rid, conf.getCondition());
+                            bean.setCondition(bagCardService.getTotalBuyCount(rid));
+                            break;
+                        case MissionBean.DAN_GRADING:
+                            break;
+                        default:
+                            log.error(ErrorCode.SERVER_ERROR.name(), "未知任务类型");
                     }
-                    break;
-                case MissionBean.NUMBER_OF_PARTICULAR_MODE:
-                    // 某模式对战次数
-                    Integer progress = Misc.increase(bean.getCondition(), 1);
-                    pass = progress >= conf.getCondition();
-                    if (conf.getSubType() == 0) {
-                        bean.setCondition(progress);
-                        if (!pass) {
-                            mission.getMissions().putIfAbsent(conf.getId(), bean);
-                            this.updateMission(mission);
-                        }
-                    } else {
-                        isCompleted(mission, model, pass, bean, conf, progress);
+                    if (pass) {
+                        updateActorMission(rid, conf.getId(), pass);
                     }
-                    break;
-                case MissionBean.DRAW_CARD:
-                    // 抽卡
-                    pass = bagCardService.compareSelectCnt(rid, conf.getCondition());
-                    bean.setCondition(bagCardService.getSelectCardTimes(rid));
-                    break;
-                case MissionBean.PURCHASE_CARD_PACKAGE:
-                    // 购买卡包
-                    pass = bagCardService.totalBuyCount(rid, conf.getCondition());
-                    bean.setCondition(bagCardService.getTotalBuyCount(rid));
-                    break;
-                case MissionBean.DAN_GRADING:
-                    // 是否达到某个段位
-                    pass = roleService.reachGrading(rid, conf.getSubType(), conf.getCondition());
-                    bean.setCondition(roleService.reachGoal(rid, conf.getSubType(), conf.getCondition()));
-                    break;
-                case MissionBean.NUMBER_OF_OCCUPATION_WINNER:
-                    // 使用某职业进行对战并获胜
-                    Integer winCount = Misc.increase(bean.getCondition(), 1);
-                    pass = winCount >= conf.getCondition();
-                    Map<Integer, OccupationConf> occupationMap = ConfigManager.occupationConfMap;
-                    if (role.getLastBattleSchool() != null) {
-                        Integer actor = occupationMap.get(role.getLastBattleSchool()).getOccupation();
-                        pass = winCount >= conf.getCondition() && conf.getSubType().equals(actor);
-                        isCompleted(mission, actor, pass, bean, conf, winCount);
-                    }
-                    break;
-                default:
-                    log.error(ErrorCode.SERVER_ERROR.name(), "未知任务类型");
-                    break;
+                    actorMissions.putIfAbsent(conf.getId(), bean);
+                }
             }
-            if (pass) {
-                completionMission(rid, bean);
-            }
+        }
+        List<MissionBean> list = new ArrayList<MissionBean>(actorMissions.values());
+        list.sort(MissionBean::compareTo);
+        if (list.size() > MissionBean.MAX) {
+            Map<Integer, MissionBean> resultMap = new LinkedHashMap<>(3);
+            List<MissionBean> missionConfs = list.subList(MissionBean.MIN, MissionBean.MAX);
+            missionConfs.forEach(item -> {
+                resultMap.putIfAbsent(item.getMissionId(), item);
+            });
+            mission.setMissions(resultMap);
+        } else {
+            mission.setMissions(actorMissions);
         }
         return mission;
     }
 
-    private void isCompleted(Mission mission, Integer model, boolean pass, MissionBean bean, MissionConf conf, Integer progress) {
-        if (conf.getSubType().equals(model)) {
-            bean.setCondition(progress);
-            if (!pass) {
-                mission.getMissions().putIfAbsent(conf.getId(), bean);
-                this.updateMission(mission);
+    @Override
+    public void noticeMission(Long rid) {
+        Role role = roleService.selectByRoleId(rid);
+        Mission mission = getActorMissionById(rid);
+        Mission currentMission = actorMissionMgr(mission, role);
+        Map<Integer, MissionBean> missions = currentMission.getMissions();
+        if (Objects.isNull(missions)) {
+            return;
+        }
+        //任务推送
+        for (MissionBean bean : missions.values()) {
+            if (bean.getStatus() == StateCode.IN_PROGRESS.value()) {
+                sendMessage.send(rid, Resoult.ok(RegisterProtocol.MISSION_ACTOR_LIST_RESP).responseBody(currentMission));
+                break;
             }
         }
     }
 
     @Override
-    public ErrorCode receiveAwardMission(Long rid, Integer missionId) {
-        Mission mission = this.getMission(rid);
+    public ErrorCode receivedMission(Long rid, Integer missionId) {
+        Mission mission = missionDao.getActorMissionsByRole(rid);
         if (Objects.isNull(mission)) {
             return ErrorCode.MISSION_NOT_EXIST;
         }
-        Role role = roleService.selectByRoleId(rid);
-        Map<Integer, MissionConf> missionConfMap = ConfigManager.missionConfMap;
-        // 任务队列中移除该任务
-        MissionConf missionConf = missionConfMap.get(missionId);
-        MissionBean bean = mission.getMissions().get(missionId);
-        if (bean.getIsShow() == 0) {
-            return ErrorCode.MISSION_REWARD_RECEIVED;
+        if (Objects.nonNull(mission)) {
+            Role role = roleService.selectByRoleId(rid);
+            Map<Integer, MissionConf> missionConfMap = ConfigManager.missionConfMap;
+            // 任务队列中移除该任务
+            MissionConf missionConf = missionConfMap.values()
+                    .stream().filter(conf -> conf.getId() == missionId).findFirst().get();
+            MissionBean bean = mission.getMissions().get(missionId);
+            if (bean.getIsShow() == 0) {
+                return ErrorCode.MISSION_REWARD_RECEIVED;
+            }
+            bean.setIsShow(0);
+            bean.setCompleteTick(new Date().getTime());
+            updateRoleMission(mission);
+            List<HoldItem> holdItems = ItemMgr.dropItem(missionConf.getDrop());
+            // 获取drop的信息
+            roleService.distributeAwardToActor(role, holdItems);
         }
-        bean.setStatus(StateCode.COMPLETED.value());
-        bean.setIsShow(0);
-        bean.setCompleteTick(System.currentTimeMillis());
-        updateMission(mission);
-        List<HoldItem> holdItems = ItemMgr.dropItem(missionConf.getDrop());
-        // 获取drop的信息
-        roleService.distributeAwardToActor(role, holdItems);
         return ErrorCode.SERVER_SUCCESS;
     }
-
 
 }

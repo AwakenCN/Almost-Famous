@@ -39,9 +39,9 @@ public class Role extends GeneralBean implements Serializable {
         this.battleRank = battleRank;
     }
 
-    private long uid;
+    private Long uid;
 
-    private long rid;
+    private Long rid;
 
     private String roleName;
 
@@ -50,15 +50,15 @@ public class Role extends GeneralBean implements Serializable {
      */
     private String school;
 
-    private long gold;
+    private Long gold;
 
-    private long silver;
+    private Long silver;
 
-    private long diamond;
+    private Long diamond;
 
     private Integer lastBattleSchool;
 
-    private long lastBattleCardGroup;
+    private Long lastBattleCardGroup;
 
     /**
      * 新手引导进度

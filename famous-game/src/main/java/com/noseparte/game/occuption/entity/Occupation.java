@@ -8,25 +8,25 @@ import lombok.Data;
 @Data
 public class Occupation {
 
-    private int id;
+    private Integer id;
 
     private String name;
 
-    private int occupation;
+    private Integer occupation;
 
-    private int level;
+    private Integer level;
 
-    private int strength;
+    private Integer strength;
 
-    private int agility;
+    private Integer agility;
 
-    private int intelligence;
+    private Integer intelligence;
 
-    private int lvUpExp;
+    private Integer lvUpExp;
 
-    private int nextLvID;
+    private Integer nextLvID;
 
-    private int guideID;
+    private Integer guideID;
 
     private String moveAI;
 

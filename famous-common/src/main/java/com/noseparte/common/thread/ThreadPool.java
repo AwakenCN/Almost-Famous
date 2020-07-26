@@ -33,7 +33,7 @@ public class ThreadPool {
             throw new IllegalArgumentException();
 
         for (int i = 0; i < threadCount; i++) {
-            workers.add(new ThreadPoolExecutor(threadCount, 1000,
+            workers.add(new ThreadPoolExecutor(threadCount, 200,
                     0L, TimeUnit.MILLISECONDS,
                     new LinkedBlockingQueue<Runnable>(1024), threadFactory, new ThreadPoolExecutor.AbortPolicy()));
         }

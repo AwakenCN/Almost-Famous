@@ -25,11 +25,6 @@ public class LoginRequest extends RequestSync {
         sync(FamousRobotApplication.adminUrl, loginCmd.toKeyValuePair(), new LoginResponse());
     }
 
-    @Override
-    public JSONObject callback() throws Exception {
-        return syncCallBack(FamousRobotApplication.gameCoreUrl, loginCmd.toKeyValuePair());
-    }
-
     class LoginResponse implements ResponseCallBack<HttpResponse> {
 
         @Override

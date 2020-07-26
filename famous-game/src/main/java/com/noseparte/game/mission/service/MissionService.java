@@ -1,6 +1,5 @@
 package com.noseparte.game.mission.service;
 
-import com.noseparte.common.bean.MissionBean;
 import com.noseparte.common.exception.ErrorCode;
 import com.noseparte.game.mission.entity.Mission;
 import com.noseparte.game.role.entity.Role;
@@ -9,17 +8,15 @@ public interface MissionService {
 
     void initMission(Long rid);
 
-    Mission getMission(Long rid);
+    Mission getActorMissionById(Long rid);
 
-    Mission getCurrentMission(Long rid);
+    void updateActorMission(Long rid, Integer missionId, boolean pass);
 
-    void completionMission(Long rid, MissionBean missionBean);
+    void updateRoleMission(Mission mission);
 
-    boolean addMission(Mission mission);
+    Mission actorMissionMgr(Mission mission, Role role);
 
-    boolean updateMission(Mission mission);
+    void noticeMission(Long rid);
 
-    Mission actorMissionMgr(Role role, Mission mission, Integer missionType, Integer model);
-
-    ErrorCode receiveAwardMission(Long rid, Integer missionId);
+    ErrorCode receivedMission(Long rid, Integer missionId);
 }

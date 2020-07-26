@@ -36,11 +36,6 @@ public class ChallengeOverRequest extends RequestSync {
         sync(FamousRobotApplication.gameCoreUrl, challengeOverCmd.toKeyValuePair(), new ChallengeOverResponse());
     }
 
-    @Override
-    public JSONObject callback() throws Exception {
-        return syncCallBack(FamousRobotApplication.gameCoreUrl, challengeOverCmd.toKeyValuePair());
-    }
-
     class ChallengeOverResponse implements ResponseCallBack<HttpResponse> {
 
         @Override

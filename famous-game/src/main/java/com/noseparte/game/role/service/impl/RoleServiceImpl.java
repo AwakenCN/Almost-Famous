@@ -240,34 +240,6 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public boolean reachGrading(Long rid, Integer subType, Integer condition) {
-        Role role = selectByRoleId(rid);
-        BattleRankBean battleRank = role.getBattleRank();
-        int rankId = battleRank.getRankId();
-        int starCount = battleRank.getStarCount();
-        if (subType > rankId) {
-            return false;
-        } else if (subType == rankId && starCount >= condition) {
-            return true;
-        } else return subType < rankId;
-    }
-
-    @Override
-    public int reachGoal(Long rid, Integer subType, Integer condition) {
-        int result = 0;
-        Role role = selectByRoleId(rid);
-        BattleRankBean battleRank = role.getBattleRank();
-        int rankId = battleRank.getRankId();
-        int starCount = battleRank.getStarCount();
-        if (subType == rankId && starCount >= condition) {
-            result = 1;
-        } else if (rankId > subType) {
-            result = 1;
-        }
-        return result;
-    }
-
-    @Override
     public ErrorCode battleStart(long roomId, List<Long> winners, List<Long> losers) {
         return ErrorCode.SERVER_SUCCESS;
     }

@@ -1,6 +1,5 @@
 package com.noseparte.robot.school;
 
-import com.alibaba.fastjson.JSONObject;
 import com.noseparte.common.http.RequestSync;
 import com.noseparte.common.http.ResponseCallBack;
 import com.noseparte.robot.FamousRobotApplication;
@@ -24,11 +23,6 @@ public class CardGroupRequest extends RequestSync {
     @Override
     public void execute() throws Exception {
         sync(FamousRobotApplication.gameCoreUrl, cardGroupCmd.toKeyValuePair(), new CardGroupResponse());
-    }
-
-    @Override
-    public JSONObject callback() throws Exception {
-        return syncCallBack(FamousRobotApplication.gameCoreUrl, cardGroupCmd.toKeyValuePair());
     }
 
     class CardGroupResponse implements ResponseCallBack<HttpResponse> {

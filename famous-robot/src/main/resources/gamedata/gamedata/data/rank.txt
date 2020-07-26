@@ -1,0 +1,16 @@
+id	名称	段位图标	段位起点	段位终点	星级上限	是否有保护
+id	name	icon	minstar	maxstar	starLimit	isProtect
+int	string	int	int	int	int	int
+1	rank_name01		1	3	3	1
+2	rank_name02		4	6	3	1
+3	rank_name03		7	9	3	1
+4	rank_name04		10	13	4	0
+5	rank_name05		14	17	4	0
+6	rank_name06		18	21	4	0
+7	rank_name07		22	26	5	0
+8	rank_name08		27	31	5	0
+9	rank_name09		32	36	5	0
+10	rank_name10		37	41	5	0
+11	rank_name11		42	46	5	0
+12	rank_name12		47	51	5	0
+13	rank_name13		52	0	0	2

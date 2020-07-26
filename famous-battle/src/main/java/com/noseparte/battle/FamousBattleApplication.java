@@ -16,6 +16,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ComponentScan;
 
 import javax.annotation.PreDestroy;
@@ -34,6 +35,7 @@ import java.util.TimerTask;
  *      <p>启动网络放到最后</p>
  *      <p>nettyServer.start();</p>
  */
+@EnableEurekaClient
 @SpringBootApplication
 @ComponentScan({"com.noseparte.battle", "com.noseparte.common.*"})
 public class FamousBattleApplication implements CommandLineRunner {

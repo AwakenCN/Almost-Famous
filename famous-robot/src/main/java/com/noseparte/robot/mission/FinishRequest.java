@@ -33,11 +33,6 @@ public class FinishRequest extends RequestSync {
         sync(FamousRobotApplication.gameCoreUrl, finishCmd.toKeyValuePair(), new FinishResponse());
     }
 
-    @Override
-    public JSONObject callback() throws Exception {
-        return syncCallBack(FamousRobotApplication.gameCoreUrl, finishCmd.toKeyValuePair());
-    }
-
     private class FinishResponse implements ResponseCallBack<HttpResponse> {
         @Override
         public void completed(HttpResponse result) {

@@ -2,10 +2,8 @@ package com.noseparte.game.pack.service.impl;
 
 import com.noseparte.common.bean.*;
 import com.noseparte.common.bean.protocol.GoodBean;
-import com.noseparte.common.cache.RedissonUtils;
 import com.noseparte.common.exception.ErrorCode;
 import com.noseparte.common.global.ConfigManager;
-import com.noseparte.common.global.KeyPrefix;
 import com.noseparte.common.global.Misc;
 import com.noseparte.common.resources.CardConf;
 import com.noseparte.common.resources.GlobalVariableConf;
@@ -21,7 +19,6 @@ import com.noseparte.game.pack.service.BagCardStrategyService;
 import com.noseparte.game.role.entity.Role;
 import com.noseparte.game.role.service.RoleService;
 import lombok.extern.slf4j.Slf4j;
-import org.redisson.api.RedissonClient;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,8 +38,6 @@ public class BagCardStrategyServiceImpl implements BagCardStrategyService {
     CardService cardService;
     @Autowired
     MissionService missionService;
-    @Resource
-    RedissonClient redissonClient;
 
     @Override
     public void initActorBag(Long rid) {
@@ -86,25 +81,6 @@ public class BagCardStrategyServiceImpl implements BagCardStrategyService {
         }
         actorBagDao.updateActorBag(pack);
         return ErrorCode.SERVER_SUCCESS;
-    }
-
-    @Override
-    public ActorBag getActorBag(Long rid) {
-        ActorBag actorBag = RedissonUtils.get(redissonClient, KeyPrefix.GameCoreRedisPrefix.CACHE_ACTOR_BAG + rid, ActorBag.class);
-        if (null != actorBag) {
-            return actorBag;
-        }
-        actorBag = getSpecificBackpack(rid);
-        if (null != actorBag) {
-            try {
-                if (RedissonUtils.lock(redissonClient, KeyPrefix.GameCoreRedisPrefix.CACHE_ACTOR_BAG + rid)) {
-                    RedissonUtils.set(actorBag, redissonClient,KeyPrefix.GameCoreRedisPrefix.CACHE_ACTOR_BAG + rid, KeyPrefix.GameCoreRedisPrefix.CACHE_ACTOR_BAG_EXPIRE_TIME);
-                }
-            } finally {
-                RedissonUtils.unlock(redissonClient, KeyPrefix.GameCoreRedisPrefix.CACHE_ACTOR_BAG + rid);
-            }
-        }
-        return actorBag;
     }
 
     @Override

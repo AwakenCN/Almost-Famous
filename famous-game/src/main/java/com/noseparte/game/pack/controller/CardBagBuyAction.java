@@ -7,7 +7,6 @@ import com.noseparte.common.bean.BagBean;
 import com.noseparte.common.exception.ErrorCode;
 import com.noseparte.common.global.Resoult;
 import com.noseparte.common.utils.FastJsonUtils;
-import com.noseparte.game.base.GameUtils;
 import com.noseparte.game.base.RegisterProtocol;
 import com.noseparte.game.base.SendMessage;
 import com.noseparte.game.item.HoldItem;
@@ -54,15 +53,22 @@ public class CardBagBuyAction extends Action {
         data.put("rid", rid);
         data.put("attrId", AttrCode.DIAMOND.value());
         data.put("attrVal", actor.getDiamond());
-        List<BagBean> bag = GameUtils.getBagList(packages);
+        List<BagBean> bag = new ArrayList<>();
+        BagBean bean = null;
+        for (HoldItem item : packages) {
+            bean = new BagBean();
+            bean.setItemId(item.getItemId());
+            bean.setNum(item.getNum());
+            bag.add(bean);
+        }
         data.put("packages", bag);
 
-        //推送GM
-        Resoult result = GameUtils.getActorCurrency(roleService.selectByRoleId(rid), rid);
-        sendMessage.send(rid, result);
-
+        missionService.actorMissionMgr(missionService.getActorMissionById(rid), roleService.selectByRoleId(rid));
+        //任务推送
+//        missionService.noticeMission(actor.getRid());
+//        sendMessage.send(rid, Resoult.ok(RegisterProtocol.CARD_BAG_BUY_ACTION_RESP).responseBody(data));
         return Resoult.ok(RegisterProtocol.CARD_BAG_BUY_ACTION_RESP).responseBody(data);
+//        return sendMessage.sendNow(rid);
     }
-
 
 }

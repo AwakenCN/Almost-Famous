@@ -33,7 +33,7 @@ public class SignRewardListAction extends Action {
     public Resoult execute(JSONObject jsonObject, HttpServletRequest request, HttpServletResponse response) {
         Resoult res = null;
         Long rid = jsonObject.getLong("rid");
-        SignReward signReward = iSignRewardService.getSign(rid);
+        SignReward signReward = iSignRewardService.getSignHistoryByRole(rid);
         if (Objects.isNull(signReward)) {
             return res.error(RegisterProtocol.SIGN_REWARD_LIST_RESP, ErrorCode.SIGN_ERROR, "获取签到信息失败");
         }

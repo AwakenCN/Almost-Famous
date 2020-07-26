@@ -34,15 +34,14 @@ public class SignRewardDaoImpl extends GeneralDaoImpl<SignReward> implements Sig
     }
 
     @Override
-    public boolean insertActorReward(SignReward sign) {
+    public void insertActorReward(SignReward sign) {
         gameMongoTemplate.insert(sign);
-        return true;
     }
 
     @Override
-    public boolean updateActorSignHistory(SignReward signReward) {
+    public void updateActorSignHistory(SignReward signReward) {
         Query query = new Query(Criteria.where("rid").is(signReward.getRid()));
         Update update = new Update().set("rewards", signReward.getRewards());
-        return gameMongoTemplate.updateFirst(query, update, getEntityClass()).wasAcknowledged();
+        gameMongoTemplate.findAndModify(query, update, getEntityClass());
     }
 }
