@@ -22,6 +22,11 @@ public class RegisterRequest extends RequestSync {
         sync(FamousRobotApplication.adminUrl, registerCmd.toKeyValuePair(), new RegisterResponse());
     }
 
+    @Override
+    public JSONObject callback() throws Exception {
+        return syncCallBack(FamousRobotApplication.gameCoreUrl, registerCmd.toKeyValuePair());
+    }
+
     class RegisterResponse implements ResponseCallBack<HttpResponse> {
         @Override
         public void completed(HttpResponse result) {

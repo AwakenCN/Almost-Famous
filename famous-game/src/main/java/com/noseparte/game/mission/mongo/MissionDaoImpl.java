@@ -34,14 +34,16 @@ public class MissionDaoImpl extends GeneralDaoImpl<Mission> implements MissionDa
     }
 
     @Override
-    public void updateActorMission(Mission mission) {
+    public boolean updateActorMission(Mission mission) {
         Query query = new Query(Criteria.where("rid").is(mission.getRid()));
         Update update = new Update().set("missions", mission.getMissions());
         gameMongoTemplate.findAndModify(query, update, getEntityClass());
+        return true;
     }
 
     @Override
-    public void insertActorMission(Mission mission) {
+    public boolean insertActorMission(Mission mission) {
         gameMongoTemplate.insert(mission);
+        return true;
     }
 }

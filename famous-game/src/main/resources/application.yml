@@ -28,22 +28,12 @@ spring:
         enabled: true
 
 
-#redisson
-redis:
-  redisson:
-    config: classpath:redisson-dev.yaml
+  #redisson
+  redis:
+    redisson:
+      config: classpath:redisson-dev.yaml
 
 freemarker:
   suffix: .html
   request-context-attribute: request
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: hystrix.stream

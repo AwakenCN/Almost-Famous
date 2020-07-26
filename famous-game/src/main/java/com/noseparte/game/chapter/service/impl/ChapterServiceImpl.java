@@ -4,8 +4,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.noseparte.common.bean.AttrCode;
 import com.noseparte.common.bean.ChapterBean;
 import com.noseparte.common.bean.StateCode;
+import com.noseparte.common.cache.RedissonUtils;
 import com.noseparte.common.exception.ErrorCode;
 import com.noseparte.common.global.ConfigManager;
+import com.noseparte.common.global.KeyPrefix;
 import com.noseparte.common.resources.ChapterConf;
 import com.noseparte.common.resources.GlobalVariableConf;
 import com.noseparte.common.resources.OccupationConf;
@@ -19,6 +21,7 @@ import com.noseparte.game.occuption.service.OccupationService;
 import com.noseparte.game.role.entity.Role;
 import com.noseparte.game.role.service.RoleService;
 import com.noseparte.game.school.service.SchoolService;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +42,8 @@ public class ChapterServiceImpl implements ChapterService {
     private MissionService missionService;
     @Autowired
     private OccupationService occupationService;
+    @Resource
+    RedissonClient redissonClient;
 
 
     @Override
@@ -95,6 +100,25 @@ public class ChapterServiceImpl implements ChapterService {
             }
         }
         return chapterIds;
+    }
+
+    @Override
+    public Chapter getChapter(Long rid) {
+        Chapter chapter = RedissonUtils.get(redissonClient, KeyPrefix.GameCoreRedisPrefix.CACHE_CHAPTER + rid, Chapter.class);
+        if (null != chapter) {
+            return chapter;
+        }
+        chapter = chapterDao.getChapterById(rid);
+        if (null != chapter) {
+            try {
+                if (RedissonUtils.lock(redissonClient, KeyPrefix.GameCoreRedisPrefix.CACHE_CHAPTER + rid)) {
+                    RedissonUtils.set(chapter, redissonClient,KeyPrefix.GameCoreRedisPrefix.CACHE_CHAPTER + rid, KeyPrefix.GameCoreRedisPrefix.CACHE_CHAPTER_EXPIRE_TIME);
+                }
+            } finally {
+                RedissonUtils.unlock(redissonClient, KeyPrefix.GameCoreRedisPrefix.CACHE_CHAPTER + rid);
+            }
+        }
+        return chapter;
     }
 
     @Override

@@ -19,7 +19,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ComponentScan;
 
 import javax.annotation.PreDestroy;
@@ -31,7 +30,6 @@ import java.util.TimerTask;
 import java.util.concurrent.ConcurrentSkipListSet;
 
 @Slf4j
-@EnableEurekaClient
 @SpringBootApplication
 @ComponentScan({"com.noseparte.match", "com.noseparte.common.*"})
 public class FamousMatchApplication implements CommandLineRunner {
@@ -127,10 +125,8 @@ public class FamousMatchApplication implements CommandLineRunner {
                     deleteServerIds.add(serverId);
                     continue;
                 }
-                if (null != battleService) {
-                    battleServices.clear();
-                    battleServices.add(battleService);
-                }
+                battleServices.clear();
+                battleServices.add(battleService);
             }
             // 删除没有服务器信息的战斗服务器
             for (Integer deleteServerId : deleteServerIds) {
@@ -146,7 +142,7 @@ public class FamousMatchApplication implements CommandLineRunner {
 
     // 选择战斗服务器
     public BattleService selectBattleService() {
-        return this.battleServices.first();
+        return battleServices.first();
     }
 
 

@@ -17,6 +17,7 @@ import com.noseparte.robot.enitty.Mission;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpResponse;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,6 +29,12 @@ import java.util.Map;
 public class ActorListRequest extends RequestSync {
 
     private ActorListCmd actorListCmd;
+    List<Boolean> isAllCompleted;
+
+    public ActorListRequest(ActorListCmd actorListCmd, List<Boolean> isAllCompleted) {
+        this.actorListCmd = actorListCmd;
+        this.isAllCompleted = isAllCompleted;
+    }
 
     public ActorListRequest(ActorListCmd actorListCmd) {
         this.actorListCmd = actorListCmd;
@@ -36,6 +43,11 @@ public class ActorListRequest extends RequestSync {
     @Override
     public void execute() throws Exception {
         sync(FamousRobotApplication.gameCoreUrl, actorListCmd.toKeyValuePair(), new ActorListResponse());
+    }
+
+    @Override
+    public JSONObject callback() throws Exception {
+        return syncCallBack(FamousRobotApplication.gameCoreUrl, actorListCmd.toKeyValuePair());
     }
 
     class ActorListResponse implements ResponseCallBack<HttpResponse> {
@@ -77,6 +89,11 @@ public class ActorListRequest extends RequestSync {
                     }
                 }
             }
+
+            if (null != isAllCompleted) {
+                isAllCompleted.add(true);
+            }
+
         }
 
         @Override

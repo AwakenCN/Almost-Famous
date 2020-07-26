@@ -31,6 +31,11 @@ public class SignInRequest extends RequestSync {
         sync(FamousRobotApplication.gameCoreUrl, signInCmd.toKeyValuePair(), new SignInResponse());
     }
 
+    @Override
+    public JSONObject callback() throws Exception {
+        return syncCallBack(FamousRobotApplication.gameCoreUrl, signInCmd.toKeyValuePair());
+    }
+
     class SignInResponse implements ResponseCallBack<HttpResponse> {
 
         @Override

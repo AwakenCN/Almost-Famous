@@ -1,0 +1,19 @@
+robot:
+
+  threadCount: 10
+
+  adminUrl: http://localhost:9080/admin/dispatch/a
+  gameCoreUrl: http://localhost:9090/gamecore/dispatch/a
+  #gamecore_url=http://192.168.101.223:9090/gamecore/dispatch/a
+
+  robotCount: 10
+  robotType: 5
+  robotIndex: 4300
+  accountPre: robot
+  # single、cluster
+  robotModel: single
+
+#RPC
+rpc:
+  host: localhost
+  port: 10000

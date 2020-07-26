@@ -19,6 +19,8 @@ public interface BagCardStrategyService {
 
     ActorBag getSpecificBackpack(Long rid);
 
+    ActorBag getActorBag(Long rid);
+
     /**
      * 抽卡 (卡包)
      *

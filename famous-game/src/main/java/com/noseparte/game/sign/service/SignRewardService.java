@@ -7,9 +7,7 @@ public interface SignRewardService {
 
     void initSignRewardMgr(Long rid);
 
-    SignReward getSignHistoryByRole(Long rid);
-
-    void updateActorSignHistory(SignReward signReward);
+    SignReward getSign(Long rid);
 
     ErrorCode getSignReward(Long rid, Integer day);
 }

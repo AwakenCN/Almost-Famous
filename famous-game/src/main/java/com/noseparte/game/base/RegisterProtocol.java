@@ -2,7 +2,26 @@ package com.noseparte.game.base;
 
 import com.noseparte.common.bean.Action;
 import com.noseparte.common.utils.SpringContextUtils;
+import com.noseparte.game.card.controller.CardBuyAction;
+import com.noseparte.game.card.controller.CardListAction;
+import com.noseparte.game.card.controller.CardLockAction;
+import com.noseparte.game.card.controller.CardSaleAction;
+import com.noseparte.game.chapter.controller.ChapterChallengeAction;
+import com.noseparte.game.chapter.controller.ChapterChallengeOverAction;
+import com.noseparte.game.chapter.controller.ChapterProgressAction;
+import com.noseparte.game.chapter.controller.ChapterProgressListAction;
+import com.noseparte.game.mission.controller.MissionActorListAction;
+import com.noseparte.game.mission.controller.MissionFinishAction;
+import com.noseparte.game.pack.controller.CardBagBuyAction;
+import com.noseparte.game.pack.controller.CardBagListAction;
+import com.noseparte.game.pack.controller.CardBagSelectAction;
 import com.noseparte.game.role.controller.*;
+import com.noseparte.game.school.controller.AddOrUpdateCardGroupAction;
+import com.noseparte.game.school.controller.DeleteCardGroupAction;
+import com.noseparte.game.school.controller.SchoolCardGroupAction;
+import com.noseparte.game.school.controller.SchoolListAction;
+import com.noseparte.game.sign.controller.SignInAction;
+import com.noseparte.game.sign.controller.SignRewardListAction;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -94,6 +113,10 @@ public class RegisterProtocol {
 
     public static final int CHAPTER_CHALLENGE_OVER_REQ = 605;
     public static final int CHAPTER_CHALLENGE_OVER_RESP = 606;
+
+    public static final int CHAPTER_PROGRESS_REQ = 607;
+    public static final int CHAPTER_PROGRESS_RESP = 608;
+
     ///////////////////////任务指引//////////////////////////
     public static final int MISSION_ACTOR_LIST_REQ = 701;
     public static final int MISSION_ACTOR_LIST_RESP = 702;
@@ -113,6 +136,8 @@ public class RegisterProtocol {
 
     public static final Map<Integer, Action> REGISTER_PROTOCOL_MAP = new HashMap<Integer, Action>() {
         {
+            //心跳
+            put(HEART_BEAT_ACTION_REQ, SpringContextUtils.getBean("heartbeatAction", HeartbeatAction.class));
             //角色
             put(ROLE_LIST_ACTION_REQ, SpringContextUtils.getBean("roleListAction", RoleListAction.class));
             put(CREATE_ROLE_ACTION_REQ, SpringContextUtils.getBean("createRoleAction", CreateRoleAction.class));
@@ -120,9 +145,48 @@ public class RegisterProtocol {
             put(SAVE_NEWCOMER_GUIDE_ACTION_REQ, SpringContextUtils.getBean("saveNewcomerGuideAction", SaveNewcomerGuideAction.class));
             put(GET_NEWCOMER_GUIDE_ACTION_REQ, SpringContextUtils.getBean("getNewcomerGuideAction", GetNewcomerGuideAction.class));
             put(ROLE_ATTR_ACTION_REQ, SpringContextUtils.getBean("roleAttrAction", RoleAttrAction.class));
+//            put(ROLE_SAVE_BATTLE_REPORT_ACTION_REQ, SpringContextUtils.getBean("saveBattleReportAction", SaveBattleReportAction.class));
+//            put(ROLE_BATTLE_REPORT_LIST_ACTION_REQ, SpringContextUtils.getBean("getHistoryListAction", GetHistoryListAction.class));
             put(ROLE_BATTLE_RANK_ACTION_REQ, SpringContextUtils.getBean("roleBattleRankAction", RoleBattleRankAction.class));
             put(ROLE_CURRENCY_CHANGE_ACTION_REQ, SpringContextUtils.getBean("roleCurrencyChangeAction", RoleCurrencyChangeAction.class));
 
+
+            //卡牌栏
+            put(CARD_LIST_ACTION_REQ, SpringContextUtils.getBean("cardListAction", CardListAction.class));
+            put(CARD_BUY_ACTION_REQ, SpringContextUtils.getBean("cardBuyAction", CardBuyAction.class));
+            put(CARD_SALE_ACTION_REQ, SpringContextUtils.getBean("cardSaleAction", CardSaleAction.class));
+            put(CARD_LOCK_ACTION_REQ, SpringContextUtils.getBean("cardLockAction", CardLockAction.class));
+            //职业和卡组
+            put(SCHOOL_LIST_REQ, SpringContextUtils.getBean("schoolListAction", SchoolListAction.class));
+            put(ADD_OR_UPDATE_CARD_GROUP_REQ, SpringContextUtils.getBean("addOrUpdateCardGroupAction", AddOrUpdateCardGroupAction.class));
+            put(SCHOOL_DELETE_CARD_GROUP_REQ, SpringContextUtils.getBean("deleteCardGroupAction", DeleteCardGroupAction.class));
+            put(SCHOOL_CARD_GROUP_REQ, SpringContextUtils.getBean("schoolCardGroupAction", SchoolCardGroupAction.class));
+            //章节
+            put(CHAPTER_PROGRESS_LIST_REQ, SpringContextUtils.getBean("chapterProgressListAction", ChapterProgressListAction.class));
+            put(CHAPTER_CHALLENGE_REQ, SpringContextUtils.getBean("chapterChallengeAction", ChapterChallengeAction.class));
+            put(CHAPTER_CHALLENGE_OVER_REQ, SpringContextUtils.getBean("chapterChallengeOverAction", ChapterChallengeOverAction.class));
+            put(CHAPTER_PROGRESS_REQ, SpringContextUtils.getBean("chapterProgressAction", ChapterProgressAction.class));
+            //签到和奖励
+            put(SIGN_REWARD_LIST_REQ, SpringContextUtils.getBean("signRewardListAction", SignRewardListAction.class));
+            put(SIGN_IN_ACTION_REQ, SpringContextUtils.getBean("signInAction", SignInAction.class));
+            //任务指引
+            put(MISSION_ACTOR_LIST_REQ, SpringContextUtils.getBean("missionActorListAction", MissionActorListAction.class));
+            put(MISSION_FINISH_ACTION_REQ, SpringContextUtils.getBean("missionFinishAction", MissionFinishAction.class));
+            //背包管理
+            put(CARD_BAG_BUY_ACTION_REQ, SpringContextUtils.getBean("cardBagBuyAction", CardBagBuyAction.class));
+            put(CARD_BAG_SELECT_ACTION_REQ, SpringContextUtils.getBean("cardBagSelectAction", CardBagSelectAction.class));
+            put(CARD_BAG_LIST_REQ, SpringContextUtils.getBean("cardBagListAction", CardBagListAction.class));
+            // 匹配机器人
+//            put(MATCH_ROBOT_ACTION_REQ, SpringContextUtils.getBean("matchRobotAction", MatchRobotAction.class));
+//            put(MATCH_ROBOT_BATTLE_RESULT_ACTION_REQ, SpringContextUtils.getBean("matchRobotBattleResultAction", MatchRobotBattleResultAction.class));
+//            //版署
+//            put(GAME_MASTER_REQ, SpringContextUtils.getBean("gameMasterAction", GameMasterAction.class));
+
+
+            //其它服务器拉取角色信息
+//            put(INTERNAL_BATTLE_PULL_ACTOR_ACTION_REQ, SpringContextUtils.getBean("pullActorAction", PullActorAction.class));
+//            put(INTERNAL_BATTLE_START_ACTION_REQ, SpringContextUtils.getBean("battleStartAction", BattleStartAction.class));
+//            put(INTERNAL_BATTLE_END_ACTION_REQ, SpringContextUtils.getBean("battleEndAction", BattleEndAction.class));
         }
     };
 
@@ -132,4 +196,5 @@ public class RegisterProtocol {
         }
         return false;
     }
+
 }

@@ -1,5 +1,6 @@
 package com.noseparte.robot.cardpackage;
 
+import com.alibaba.fastjson.JSONObject;
 import com.noseparte.common.http.RequestSync;
 import com.noseparte.common.http.ResponseCallBack;
 import com.noseparte.robot.FamousRobotApplication;
@@ -23,6 +24,11 @@ public class CardSaleRequest extends RequestSync {
     @Override
     public void execute() throws Exception {
         sync(FamousRobotApplication.gameCoreUrl, saleCmd.toKeyValuePair(), new CardSaleResponse());
+    }
+
+    @Override
+    public JSONObject callback() throws Exception {
+        return syncCallBack(FamousRobotApplication.gameCoreUrl, saleCmd.toKeyValuePair());
     }
 
     class CardSaleResponse implements ResponseCallBack<HttpResponse> {
