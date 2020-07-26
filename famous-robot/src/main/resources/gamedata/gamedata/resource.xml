@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResConf>
+	<Resource packName="com.liema.common.resources" className="BattleRankConf" mapName="battleRankConfMap" dataTable="rank.txt"/>
+	<Resource packName="com.liema.common.resources" className="CardConf" mapName="cardConfMap" dataTable="card.txt"/>
+	<Resource packName="com.liema.common.resources" className="CardAttrConf" mapName="cardAttrConfMap" dataTable="card_attr.txt"/>
+	<Resource packName="com.liema.common.resources" className="ChapterConf" mapName="chapterConfMap" dataTable="chapter.txt"/>
+	<Resource packName="com.liema.common.resources" className="DropItemConf" mapName="dropItemConfMap" dataTable="drop_item.txt"/>
+	<Resource packName="com.liema.common.resources" className="GlobalVariableConf" mapName="globalVariableConfMap" dataTable="globalparameter.txt"/>
+	<Resource packName="com.liema.common.resources" className="ItemConf" mapName="itemConfMap" dataTable="item.txt"/>
+	<Resource packName="com.liema.common.resources" className="MapConf" mapName="mapConfMap" dataTable="map.txt"/>
+	<Resource packName="com.liema.common.resources" className="MaskWordConf" mapName="maskWordConfMap" dataTable="mask_word.txt"/>
+	<Resource packName="com.liema.common.resources" className="MissionConf" mapName="missionConfMap" dataTable="mission.txt"/>
+	<Resource packName="com.liema.common.resources" className="OccupationConf" mapName="occupationConfMap" dataTable="occupation.txt"/>
+	<Resource packName="com.liema.common.resources" className="PackageConf" mapName="packageConfMap" dataTable="package.txt"/>
+	<Resource packName="com.liema.common.resources" className="SchoolInitConf" mapName="schoolInitConfMap" dataTable="init_voc.txt"/>
+	<Resource packName="com.liema.common.resources" className="CardGroupConf" mapName="CardGroupConfMap" dataTable="card_group.txt"/>
+	<Resource packName="com.liema.common.resources" className="GuideQuestConf" mapName="GuideQuestConfMap" dataTable="guide_quest.txt"/>
+	<Resource packName="com.liema.common.resources" className="GMConf" mapName="GMConfMap" dataTable="GM.txt"/>
+</ResConf>

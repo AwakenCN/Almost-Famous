@@ -40,7 +40,7 @@ public class GrpcClient implements RpcClient {
             if (null != response)
                 return response.getUniqueId();
         } catch (StatusRuntimeException e) {
-            LOG.error("RPC get unique id error: {}", e.getMessage());
+            LOG.error("RPC get unique id error: {}", e);
         }
         return 0;
     }

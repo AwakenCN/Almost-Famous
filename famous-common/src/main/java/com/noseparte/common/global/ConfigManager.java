@@ -171,10 +171,6 @@ public class ConfigManager {
      */
     public static Map<Integer, CardConf> cardConfMap = new HashMap<>();
     /**
-     * 卡牌属性拼装表
-     */
-    public static Map<Integer, CardAttrConf> cardAttrConfMap = new HashMap<>();
-    /**
      * 全局变量表
      */
     public static Map<Integer, GlobalVariableConf> globalVariableConfMap = new HashMap<>();
@@ -218,21 +214,5 @@ public class ConfigManager {
      * 敏感词表
      */
     public static Map<Integer, MaskWordConf> maskWordConfMap = new HashMap<>();
-    /**
-     * 卡组库表
-     */
-    public static Map<Integer, CardGroupConf> CardGroupConfMap = new HashMap<>();
-    /**
-     * 战斗外引导表
-     */
-    public static Map<Integer, GuideQuestConf> GuideQuestConfMap = new HashMap<>();
-    /**
-     * 每日签到表
-     */
-    public static Map<Integer, SignRewardConf> SignRewardConfMap = new HashMap<>();
-    /**
-     * GM
-     */
-    public static Map<Integer, GMConf> GMConfMap = new HashMap<>();
 
 }

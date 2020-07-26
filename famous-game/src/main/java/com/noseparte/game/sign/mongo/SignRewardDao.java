@@ -8,7 +8,7 @@ public interface SignRewardDao extends GeneralDao<SignReward> {
 
     SignReward getSignHistoryByRole(Long rid);
 
-    boolean insertActorReward(SignReward sign);
+    void insertActorReward(SignReward sign);
 
-    boolean updateActorSignHistory(SignReward signReward);
+    void updateActorSignHistory(SignReward signReward);
 }

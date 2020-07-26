@@ -23,11 +23,6 @@ public class GetRoleAttrRequest extends RequestSync {
         sync(FamousRobotApplication.gameCoreUrl, getRoleAttrCmd.toKeyValuePair(), new GetRoleAttrResponse());
     }
 
-    @Override
-    public JSONObject callback() throws Exception {
-        return syncCallBack(FamousRobotApplication.gameCoreUrl, getRoleAttrCmd.toKeyValuePair());
-    }
-
     class GetRoleAttrResponse implements ResponseCallBack<HttpResponse> {
 
         @Override

@@ -31,11 +31,6 @@ public class BagSelectRequest extends RequestSync {
         sync(FamousRobotApplication.gameCoreUrl, bagSelectCmd.toKeyValuePair(), new BagSelectResponse());
     }
 
-    @Override
-    public JSONObject callback() throws Exception {
-        return syncCallBack(FamousRobotApplication.gameCoreUrl, bagSelectCmd.toKeyValuePair());
-    }
-
     class BagSelectResponse implements ResponseCallBack<HttpResponse> {
 
         @Override

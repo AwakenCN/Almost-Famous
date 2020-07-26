@@ -8,7 +8,7 @@ public class RewardBean {
     private int day;
     private int status;
     private String drop;
-    private long takeTick;
-    private long signTick;
+    private Long takeTick;
+    private Long signTick;
 
 }

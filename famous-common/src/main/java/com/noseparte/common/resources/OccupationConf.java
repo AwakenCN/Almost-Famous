@@ -7,14 +7,12 @@ public class OccupationConf implements java.io.Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /********** attribute ***********/
+/********** attribute ***********/
     private Integer id;
 
     private Integer isOcc;
 
     private String name;
-
-    private Integer type;
 
     private Integer defaultWeapon;
 
@@ -46,16 +44,15 @@ public class OccupationConf implements java.io.Serializable {
 
     private Integer cardGroup;
 
-    /********** constructors ***********/
+/********** constructors ***********/
     public OccupationConf() {
 
     }
 
-    public OccupationConf(Integer id, Integer isOcc, String name, Integer type, Integer defaultWeapon, Integer occupation, Integer level, Integer strength, Integer agility, Integer intelligence, Integer lvUpExp, Integer minExp, Integer maxExp, Integer lastLvID, Integer nextLvID, Integer guideID, Integer rankID, Integer star, Integer cardGroup) {
+    public OccupationConf(Integer id, Integer isOcc, String name, Integer defaultWeapon, Integer occupation, Integer level, Integer strength, Integer agility, Integer intelligence, Integer lvUpExp, Integer minExp, Integer maxExp, Integer lastLvID, Integer nextLvID, Integer guideID, Integer rankID, Integer star, Integer cardGroup) {
         this.id = id;
         this.isOcc = isOcc;
         this.name = name;
-        this.type = type;
         this.defaultWeapon = defaultWeapon;
         this.occupation = occupation;
         this.level = level;
@@ -73,7 +70,7 @@ public class OccupationConf implements java.io.Serializable {
         this.cardGroup = cardGroup;
     }
 
-    /********** get/set ***********/
+/********** get/set ***********/
     public Integer getId() {
         return id;
     }
@@ -96,14 +93,6 @@ public class OccupationConf implements java.io.Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
     }
 
     public Integer getDefaultWeapon() {

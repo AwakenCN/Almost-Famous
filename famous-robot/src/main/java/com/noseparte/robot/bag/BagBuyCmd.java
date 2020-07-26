@@ -13,12 +13,6 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class BagBuyCmd extends BaseCmd {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 3851000205948158841L;
 
-    public String packages;
 
 }
-

@@ -6,7 +6,6 @@ import com.noseparte.common.bean.CardBean;
 import com.noseparte.common.exception.ErrorCode;
 import com.noseparte.common.global.Resoult;
 import com.noseparte.common.utils.FastJsonUtils;
-import com.noseparte.game.base.GameUtils;
 import com.noseparte.game.base.RegisterProtocol;
 import com.noseparte.game.base.SendMessage;
 import com.noseparte.game.item.HoldItem;
@@ -43,18 +42,15 @@ public class CardBagSelectAction extends Action {
         Long rid = jsonObject.getLong("rid");
         String packagesData = jsonObject.getString("packages");
         List<HoldItem> packages = FastJsonUtils.toList(packagesData, HoldItem.class);
-        ActorBag actorBag = iBagCardStrategyService.getActorBag(rid);
+        ActorBag actorBag = iBagCardStrategyService.getSpecificBackpack(rid);
         List<CardBean> cards = iBagCardStrategyService.selectCardPack(actorBag, packages);
-        if (Objects.isNull(cards) || cards.isEmpty()) {
+        if (Objects.isNull(cards)) {
             return Resoult.error(RegisterProtocol.CARD_BAG_SELECT_ACTION_RESP, ErrorCode.SERVER_ERROR, "");
         }
         Map<String, Object> data = new HashMap<>();
         data.put("cards", cards);
 
-        //推送GM
-        Resoult result = GameUtils.getActorCurrency(roleService.selectByRoleId(rid), rid);
-        sendMessage.send(rid, result);
-
+        missionService.actorMissionMgr(missionService.getActorMissionById(rid), roleService.selectByRoleId(rid));
         return Resoult.ok(RegisterProtocol.CARD_BAG_SELECT_ACTION_RESP).responseBody(data);
     }
 }

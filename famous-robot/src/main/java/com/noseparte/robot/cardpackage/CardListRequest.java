@@ -15,7 +15,6 @@ import com.noseparte.robot.enitty.Card;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpResponse;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,13 +25,7 @@ import java.util.Map;
 @Slf4j
 public class CardListRequest extends RequestSync {
 
-    List<Boolean> isAllCompleted;
     CardListCmd cardListCmd;
-
-    public CardListRequest(CardListCmd cardListCmd, List<Boolean> isAllCompleted) {
-        this.cardListCmd = cardListCmd;
-        this.isAllCompleted = isAllCompleted;
-    }
 
     public CardListRequest(CardListCmd cardListCmd) {
         this.cardListCmd = cardListCmd;
@@ -41,11 +34,6 @@ public class CardListRequest extends RequestSync {
     @Override
     public void execute() throws Exception {
         sync(FamousRobotApplication.gameCoreUrl, cardListCmd.toKeyValuePair(), new CardListResponse());
-    }
-
-    @Override
-    public JSONObject callback() throws Exception {
-        return syncCallBack(FamousRobotApplication.gameCoreUrl, cardListCmd.toKeyValuePair());
     }
 
     class CardListResponse implements ResponseCallBack<HttpResponse> {
@@ -72,11 +60,6 @@ public class CardListRequest extends RequestSync {
                     log.debug("rid {}, 卡牌列表 {}", rid, cardLst);
                 }
             }
-
-            if (null != isAllCompleted) {
-                isAllCompleted.add(true);
-            }
-
         }
 
         @Override

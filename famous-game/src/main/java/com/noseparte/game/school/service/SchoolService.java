@@ -62,6 +62,4 @@ public interface SchoolService {
      * @return
      */
     CardGroup getOneCardGroup(Long rid, Integer schoolId, Long groupId);
-
-    boolean upgradeSucceed(Long rid, Integer schoolId, Integer condition);
 }

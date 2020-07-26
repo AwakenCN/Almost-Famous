@@ -10,9 +10,6 @@ import java.util.Map;
 public class SchoolBean implements Serializable {
 
     int schoolId;
-
-    int occupation;
-
     /**
      * 职业武器
      */
@@ -32,6 +29,5 @@ public class SchoolBean implements Serializable {
      * 多个卡组
      */
     Map<Long, CardGroup> cardGroup = new HashMap<>();
-
 
 }

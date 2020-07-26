@@ -15,7 +15,6 @@ import com.noseparte.robot.enitty.ActorBag;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpResponse;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,13 +25,7 @@ import java.util.Map;
 @Slf4j
 public class BagListRequest extends RequestSync {
 
-    List<Boolean> isAllCompleted;
     private BagListCmd bagListCmd;
-
-    public BagListRequest(BagListCmd bagListCmd, List<Boolean> isAllCompleted) {
-        this.bagListCmd = bagListCmd;
-        this.isAllCompleted = isAllCompleted;
-    }
 
     public BagListRequest(BagListCmd bagListCmd) {
         this.bagListCmd = bagListCmd;
@@ -41,11 +34,6 @@ public class BagListRequest extends RequestSync {
     @Override
     public void execute() throws Exception {
         sync(FamousRobotApplication.gameCoreUrl, bagListCmd.toKeyValuePair(), new BagListResponse());
-    }
-
-    @Override
-    public JSONObject callback() throws Exception {
-        return syncCallBack(FamousRobotApplication.gameCoreUrl, bagListCmd.toKeyValuePair());
     }
 
     class BagListResponse implements ResponseCallBack<HttpResponse> {
@@ -70,10 +58,6 @@ public class BagListRequest extends RequestSync {
                 if (log.isDebugEnabled()) {
                     log.debug("rid {}, 背包列表 {}", rid, bagLst);
                 }
-            }
-
-            if (null != isAllCompleted) {
-                isAllCompleted.add(true);
             }
         }
 

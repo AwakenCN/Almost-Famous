@@ -76,18 +76,6 @@ public class SchoolServiceImpl implements SchoolService {
     }
 
     @Override
-    public boolean upgradeSucceed(Long rid, Integer schoolId, Integer condition) {
-        School school = schoolDao.getSchool(rid);
-        Optional<SchoolBean> optional = school.getSchools().values()
-                .stream().filter(sc ->
-                        sc.getOccupation() == ConfigManager.occupationConfMap.get(schoolId).getOccupation()
-                                && sc.getLevel() >= condition)
-                .findFirst();
-        SchoolBean schoolBean = optional.orElse(null);
-        return Objects.nonNull(schoolBean);
-    }
-
-    @Override
     public ErrorCode updateCardGroup(long rid, int schoolId, CardGroup cardGroup) {
         Role role = roleService.selectByRoleId(rid);
         if (Objects.isNull(role)) {

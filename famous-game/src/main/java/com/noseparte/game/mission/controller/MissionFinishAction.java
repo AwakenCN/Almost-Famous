@@ -31,17 +31,19 @@ public class MissionFinishAction extends Action {
     public Resoult execute(JSONObject jsonObject, HttpServletRequest request, HttpServletResponse response) {
         Long rid = jsonObject.getLong("rid");
         Integer missionId = jsonObject.getInteger("missionId");
-        ErrorCode code = iMissionService.receiveAwardMission(rid, missionId);
+        ErrorCode code = iMissionService.receivedMission(rid, missionId);
 
         //推送GM
         Resoult result = GameUtils.getActorCurrency(roleService.selectByRoleId(rid), rid);
         sendMessage.send(rid, result);
+//        sendMessage.sendNow(rid);
 
         if (ErrorCode.SERVER_SUCCESS != code) {
             return Resoult.error(RegisterProtocol.MISSION_FINISH_ACTION_RESP, code, "");
         }
-        Mission mission = iMissionService.getCurrentMission(rid);
-
+        Mission mission = iMissionService.getActorMissionById(rid);
+        Role role = roleService.selectByRoleId(rid);
+        mission = iMissionService.actorMissionMgr(mission, role);
         return Resoult.ok(RegisterProtocol.MISSION_FINISH_ACTION_RESP).responseBody(mission);
     }
 

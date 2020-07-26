@@ -34,11 +34,6 @@ public class ProgressListRequest extends RequestSync {
         sync(FamousRobotApplication.gameCoreUrl, progressListCmd.toKeyValuePair(), new ProgressListResponse());
     }
 
-    @Override
-    public JSONObject callback() throws Exception {
-        return syncCallBack(FamousRobotApplication.gameCoreUrl, progressListCmd.toKeyValuePair());
-    }
-
     private class ProgressListResponse implements ResponseCallBack<HttpResponse> {
         @Override
         public void completed(HttpResponse result) {
