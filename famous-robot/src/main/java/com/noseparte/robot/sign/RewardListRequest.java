@@ -15,6 +15,7 @@ import com.noseparte.robot.enitty.SignReward;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpResponse;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,7 +26,13 @@ import java.util.Map;
 @Slf4j
 public class RewardListRequest extends RequestSync {
 
+    List<Boolean> isAllCompleted;
     RewardListCmd rewardListCmd;
+
+    public RewardListRequest(RewardListCmd rewardListCmd, List<Boolean> isAllCompleted) {
+        this.rewardListCmd = rewardListCmd;
+        this.isAllCompleted = isAllCompleted;
+    }
 
     public RewardListRequest(RewardListCmd rewardListCmd) {
         this.rewardListCmd = rewardListCmd;
@@ -34,6 +41,11 @@ public class RewardListRequest extends RequestSync {
     @Override
     public void execute() throws Exception {
         sync(FamousRobotApplication.gameCoreUrl, rewardListCmd.toKeyValuePair(), new RewardListResponse());
+    }
+
+    @Override
+    public JSONObject callback() throws Exception {
+        return syncCallBack(FamousRobotApplication.gameCoreUrl, rewardListCmd.toKeyValuePair());
     }
 
     class RewardListResponse implements ResponseCallBack<HttpResponse> {
@@ -60,6 +72,10 @@ public class RewardListRequest extends RequestSync {
                     log.debug("rid {}, 签到记录 {}", rid, rewardList);
                 }
 
+            }
+
+            if (null != isAllCompleted) {
+                isAllCompleted.add(true);
             }
 
         }

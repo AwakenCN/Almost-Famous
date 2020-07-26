@@ -1,15 +1,28 @@
-spring:
-  data:
-    mongodb:
-      game:
-        host: localhost
-        port: 27017
-        database: famous-game
-        username:
-        password:
+robot:
+
+  threadCount: 100
+
+  #   adminUrl: http://192.168.101.223:9080/admin/dispatch/a
+  #  gameCoreUrl: http://localhost:9090/gamecore/dispatch/a
+
+
+  #adminUrl: http://192.168.101.223:9080/admin/dispatch/a
+  #gamecore_url: http://192.168.101.223:9090/gamecore/dispatch/a
+
+
+  adminUrl: http://192.168.1.33:8809/login/dispatch/a
+  gameCoreUrl: http://192.168.1.33:8909/game/dispatch/a
+
+
+
+  robotCount: 50
+  robotType: 5
+  robotIndex: 4501
+  accountPre: robot
+  # single、cluster
+  robotModel: cluster
 
 #RPC
 rpc:
   host: localhost
   port: 9999
-  rpc-type: Thrift

@@ -16,6 +16,7 @@ import com.noseparte.robot.enitty.Chapter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpResponse;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,7 +28,13 @@ import java.util.Map;
 @Slf4j
 public class ProgressRequest extends RequestSync {
 
+    List<Boolean> isAllCompleted;
     private ProgressCmd progressCmd;
+
+    public ProgressRequest(ProgressCmd progressCmd, List<Boolean> isAllCompleted) {
+        this.progressCmd = progressCmd;
+        this.isAllCompleted = isAllCompleted;
+    }
 
     public ProgressRequest(ProgressCmd progressCmd) {
         this.progressCmd = progressCmd;
@@ -36,6 +43,11 @@ public class ProgressRequest extends RequestSync {
     @Override
     public void execute() throws Exception {
         sync(FamousRobotApplication.gameCoreUrl, progressCmd.toKeyValuePair(), new ProgressResponse());
+    }
+
+    @Override
+    public JSONObject callback() throws Exception {
+        return syncCallBack(FamousRobotApplication.gameCoreUrl, progressCmd.toKeyValuePair());
     }
 
     class ProgressResponse implements ResponseCallBack<HttpResponse> {
@@ -59,6 +71,10 @@ public class ProgressRequest extends RequestSync {
                 if (log.isInfoEnabled()) {
                     log.info("进度列表 {}", chapterMap);
                 }
+            }
+
+            if (null != isAllCompleted) {
+                isAllCompleted.add(true);
             }
         }
 

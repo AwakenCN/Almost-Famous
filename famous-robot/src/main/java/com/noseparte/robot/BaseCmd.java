@@ -27,7 +27,6 @@ public abstract class BaseCmd implements Serializable {
         Field[] fields = Misc.getAllField(this);
         try {
             for (Field field : fields) {
-//                System.out.println(field.getName() + " = " + field.getGenericType().getTypeName());
                 Method m = (Method) getClass().getMethod("get" + Misc.getMethodName(field.getName()));
                 KeyValuePair pair = new KeyValuePair(field.getName(), m.invoke(this) + "");
                 pairs.add(pair);

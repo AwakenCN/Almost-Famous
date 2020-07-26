@@ -15,6 +15,7 @@ import com.noseparte.robot.enitty.School;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpResponse;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,7 +26,13 @@ import java.util.Map;
 @Slf4j
 public class SchoolListRequest extends RequestSync {
 
+    List<Boolean> isAllCompleted;
     SchoolListCmd schoolListCmd;
+
+    public SchoolListRequest(SchoolListCmd schoolListCmd, List<Boolean> isAllCompleted) {
+        this.schoolListCmd = schoolListCmd;
+        this.isAllCompleted = isAllCompleted;
+    }
 
     public SchoolListRequest(SchoolListCmd schoolListCmd) {
         this.schoolListCmd = schoolListCmd;
@@ -34,6 +41,11 @@ public class SchoolListRequest extends RequestSync {
     @Override
     public void execute() throws Exception {
         sync(FamousRobotApplication.gameCoreUrl, schoolListCmd.toKeyValuePair(), new SchoolListResponse());
+    }
+
+    @Override
+    public JSONObject callback() throws Exception {
+        return syncCallBack(FamousRobotApplication.gameCoreUrl, schoolListCmd.toKeyValuePair());
     }
 
     class SchoolListResponse implements ResponseCallBack<HttpResponse> {
@@ -60,6 +72,10 @@ public class SchoolListRequest extends RequestSync {
             robot.setOccupation(school);
             if (log.isDebugEnabled()) {
                 log.debug("rid {}, 职业列表, {}", rid, schoolLst);
+            }
+
+            if (null != isAllCompleted) {
+                isAllCompleted.add(true);
             }
         }
 

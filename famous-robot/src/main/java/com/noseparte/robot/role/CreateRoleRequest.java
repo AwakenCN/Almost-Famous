@@ -23,6 +23,11 @@ public class CreateRoleRequest extends RequestSync {
         sync(FamousRobotApplication.gameCoreUrl, createRoleCmd.toKeyValuePair(), new CreateRoleResponse());
     }
 
+    @Override
+    public JSONObject callback() throws Exception {
+        return syncCallBack(FamousRobotApplication.gameCoreUrl, createRoleCmd.toKeyValuePair());
+    }
+
     class CreateRoleResponse implements ResponseCallBack<HttpResponse> {
 
         @Override

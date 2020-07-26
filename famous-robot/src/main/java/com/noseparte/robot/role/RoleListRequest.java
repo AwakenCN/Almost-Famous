@@ -2,7 +2,7 @@ package com.noseparte.robot.role;
 
 import com.alibaba.fastjson.JSONObject;
 import com.noseparte.common.exception.ErrorCode;
-import com.noseparte.common.http.RequestAsync;
+import com.noseparte.common.http.RequestSync;
 import com.noseparte.common.http.ResponseCallBack;
 import com.noseparte.common.utils.FastJsonUtils;
 import com.noseparte.robot.FamousRobotApplication;
@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpResponse;
 
 @Slf4j
-public class RoleListRequest extends RequestAsync {
+public class RoleListRequest extends RequestSync {
 
     private RoleListCmd roleListCmd;
 
@@ -23,7 +23,12 @@ public class RoleListRequest extends RequestAsync {
 
     @Override
     public void execute() throws Exception {
-        async(FamousRobotApplication.gameCoreUrl, roleListCmd.toKeyValuePair(), new RoleListResponse());
+        sync(FamousRobotApplication.gameCoreUrl, roleListCmd.toKeyValuePair(), new RoleListResponse());
+    }
+
+    @Override
+    public JSONObject callback() throws Exception {
+        return syncCallBack(FamousRobotApplication.gameCoreUrl, roleListCmd.toKeyValuePair());
     }
 
     class RoleListResponse implements ResponseCallBack<HttpResponse> {

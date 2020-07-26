@@ -34,8 +34,3 @@ rpc:
   host: localhost
   port: 9999
 
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/

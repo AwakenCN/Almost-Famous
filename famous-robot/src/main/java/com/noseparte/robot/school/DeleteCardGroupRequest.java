@@ -27,6 +27,11 @@ public class DeleteCardGroupRequest extends RequestSync {
         sync(FamousRobotApplication.gameCoreUrl, deleteCardGroupCmd.toKeyValuePair(), new DeleteCardGroupResposne());
     }
 
+    @Override
+    public JSONObject callback() throws Exception {
+        return syncCallBack(FamousRobotApplication.gameCoreUrl, deleteCardGroupCmd.toKeyValuePair());
+    }
+
     class DeleteCardGroupResposne implements ResponseCallBack<HttpResponse> {
 
         @Override

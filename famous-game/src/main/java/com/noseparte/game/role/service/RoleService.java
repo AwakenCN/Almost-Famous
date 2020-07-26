@@ -38,6 +38,10 @@ public interface RoleService {
 
     ErrorCode battleEnd(long roomId, List<Long> winners, List<Long> losers);
 
+    boolean reachGrading(Long rid, Integer subType, Integer condition);
+
+    int reachGoal(Long rid, Integer subType, Integer condition);
+
     ErrorCode batchBattleHistory(long roomId, long winnerId, long loserId);
 
     void currencyChangeGM(Role role);

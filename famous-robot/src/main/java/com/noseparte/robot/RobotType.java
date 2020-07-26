@@ -19,7 +19,7 @@ abstract class RobotType {
     final static int BAG = 7;
     final static int BATTLE = 8;
 
-    final static String SINGEL = "single";
+    final static String SINGE = "single";
     final static String CLUSTER = "cluster";
 
 }

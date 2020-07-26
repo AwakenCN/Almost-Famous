@@ -8,11 +8,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
 import javax.annotation.Resource;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @Auther: Noseparte
@@ -21,8 +25,8 @@ import java.util.TimerTask;
  * <p>注册登录Robot 执行调度任务</p>
  */
 @Slf4j
+@SpringBootApplication(exclude = {MongoAutoConfiguration.class, DataSourceAutoConfiguration.class})
 @ComponentScan({"com.noseparte.robot", "com.noseparte.common.*"})
-@SpringBootApplication
 public class FamousRobotApplication implements CommandLineRunner {
 
     @Resource
@@ -36,6 +40,7 @@ public class FamousRobotApplication implements CommandLineRunner {
     public static int robotType, robotCount, index;
     public static String accountPre;
     public static String robotModel;
+    public static Map<Integer, LoginCmd> loginCmdMap = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
         String configPath;
@@ -59,6 +64,7 @@ public class FamousRobotApplication implements CommandLineRunner {
             loginCmd.setAccount(accountPre + i);
             loginCmd.setIndex(i);
             try {
+                loginCmdMap.putIfAbsent(i, loginCmd);
                 new LoginRequest(loginCmd).execute();
             } catch (Exception e) {
                 log.error("", e);
@@ -80,6 +86,22 @@ public class FamousRobotApplication implements CommandLineRunner {
         pool = new ThreadPool(threadCount, "机器人网关线程池");
         // login
         login(index, robotCount, accountPre);
+
+        // 重试
+        new Timer("", true).scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                for(LoginCmd loginCmd : loginCmdMap.values()){
+                    try {
+                        log.info("重连 robot={}", loginCmd.account);
+                        log.info("需要重连需要重连的机器人还有=={}个", loginCmdMap.size());
+                        new LoginRequest(loginCmd).execute();
+                    } catch (Exception e) {
+                        log.error("robot重连失败={}", e.getMessage());
+                    }
+                }
+            }
+        }, 5000, 10000);
 
         // print login count
         new Timer("", true).scheduleAtFixedRate(new TimerTask() {

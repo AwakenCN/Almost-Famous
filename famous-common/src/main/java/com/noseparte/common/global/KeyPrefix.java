@@ -19,6 +19,31 @@ public class KeyPrefix {
     public static class GameCoreRedisPrefix {
         /*role message queue*/
         public static final String ROLE_MESSAGE_QUEUE = "role_message_queue:";
+
+        // user
+        public static final String CACHE_USER = "cache_user:";
+        public static final long CACHE_USER_EXPIRE_TIME = 1800;
+        // role
+        public static final String CACHE_ROLE = "cache_role:";
+        public static final long CACHE_ROLE_EXPIRE_TIME = 1800;
+        // chapter
+        public static final String CACHE_CHAPTER = "cache_chapter:";
+        public static final long CACHE_CHAPTER_EXPIRE_TIME = 1800;
+        // card package
+        public static final String CACHE_CARD_PACKAGE = "cache_card_package:";
+        public static final long CACHE_CARD_PACKAGE_EXPIRE_TIME = 1800;
+        // mission
+        public static final String CACHE_MISSION = "cache_mission:";
+        public static final long CACHE_MISSION_EXPIRE_TIME = 1800;
+        // school
+        public static final String CACHE_SCHOOL = "cache_school:";
+        public static final long CACHE_SCHOOL_EXPIRE_TIME = 1800;
+        // actor bag
+        public static final String CACHE_ACTOR_BAG = "cache_actor_bag:";
+        public static final long CACHE_ACTOR_BAG_EXPIRE_TIME = 1800;
+        // sign
+        public static final String CACHE_SIGN = "cache_sign:";
+        public static final long CACHE_SIGN_EXPIRE_TIME = 1800;
     }
 
     public static class BattleRedisPrefix {

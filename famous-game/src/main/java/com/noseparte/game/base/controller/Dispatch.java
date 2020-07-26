@@ -44,6 +44,7 @@ public class Dispatch {
             String clientIp = request.getRemoteAddr();
             // TODO 线上环境要判断uid
             // 仅限于robot测试使用
+            log.info("request header params, {}", request.getHeader("uid"));
             if (request.getHeader("uid") != null) {
                 Long uid = Long.parseLong(request.getHeader("uid"));
                 if (!RegisterProtocol.whiteList(cmd)) {

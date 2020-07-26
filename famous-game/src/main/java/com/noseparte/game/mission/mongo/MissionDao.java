@@ -15,7 +15,7 @@ public interface MissionDao extends GeneralDao<Mission> {
 
     Mission getActorMissionsByRole(Long rid);
 
-    void updateActorMission(Mission mission);
+    boolean updateActorMission(Mission mission);
 
-    void insertActorMission(Mission mission);
+    boolean insertActorMission(Mission mission);
 }

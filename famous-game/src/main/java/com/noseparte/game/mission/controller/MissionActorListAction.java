@@ -32,18 +32,17 @@ public class MissionActorListAction extends Action {
 
     @Override
     public Resoult execute(JSONObject jsonObject, HttpServletRequest request, HttpServletResponse response) {
-        log.info(" { 请求玩家当前任务列表 Request: json={} } ", JSON.toJSONString(jsonObject));
-        Map<Integer, MissionBean> actorMissions = new ConcurrentHashMap<>();
+        if (log.isDebugEnabled()) {
+            log.debug(" { 请求玩家当前任务列表 Request: json={} } ", JSON.toJSONString(jsonObject));
+        }
         Long rid = jsonObject.getLong("rid");
-        Mission mission = iMissionService.getActorMissionById(rid);
+        Mission mission = iMissionService.getCurrentMission(rid);
         if (Objects.isNull(mission)) {
             return Resoult.error(RegisterProtocol.MISSION_ACTOR_LIST_RESP, ErrorCode.MISSION_NOT_EXIST, "获取任务列表失败");
         }
-        Role role = iRoleService.selectByRoleId(rid);
-        if (Objects.isNull(role)) {
-            return Resoult.error(RegisterProtocol.MISSION_ACTOR_LIST_RESP, ErrorCode.ACCOUNT_NOT_EXIST, "");
+        if (log.isInfoEnabled()) {
+            log.info("玩家可领取的任务列表 ========= rid={}, missions={}", rid, mission.getMissions().keySet());
         }
-        mission = iMissionService.actorMissionMgr(mission, role);
         return Resoult.ok(RegisterProtocol.MISSION_ACTOR_LIST_RESP).responseBody(mission);
     }
 }

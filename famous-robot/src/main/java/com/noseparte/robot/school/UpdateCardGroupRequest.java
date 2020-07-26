@@ -27,6 +27,11 @@ public class UpdateCardGroupRequest extends RequestSync {
         sync(FamousRobotApplication.gameCoreUrl, updateCardGroupCmd.toKeyValuePair(), new UpdateCardGroupResponse());
     }
 
+    @Override
+    public JSONObject callback() throws Exception {
+        return syncCallBack(FamousRobotApplication.gameCoreUrl, updateCardGroupCmd.toKeyValuePair());
+    }
+
     class UpdateCardGroupResponse implements ResponseCallBack<HttpResponse> {
 
         @Override

@@ -24,15 +24,19 @@ public class MissionBean implements Comparable<MissionBean> {
     public final static int PURCHASE_CARD_PACKAGE = 7;
     // 段位
     public final static int DAN_GRADING = 8;
+    // 使用某职业进行对战并获胜
+    public final static int NUMBER_OF_OCCUPATION_WINNER = 9;
 
     // 任务id
     private int missionId;
+    // 任务类型
+    private int type;
     // 任务状态
     private int status;
     // actor对应的进度
     private int condition;
     // 完成时间
-    private Long completeTick;
+    private long completeTick;
     // default 1：任务队列中保留 or：0
     private int isShow = 1;
 

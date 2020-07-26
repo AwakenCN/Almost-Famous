@@ -59,11 +59,7 @@ public class ChapterChallengeOverAction extends Action {
         //推送GM
         Resoult result = GameUtils.getActorCurrency(roleService.selectByRoleId(rid), rid);
         sendMessage.send(rid, result);
-//        sendMessage.sendNow(rid);
 
-        missionService.actorMissionMgr(missionService.getActorMissionById(rid), roleService.selectByRoleId(rid));
-        //任务推送
-//        missionService.noticeMission(rid);
         return Resoult.ok(RegisterProtocol.CHAPTER_CHALLENGE_OVER_RESP).responseBody(data);
     }
 }

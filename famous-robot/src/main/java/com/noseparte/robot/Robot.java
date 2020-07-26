@@ -1,6 +1,7 @@
 package com.noseparte.robot;
 
 import com.noseparte.common.bean.AttrCode;
+import com.noseparte.common.bean.BattleRankBean;
 import com.noseparte.common.utils.SpringContextUtils;
 import com.noseparte.robot.bag.BagListCmd;
 import com.noseparte.robot.bag.BagListRequest;
@@ -22,6 +23,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @Slf4j
@@ -35,6 +39,11 @@ public class Robot implements Runnable {
     public Long gold;
     public Long silver;
     public Long diamond;
+    public int index;
+    /**
+     * 段位
+     */
+    private BattleRankBean battleRank;
     public Mission mission;
     public School occupation;
     public Card cardPackage;
@@ -55,7 +64,7 @@ public class Robot implements Runnable {
                 Robot robot = robotMgr.getRobot(rid);
                 robotFactory.dispatch(robot);
             }
-        } else if (FamousRobotApplication.robotModel.equals(RobotType.SINGEL)) {
+        } else if (FamousRobotApplication.robotModel.equals(RobotType.SINGE)) {
 
             switch (FamousRobotApplication.robotType) {
                 case RobotType.ROLE:
@@ -138,38 +147,50 @@ public class Robot implements Runnable {
 
     private boolean initializeRobot(Long rid) {
         try {
+            List<Boolean> isAllCompleted = new ArrayList<>();
             // 任务列表
             ActorListCmd actorListCmd = new ActorListCmd();
             actorListCmd.setCmd(RegisterProtocol.MISSION_ACTOR_LIST_REQ);
             actorListCmd.setRid(rid);
-            new ActorListRequest(actorListCmd).execute();
+            new ActorListRequest(actorListCmd, isAllCompleted).execute();
             // 职业
             SchoolListCmd schoolListCmd = new SchoolListCmd();
             schoolListCmd.setCmd(RegisterProtocol.SCHOOL_LIST_REQ);
             schoolListCmd.setRid(rid);
-            new SchoolListRequest(schoolListCmd).execute();
+            new SchoolListRequest(schoolListCmd, isAllCompleted).execute();
+            if(log.isInfoEnabled()){
+                log.info("初始化robot {} 的职业列表 ", rid);
+            }
             // 卡包
             CardListCmd cardListCmd = new CardListCmd();
             cardListCmd.setCmd(RegisterProtocol.CARD_LIST_ACTION_REQ);
             cardListCmd.setRid(rid);
-            new CardListRequest(cardListCmd).execute();
+            new CardListRequest(cardListCmd, isAllCompleted).execute();
             // 关卡
             ProgressCmd progressCmd = new ProgressCmd();
             progressCmd.setCmd(RegisterProtocol.CHAPTER_PROGRESS_REQ);
             progressCmd.setRid(rid);
-            new ProgressRequest(progressCmd).execute();
+            new ProgressRequest(progressCmd, isAllCompleted).execute();
             // 背包
             BagListCmd bagListCmd = new BagListCmd();
             bagListCmd.setCmd(RegisterProtocol.CARD_BAG_LIST_REQ);
             bagListCmd.setRid(rid);
-            new BagListRequest(bagListCmd).execute();
+            new BagListRequest(bagListCmd, isAllCompleted).execute();
             // 签到
             RewardListCmd rewardListCmd = new RewardListCmd();
             rewardListCmd.setCmd(RegisterProtocol.SIGN_REWARD_LIST_REQ);
             rewardListCmd.setRid(rid);
-            new RewardListRequest(rewardListCmd).execute();
+            new RewardListRequest(rewardListCmd, isAllCompleted).execute();
 
-
+            while (true) {
+                int size = isAllCompleted.size();
+                log.debug("等待初始化的机器人id={},当前完成数量={}", rid, size);
+                if (size >= 7) {
+                    log.debug("======>>完成初始化的机器人id={}", rid);
+                    break;
+                }
+                Thread.sleep(1000L);
+            }
         } catch (Exception e) {
             if (log.isErrorEnabled()) {
                 log.error("robot {} 初始化失败", rid);
@@ -178,6 +199,7 @@ public class Robot implements Runnable {
         }
         return true;
     }
+
 
 
 }

@@ -44,7 +44,7 @@ public class DbManager {
         if (dataDir != null && dataDir.trim().length() > 0) {
             this.defaultDataDir = dataDir;
         } else {
-            this.defaultDataDir = ConfigManager.getStringValue("unique", "leveldb_datadir");
+            this.defaultDataDir = ConfigManager.getStringValue("unique", "levelDb_dataDir");
         }
         DBFactory factory = Iq80DBFactory.factory;
         File file = new File(defaultDataDir);
