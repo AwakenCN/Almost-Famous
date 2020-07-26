@@ -131,10 +131,6 @@
     </dependencyManagement>
 
     <modules>
-        <module>famous-cloud</module>
-        <module>famous-config</module>
-        <module>famous-zuul</module>
-        <module>famous-monitor</module>
         <module>famous-unique</module>
         <module>famous-common</module>
         <module>famous-login</module>
