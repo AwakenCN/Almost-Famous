@@ -72,8 +72,6 @@ Root project 'Almost-Famous'
 
 ![Eureka服务注册中心](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191217172829.png)
 
-![匹配](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/match.gif)![战斗](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/battle.gif)
-
 ## 一起交流
 
     如果您发现bug，或者有任何疑问，请提交issue !!
