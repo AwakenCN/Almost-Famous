@@ -75,7 +75,7 @@ Root project 'Almost-Famous'
 ## 一起交流
 
     如果您发现bug，或者有任何疑问，请提交issue !!
-    或者加入QQ交流群：780465774
+    或者加入QQ交流群：780465774 (注：非游戏行业勿加)
 
 * [QQ群 670252084](https://jq.qq.com/?_wv=1027&k=5gXmfE2)
 
