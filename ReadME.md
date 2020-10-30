@@ -79,4 +79,7 @@ Root project 'Almost-Famous'
 
 * [QQ群 670252084](https://jq.qq.com/?_wv=1027&k=5gXmfE2)
 
+## 微信公众号
+![简学Java](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/qrcode_for_gh_708596d9d40a_344.jpg)
+
  (Chinese ver.) 持续更新中，保持关注。
