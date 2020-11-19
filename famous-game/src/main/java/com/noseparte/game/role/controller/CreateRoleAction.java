@@ -31,9 +31,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author Noseparte
- * @date 2019/8/20 17:50
- * @Description
+ * @author noseparte
+ * @link github.com/noseparte
+ * @date 2019/8/20 - 17:50
+ * @implSpec
  */
 @Slf4j
 @Component
@@ -124,8 +125,6 @@ public class CreateRoleAction extends Action {
             iChapterService.initChapter(rid);
             // 初始化背包(卡包)
             iBagCardStrategyService.initActorBag(rid);
-            // 初始化战报
-//            battleHistoryService.initBattleHistory(rid);
 
             return Resoult.ok(RegisterProtocol.CREATE_ROLE_ACTION_RESP);
         }

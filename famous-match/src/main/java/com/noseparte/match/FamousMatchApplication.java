@@ -13,6 +13,7 @@ import com.noseparte.common.rpc.RpcClient;
 import com.noseparte.common.thread.ThreadPool;
 import com.noseparte.match.match.*;
 import com.noseparte.match.server.MatchServer;
+import com.noseparte.match.server.MatchServerConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RedissonClient;
 import org.springframework.boot.CommandLineRunner;

@@ -15,7 +15,7 @@ import com.noseparte.common.global.Misc;
 import com.noseparte.common.rpc.RpcClient;
 import com.noseparte.common.utils.SpringContextUtils;
 import com.noseparte.match.FamousMatchApplication;
-import com.noseparte.match.MatchServerConfig;
+import com.noseparte.match.server.MatchServerConfig;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;

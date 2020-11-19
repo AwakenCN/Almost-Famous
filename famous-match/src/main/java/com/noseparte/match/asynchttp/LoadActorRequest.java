@@ -10,7 +10,7 @@ import com.noseparte.common.http.RequestAsync;
 import com.noseparte.common.http.ResponseCallBack;
 import com.noseparte.common.utils.FastJsonUtils;
 import com.noseparte.common.utils.SpringContextUtils;
-import com.noseparte.match.MatchServerConfig;
+import com.noseparte.match.server.MatchServerConfig;
 import com.noseparte.match.match.LeisureMatchMgr;
 import com.noseparte.match.match.RankMatchMgr;
 import lombok.*;

@@ -10,7 +10,7 @@ import com.noseparte.common.http.KeyValuePair;
 import com.noseparte.common.http.RequestAsync;
 import com.noseparte.common.http.ResponseCallBack;
 import com.noseparte.common.utils.SpringContextUtils;
-import com.noseparte.match.MatchServerConfig;
+import com.noseparte.match.server.MatchServerConfig;
 import com.noseparte.match.match.RankMatchMgr;
 import io.netty.channel.Channel;
 import lombok.AllArgsConstructor;
