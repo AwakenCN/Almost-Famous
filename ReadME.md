@@ -68,6 +68,8 @@ Root project 'Almost-Famous'
 7. 启动Match服务端，入口为FamousMatchApplication类;
 8. 启动Battle服务端，入口为FamousBattleApplication类;
 
+- 切换到standalone分支，为测试环境
+
 ![Almost-Famous服务启动界面](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/20191214182137.png)
 
 ![Eureka服务注册中心](https://noseparte-1256862255.cos.ap-chengdu.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191217172829.png)
