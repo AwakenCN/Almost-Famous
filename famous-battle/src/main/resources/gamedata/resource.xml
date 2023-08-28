@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ResConf>
-	<Resource packName="com.noseparte.common.resources" className="MapConf" mapName="mapConfMap" dataTable="map.txt"/>
-</ResConf>
