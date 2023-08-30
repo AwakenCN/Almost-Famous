@@ -1,5 +1,9 @@
-package com.noseparte.game;
+package com.noseparte;
 
+import com.noseparte.server.WebsocketServer;
+import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -11,15 +15,20 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
  * @Description:
  *
  *          <p>Famous-Game服务 启动类</p>
- *          <p>注册到Eureka服务中心</p>
  */
 @SpringBootApplication(exclude = {MongoAutoConfiguration.class, DataSourceAutoConfiguration.class})
-public class FamousGameApplication {
+public class FamousGameApplication implements CommandLineRunner {
+
+    @Autowired
+    private WebsocketServer websocketServer;
 
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(FamousGameApplication.class);
         application.run(args);
     }
 
-
+    @Override
+    public void run(String... args) throws Exception {
+        websocketServer.start(8888);
+    }
 }

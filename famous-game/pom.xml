@@ -12,7 +12,9 @@
     <name>famous-game</name>
     <artifactId>famous-game</artifactId>
     <packaging>jar</packaging>
-    <description>Almost-Famous(成名之路) —— 架构使用 SpringBoot + Netty + Maven 的多进程分布式框架卡牌游戏开源项目。</description>
+    <description>Almost-Famous(成名之路) —— 架构使用 SpringBoot + Netty + Maven 的多进程分布式框架卡牌游戏开源项目。
+        websocket版本的服务器项目
+    </description>
 
     <inceptionYear>2019</inceptionYear>
 
@@ -41,6 +43,24 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-slf4j2-impl</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- Spring Boot Websocket -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+
+        <!-- Netty -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.70.Final</version>
         </dependency>
     </dependencies>
 
