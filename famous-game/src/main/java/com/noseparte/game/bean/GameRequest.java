@@ -1,0 +1,24 @@
+package com.noseparte.game.bean;
+
+import io.netty.channel.Channel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+/**
+ * @author haoyitao
+ * @implSpec 消息
+ * @since 2023/8/31 - 17:09
+ * @version 1.0
+ */
+@Getter
+@Setter
+@NoArgsConstructor
+public class GameRequest {
+
+    private String msgId;
+    private Channel channel;
+    private String params;
+    private String token;
+
+}

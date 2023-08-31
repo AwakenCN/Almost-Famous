@@ -1,5 +1,6 @@
 package com.noseparte.server;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.noseparte.server.handler.WebsocketInitializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
@@ -40,8 +41,8 @@ public class WebsocketServer {
     public void start(int port) {
         //设置采样器
         ResourceLeakDetector.setLevel(ResourceLeakDetector.Level.ADVANCED);
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
-        EventLoopGroup bossGroup = new NioEventLoopGroup(10);
+        EventLoopGroup bossGroup = new NioEventLoopGroup(new ThreadFactoryBuilder().setNameFormat("boss_").build());
+        EventLoopGroup workerGroup = new NioEventLoopGroup(10, new ThreadFactoryBuilder().setNameFormat("work_").build());
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(workerGroup, bossGroup)
