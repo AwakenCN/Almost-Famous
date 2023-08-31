@@ -1,8 +1,13 @@
 package com.noseparte.server.handler;
 
 import com.alibaba.fastjson2.JSON;
+import com.noseparte.FamousGameApplication;
 import com.noseparte.game.bean.GameRequest;
+import com.noseparte.game.bean.SessionKey;
 import com.noseparte.game.manager.SessionManager;
+import com.noseparte.game.thread.GameThreadPoolManager;
+import com.noseparte.game.thread.MessageTask;
+import com.noseparte.utils.ChannelUtils;
 import io.netty.channel.*;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import org.slf4j.Logger;
@@ -26,8 +31,16 @@ public class ServerWebSocketHandler extends SimpleChannelInboundHandler<Object> 
             String text = ((TextWebSocketFrame) msg).text();
             logger.info("接收到通道消息：{}， body：{}", channel.id().asShortText().hashCode(), text);
             GameRequest request = JSON.parseObject(text, GameRequest.class);
-            //parseMsg(request);
+            parseMsg(channel, request);
+            MessageTask task = new MessageTask(channel, request);
+            FamousGameApplication.gameThreadPoolManager.execute(task);
         }
+    }
+
+    private void parseMsg(Channel channel, GameRequest request) {
+        request.setChannel(channel);
+        //保存token
+        ChannelUtils.setAttr(channel, SessionKey.TOKEN, request.getToken());
     }
 
     @Override
