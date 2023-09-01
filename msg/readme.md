@@ -1,0 +1,2 @@
+1.uint32 fixed32 在java是直接解析成int的，所以数太大了，服务器会成为负数，不要用。
+2.msgId不能大于1000000,因为msgId跟客户端EventEnum里的id不要有重复的，在客户端收到消息之后，用直接用msgId当作eventId往下派发消息。

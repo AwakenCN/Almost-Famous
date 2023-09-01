@@ -62,7 +62,12 @@
             <artifactId>netty-all</artifactId>
             <version>4.1.70.Final</version>
         </dependency>
-
+        <!-- Protocol Buffers -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.18.1</version>
+        </dependency>
     </dependencies>
 
     <build>

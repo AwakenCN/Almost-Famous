@@ -1,0 +1,39 @@
+syntax = "proto3";
+import "def.proto";
+import "server/options.proto";
+option java_multiple_files = true;
+
+// -----------------------------------------
+// 通用相关
+// -----------------------------------------
+// 更新服务器时间
+message SCServerTime {
+	option (msgId) = 1001;
+	int64 millisecond  				= 1; //当前毫秒数
+}
+
+message CSKeepAlive {
+    option (msgId) = 1002;
+    int64 millisecond1  				= 1; //当前毫秒数
+    DPerson person                      = 2; //
+}
+
+// 错误提示
+message SCErrorMsg {
+	option (msgId) = 1005;
+	string errorMsg 					= 1; //错误提示
+	DPerson person                      = 2; //
+}
+
+enum TaskStatus {
+	NONE = 0; //未完成
+	COMPLETE = 1; //已完成未领奖
+	REWARD = 2; //已领奖
+}
+
+enum BuildingStatus {
+	UNLOCKED = 0; //未解锁
+	FREE = 1; //空闲
+	BUILDING = 2; //建造中
+	UPGRADING = 3; //升级中
+}

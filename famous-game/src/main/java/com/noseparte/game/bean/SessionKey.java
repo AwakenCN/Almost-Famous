@@ -10,7 +10,7 @@ import io.netty.util.AttributeKey;
  */
 public class SessionKey {
 
-    public static AttributeKey<String> TOKEN = AttributeKey.newInstance("token");
+    public final static AttributeKey<String> TOKEN = AttributeKey.valueOf("token");
 
 
 }
