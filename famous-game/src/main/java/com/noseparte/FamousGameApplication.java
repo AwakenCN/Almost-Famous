@@ -1,5 +1,7 @@
 package com.noseparte;
 
+import com.noseparte.game.bean.proto.msg.MsgHandler;
+import com.noseparte.game.manager.MessageManager;
 import com.noseparte.game.thread.GameThreadPoolManager;
 import com.noseparte.server.WebsocketServer;
 import jakarta.annotation.Resource;
@@ -33,6 +35,11 @@ public class FamousGameApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        try {
+            MsgHandler.getInstance().init("com.noseparte.game");
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
         websocketServer.start(8888);
     }
 

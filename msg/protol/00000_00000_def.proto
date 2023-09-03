@@ -1,5 +1,3 @@
-syntax = "proto3";
-
 option optimize_for = CODE_SIZE;
 
 // -----------------------------------------

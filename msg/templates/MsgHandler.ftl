@@ -30,7 +30,7 @@ public class MsgHandler {
     /**
      * 所有处理消息的方法
      */
-    private Map<Integer, MsgReceiverFuntion<User, Message>> receivers = new HashMap<>();
+    private Map<Integer, MsgReceiverFunction<User, Message>> receivers = new HashMap<>();
 
     /**
      * 初始化消息处理器
@@ -38,13 +38,13 @@ public class MsgHandler {
      * @param pkgName
      */
     public void init(String pkgName) throws Throwable {
-        Set<Class<?>> clazzes = PackageClass.getPackageClasses(pkgName);
-        for (Class<?> clazz : clazzes) {
+        Set<Class<?>> classes = PackageClass.getPackageClasses(pkgName);
+        for (Class<?> clazz : classes) {
             if (!clazz.isAnnotationPresent(MsgReceiverHandler.class)) {
                 continue;
             }
 
-            Object obj = clazz.newInstance();
+            Object obj = clazz.getDeclaredConstructor().newInstance();
             Method[] methods = clazz.getDeclaredMethods();
             for (Method m : methods) {
                 if (!m.isAnnotationPresent(MsgReceiver.class)) {
@@ -61,14 +61,14 @@ public class MsgHandler {
     }
 
 
-    private MsgReceiverFuntion<User, Message> getMsgReceiver(MethodHandles.Lookup lookup, Object annotated, Method method, Class<? extends Message> mc) throws Throwable {
+    private MsgReceiverFunction<User, Message> getMsgReceiver(MethodHandles.Lookup lookup, Object annotated, Method method, Class<? extends Message> mc) throws Throwable {
         MethodHandle handle = lookup.unreflect(method);
         final CallSite site = LambdaMetafactory.metafactory(lookup, "accept",
-                MethodType.methodType(MsgReceiverFuntion.class, annotated.getClass()),
+                MethodType.methodType(MsgReceiverFunction.class, annotated.getClass()),
                 MethodType.methodType(void.class, Object.class, Object.class),
                 handle,
                 MethodType.methodType(void.class, User.class, mc));
-        return (MsgReceiverFuntion<User, Message>) site.getTarget().invoke(annotated);
+        return (MsgReceiverFunction<User, Message>) site.getTarget().invoke(annotated);
     }
 
     /**
@@ -79,7 +79,7 @@ public class MsgHandler {
      * @param user
      */
     public void handle(int msgId, GeneratedMessageV3 message, User user) {
-        MsgReceiverFuntion func = receivers.get(msgId);
+        MsgReceiverFunction<User, Message> func = receivers.get(msgId);
         if (func == null) {
             return;
         }

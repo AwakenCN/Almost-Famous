@@ -39863,7 +39863,7 @@ public final class MsgDef {
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.im30.warz.gameengine.msg.Options.getDescriptor(),
+          com.noseparte.game.bean.proto.Options.getDescriptor(),
         });
     internal_static_com_noseparte_game_bean_proto_msg_DPerson_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -40111,7 +40111,7 @@ public final class MsgDef {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_noseparte_game_bean_proto_msg_DShop_descriptor,
         new java.lang.String[] { "Id", "Items", "NextRefreshTime", "RefreshType", "RefreshCurrency", "RefreshCost", "FreeRefressTimes", "Version", "CanRefresh", });
-    com.im30.warz.gameengine.msg.Options.getDescriptor();
+    com.noseparte.game.bean.proto.Options.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -1,8 +1,3 @@
-syntax = "proto3";
-import "def.proto";
-import "server/options.proto";
-option java_multiple_files = true;
-
 // -----------------------------------------
 // 通用相关
 // -----------------------------------------

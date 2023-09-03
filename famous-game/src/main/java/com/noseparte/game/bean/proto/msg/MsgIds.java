@@ -8,6 +8,9 @@ import com.google.protobuf.GeneratedMessageV3;
 import com.google.protobuf.Message;
 
 public class MsgIds {
+	public static final int SCServerTime = 1001;
+	public static final int CSKeepAlive = 1002;
+	public static final int SCErrorMsg = 1005;
 
     /**
      * 消息CLASS与消息ID的对应关系<消息class, 消息ID>
@@ -64,12 +67,18 @@ public class MsgIds {
 	 * 初始化消息CLASS与消息ID的对应关系
 	 */
 	private static void initClassToId() {
+		classToId.put(MsgCommon.SCServerTime.class, SCServerTime);
+		classToId.put(MsgCommon.CSKeepAlive.class, CSKeepAlive);
+		classToId.put(MsgCommon.SCErrorMsg.class, SCErrorMsg);
 	}
 	
 	/**
 	 * 初始化消息ID与消息CLASS的对应关系
 	 */
 	private static void initIdToClass() {
+		idToClass.put(SCServerTime,MsgCommon.SCServerTime.class);
+		idToClass.put(CSKeepAlive,MsgCommon.CSKeepAlive.class);
+		idToClass.put(SCErrorMsg,MsgCommon.SCErrorMsg.class);
 	}
 	/**
 	 * 根据消息id解析消息
@@ -79,6 +88,12 @@ public class MsgIds {
 	 */
 	public static GeneratedMessageV3 parseFrom(int msgId, byte[] s) throws IOException{
 		switch(msgId){
+			case SCServerTime:
+				return MsgCommon.SCServerTime.parseFrom(s);
+			case CSKeepAlive:
+				return MsgCommon.CSKeepAlive.parseFrom(s);
+			case SCErrorMsg:
+				return MsgCommon.SCErrorMsg.parseFrom(s);
 		}
 		return null;
 	}
