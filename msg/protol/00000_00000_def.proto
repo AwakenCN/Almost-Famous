@@ -4,407 +4,48 @@ option optimize_for = CODE_SIZE;
 // 数据集合体
 // -----------------------------------------
 message DPerson {
-    int64 pid = 1;
-    string name = 2;
+  int64 pid = 1;
+  string name = 2;
 }
 
 // 返回奖励
 message Reward {
-    string type = 1;
-    string count = 2;
-    string itemId = 3;
-    string value = 4;   //数值类
+  string type = 1;
+  string count = 2;
+  string itemId = 3;
+  string value = 4;   //数值类
 }
 
-// 好友信息
-message FriendInfo {
-    string uid = 1;
-    string name = 2;
-    string pic = 3;
-    int32 picVer = 4;
-    int64 power = 5;
-    int32 serverId = 6;
-    int32 intimacyValue = 7;   //亲密度
-    int64 lastOnlineTime = 8;  //最后在线时间
-    int64 offLineTime = 9;     //离线时间
-    int64 applyTime = 10;      //申请时间
-    bool isRead = 11;          //该申请是否已读
-    int32 state = 12;          //状态 1:好友列表  2:申请列表  3:黑名单
-    string abbr = 13;          //联盟简称
-    string headFrame = 14;     //头像框
+// 通用任务
+message TaskInfo{
+  string id = 1;
+  int32 progress = 2;     //任务进度
+  int32 state = 3;        //任务状态，0-进行中 1-已完成，2-已领取奖励
 }
 
-//自选礼包 礼包使用情况数据
-message SelPackUseInfo{
-    string exchangeId = 1;
-    int32  buyTimes = 2;
-    string slotArr = 3;         //礼包选择物品信息  1;0|2;1|2;2 
-}
-
-// 烤肉任务信息
-message DUserCookPartyTask {
-    string taskId = 1;
-    int32 taskPro = 2;
-    int32 rewardNum = 3;
-    int32 rewardMax = 4;
-    int32 para1 = 5;
-    string para2 = 6;
-    string rewardInfo = 7;
-}
-
-//摩天大楼相关
-//主界面信息
-message SkyActivityInfo{
-    string activityId = 1;
-    int64 startTime = 2;
-    int64 endTime = 3;
-}
-//末日摩天楼宝箱
-message SkyBoxInfo{
-    string id = 1;        //宝箱编号
-    string itemInfo = 2;  //宝箱开启后的道具
-    int32 status = 3;     //宝箱状态
-}
-//摩天契约奖励
-message SkyRewardInfo{
-    string id = 1;        
-    string rewardFree = 2; //免费奖励
-    string rewardMid = 3;  //中级奖励
-    string rewardSen = 4;  //高级奖励
-    int32 freeState = 5;   //奖励状态
-    int32 midState = 6;
-    int32 senState = 7;
-    int32 needPoint = 8;   //需要的分数
-    string light = 9;   //前端自用
-}
-//摩天任务
-message SkyTaskInfo{
-    string id = 1;
-    int32 progress = 2;     //任务进度
-    int32 state = 3;        //任务状态，0-进行中 1-已完成，2-已领取奖励
-}
-//摩天商店
-message SkyStoreInfo{
-    string id = 1;
-    int32 buyTime = 2;    //兑换次数
-}
-
-// 战熊分身信息
-message BearCloneInfo {
-    int32  pointId   = 1; // 坐标点Id
-    int32  status    = 2; // 状态
-    int64  startTime = 3; // 战熊开始时间
-    int64  endTime   = 4; // 战熊消失时间
-    int32  type      = 5; // 战熊类型
-}
-
-// 战熊分身 排行榜信息
-message BearCloneRankInfo {
-    string  uid      = 1; // 玩家的uid
-    string  name     = 2; // 玩家的名字
-    string  pic      = 3; // 玩家的系统头像
-    int32   picVer   = 4; // 玩家的自定义头像
-    string  frameId  = 5; // 玩家的头像框
-    int32   rank     = 6; // 玩家的排名
-    int64   damage   = 7; // 玩家的伤害
-}
-
-// 黑五礼包信息
-message BlackFivePackInfo {
-    string  id      = 1; // 礼包ID
-}
-
-message AllianceBox {
-    string allianceId           = 1; //联盟id
-    int32 exp                   = 2; //经验值
-    int32 level                 = 3; //等级
-    int32 boxType               = 4; //0:联盟宝箱（目前只有这一种）
-    int64 createTime            = 5; //创建时间
-    int64 lastUpdateTime        = 6; //更新时间
-    int32 sendMonsterGiftNum    = 7; //获取集结boss礼物次数
-}
-
-message AllianceMemberGift {
-    string uuid                 = 1; //主键uuid
-    string giftId               = 2; //礼物id
-    string uid                  = 3; //玩家uid
-    string allianceId           = 4; //联盟id
-    int32 giftType              = 5; //礼物类型 0：联盟礼物，1：荣誉礼物
-    int64 createTime            = 6; //创建时间
-    int64 expireTime            = 7; //过期时间
-}
-
-//许愿树愿望信息
-message WishInfo {
-    string uuid                 = 1; //主键,愿望唯一uuid
-    string uid                  = 2; //玩家uid
-    string content              = 3; //愿望内容
-    int32 likes                 = 4; //点赞数
-    int64 sendTime              = 5; //发布时间
-    int32 serverId              = 6;
-    string pic                  = 7; // 玩家的系统头像
-    int32 picVer                = 8; // 玩家的自定义头像
-    int32 rank                  = 9; // 排行榜名次
-    string abbr                 = 10; // 联盟简称
-    string name                 = 11; // 玩家的名字
-    string headFrame            = 12; // 玩家的头像框
-}
-
-// 农场访问信息
-message FarmVisitInfo {
-    string uid                  = 1; // 玩家uid
-    int32 farmLvl               = 2; // 农场等级
-    int32 ops                   = 3; // 行为，0-无任何操作，1-帮助，2-偷取
-    string pic                  = 4; // 玩家的系统头像
-    int32 picVer                = 5; // 玩家的自定义头像
-    string frameId              = 6; // 玩家的头像框
-    string name                 = 7; // 玩家名字
-    string abbr                 = 8; // 联盟简称
-    int32 serverId              = 9; // 服务器ID
-    int32 level                 = 10;// 玩家级别
-}
-
-message FarmVisitRecord {
-    string uid                  = 1; // 玩家uid
-    int32 ops                   = 2; // 行为，0-无任何操作，4-松土，5-除虫，6-施肥，7-偷取
-    string name                 = 3; // 玩家名字
-    bool success                = 4; // 是否成功
-    int64 time                  = 5; // 时间，单位：毫秒
-    string foodId                = 6; // 果实
-    int32 foodNum               = 7; // 果实数量
-    string abbr                 = 8; // 联盟简称
-    int32 serverId              = 9; // 服务器ID
-}
-
-// 通用 排行榜信息
-message RankInfo {
-    string  uid         = 1;    // 玩家的uid
-    string  name        = 2;    // 玩家的名字
-    string  pic         = 3;    // 玩家的系统头像
-    int32   picVer      = 4;    // 玩家的自定义头像
-    string  frameId     = 5;    // 玩家的头像框
-    int32   rank        = 6;    // 玩家的排名
-    int64   rankValue   = 7;    // 玩家的值
-    string  abbr        = 8;    // 联盟简称
-    int32 serverId      = 9;   // 服务器ID
-    string headFrame    = 10;    // 头像框
-    string  alName      = 11;    //联盟名称
-}
-
-// 联盟 排行榜信息
-message AllianceRankInfo {
-    string  allianceId   = 1;    // 联盟ID
-    string  name         = 2;    // 联盟的名字
-    string  icon         = 3;    // 联盟的系统头像
-    int32   rank         = 4;    // 联盟的排名
-    int64   rankValue    = 5;    // 联盟的值
-    string  abbr         = 6;    // 联盟简称
-    int32 serverId       = 7;   // 服务器ID
-}
-
-// Bingo 棋盘格子信息
-message BingoGrid {
-    int32  x = 1;    //行row
-    int32  y = 2;     //列line
-    int32  state = 3;    //1.点亮 0.未点亮
-    int32  num = 4;    // 抽中的数字
-    int32  position = 5;    //序号
-}
-
-// 情缘信息
-message LoveInfo {
-    string uid = 1;
-    string name = 2;
-    string pic = 3;
-    int32 picVer = 4;
-    string abbr = 5;          //联盟简称
-    string headFrame = 6;     //头像框
-    int32 value = 7;   //亲密值
-    int32 loveValue = 8;  //情缘值
-    int64 applyTime = 9;      //申请时间
-    int32 state = 10;          //状态   默认:0 缔结 1:申请中  2: 已与他人缔结
-    int32 serverId = 11;   // 服务器ID
-    string loveAvatarId = 12; //情缘形象id  默认:0
-}
-
-// 情缘值变化记录
- message LoveValueRecord {
-     int64 getTime = 1;
-     string type = 2;
-     int32 curNum = 3;
-     int32 totalNum = 4;
-     repeated string params = 5;
- }
-
- // 日历状态
- message LoveCalendar {
-     int32 day = 1;
-     int32 selfState = 2;  // 1:已签到
-     int32 loveState = 3;
- }
-
- // 通用任务
- message TaskInfo{
-     string id = 1;
-     int32 progress = 2;     //任务进度
-     int32 state = 3;        //任务状态，0-进行中 1-已完成，2-已领取奖励
- }
-
- // 情缘排行榜信息
- message LoveRankInfo {
-     string  uid         = 1;    // 玩家的uid
-     string  name        = 2;    // 玩家的名字
-     string  pic         = 3;    // 玩家的系统头像
-     int32   picVer      = 4;    // 玩家的自定义头像
-     int32   rank        = 5;    // 玩家的排名
-     int64   rankValue   = 6;    // 玩家的值
-     string  abbr        = 7;    // 联盟简称
-     int32 serverId      = 8;   // 服务器ID
-     string headFrame    = 9;    // 头像框
-     string  loveUid         = 10;    // 玩家的uid
-     string  loveName        = 11;    // 玩家的名字
-     string  lovePic         = 12;    // 玩家的系统头像
-     int32   lovePicVer      = 13;    // 玩家的自定义头像
-     string  loveAbbr        = 14;    // 联盟简称
-     int32 loveServerId      = 15;   // 服务器ID
-     string loveHeadFrame    = 16;    // 头像框
- }
-
- // 大富翁圈数奖励信息
- message DRewardLapsInfo {
-     int32 minLaps              = 1; //开始的圈数，包含
-     int32 maxLaps              = 2; //结束的圈数，包含
-     repeated Reward reward     = 3; //奖励信息
- }
-
-  // 大富翁每次骰子信息封装
-  message DPipsInfo {
-       int32 pips   = 1;    //骰子点数 0 显示 -
-       int32 point  = 2;    //落点格子位置
-       int32 type   = 3;    //格子类型
-       int32 event  = 4;    //事件类型
-       int32 level  = 5;    //格子是否升级
-       int32 steps  = 6;    //前进或者后退步数 正前进 负后退
-       int32 grade  = 7;    //格子宝箱等级
-       int64 time   = 8;    //时间
-  }
-
-// 新粒子改造信息
-message ParticleInfo {
-    string particleType = 1;  //粒子类型 1、2、3、4
-    repeated ParticleDnaInfo particle = 2; //dna列表
-    int32 unlockState = 3; //粒子解锁状态  1：解锁 0：未解锁
-    int32 power = 4; //战斗力
-}
-
-// 新粒子改造DNA信息
-message ParticleDnaInfo {
-    string dnaId = 1;
-    int32 level = 2;
-    int32 starLevel = 3;
-    string itemId = 4; // "|"分割
-    string itemNum = 5; // "|"分割
-}
-
- // 通用effect信息
+// 通用effect信息
 message EffectInfo {
-    int32 effectId             = 1;
-    float effectValue          = 2;
+  int32 effectId = 1;
+  float effectValue = 2;
 }
 
- // 通用商品信息
+// 通用商品信息
 message GoodInfo {
-    string goodId              = 1;
-    int32 buyNum               = 2; //已经购买次数
-    int32 maxBuyNum            = 3; //最大可购买次数
-    int32 canBuyNum            = 4; //当前可购买次数
+  string goodId = 1;
+  int32 buyNum = 2; //已经购买次数
+  int32 maxBuyNum = 3; //最大可购买次数
+  int32 canBuyNum = 4; //当前可购买次数
 }
 
- // 通用玩家数据
- message UserInfo {
-       string  uid         = 1;    // 玩家的uid
-       string  name        = 2;    // 玩家的名字
-       string  pic         = 3;    // 玩家的系统头像
-       int32   picVer      = 4;    // 玩家的自定义头像
-       string  abbr        = 5;    // 联盟简称
-       int32 serverId      = 6;   // 服务器ID
-       string headFrame    = 7;    // 头像框
-       int64 power         = 8;    // 战斗力
-   }
-
-  // 贸易战-附庸信息
-  message TradeInfo {
-      UserInfo userInfo   = 1;    // 玩家的uid
-      int64 total         = 2;    // 输送资源总量
-      int64 applyTime     = 3;    // 申请时间
-  }
-
-  // 贸易战-输送资源记录
-  message TradeRecord {
-      int64 time        = 1; // 申请时间
-      int64 water       = 2; // 水
-      int64 limestone   = 3; // 灰岩
-      int64 copper      = 4; // 铜
-      int64 earth       = 5; // 稀土
-  }
-
-// 熔炉-兑换记录
-message FurnaceRecord {
-    int32 type        = 1; // 类型
-    string costItemId = 2; // 消耗道具
-    int32 costNum     = 3; // 消耗数量
-    string getItemId  = 4; // 获得道具
-    int32 getNum      = 5; // 获得数量
-    int64 time        = 6; // 兑换时间
+// 通用玩家数据
+message UserInfo {
+  string  uid = 1;    // 玩家的uid
+  string  name = 2;    // 玩家的名字
+  string  pic = 3;    // 玩家的系统头像
+  int32   picVer = 4;    // 玩家的自定义头像
+  string  abbr = 5;    // 联盟简称
+  int32 serverId = 6;   // 服务器ID
+  string headFrame = 7;    // 头像框
+  int64 power = 8;    // 战斗力
 }
 
-// 共鸣信息
-message EchoInfo {
-    int32 score         = 1; // 分数
-    string sp           = 2; // 解锁的小节点
-    string bp           = 3; // 解锁的大节点
-}
-
-// 深渊挑战信息
-message AbyssFightInfo {
-    int32 floor         = 1; // 层数
-    int32 rewardStatus  = 2; // 奖励状态，0-不可领取，1-可领取
-    int64 endTime       = 3; // 结束时间
-    int32 power         = 4; // 战力
-    string awards       = 5; // 可领取的奖励
-}
-
-// 商城物品价格
-message DShopItemPrice {
-    int32 type       = 1;       //货币类型
-    int32 goodsId    = 2;       //物品ID
-    int32 num        = 3;       //数量
-}
-
-// 商城物品
-message DShopItem {
-    int64 gridId             = 1;    //格子id
-    int32 goodsId            = 2;    //物品id
-    int32 goodsNum           = 3;    //物品数量
-    bool lock                = 4;    //是否锁定
-    DShopItemPrice prices    = 5;    //购买价格
-    int32 stock              = 6;    //库存
-    int32 off                = 7;    //打折比例
-    int32 unlockType         = 8;    //解锁类型
-    int32 unlockParam1       = 9;   //解锁参数1
-    int32 unlockParam2       = 10;   //解锁参数2
-    int64 startTime          = 11;   //开始时间
-    int64 endTime            = 12;   //结束时间
-}
-
-message DShop {
-    int32 id                            = 1;    //商城id
-    repeated DShopItem items            = 2;    //商场商品
-    int32 nextRefreshTime               = 3;    //下次刷新时间，单位秒
-    int32 refreshType                   = 4;    //刷新消耗类型，1-货币，2-道具
-    int32 refreshCurrency               = 5;    //刷新货币
-    int32 refreshCost                   = 6;    //刷新消耗
-    int32 freeRefressTimes              = 7;    //免费刷新次数
-    int32 version                       = 8;    //版本(刷新时间)
-    bool canRefresh                     = 9;    //是否可以刷新
-}

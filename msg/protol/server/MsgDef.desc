@@ -1,6 +1,7 @@
 
-ß8
-MsgDef.proto!com.noseparte.game.bean.proto.msgoptions.proto"/
+ÔøΩ
+MsgDef.proto!com.lung.game.bean.proto.msg
+options.proto"/
 DPerson
 pid (Rpid
 name (	Rname"`
@@ -8,249 +9,11 @@
 type (	Rtype
 count (	Rcount
 itemId (	RitemId
-value (	Rvalue"¸
-
-FriendInfo
-uid (	Ruid
-name (	Rname
-pic (	Rpic
-picVer (RpicVer
-power (Rpower
-serverId (RserverId$
-intimacyValue (RintimacyValue&
-lastOnlineTime (RlastOnlineTime 
-offLineTime	 (RoffLineTime
-	applyTime
- (R	applyTime
-isRead (RisRead
-state (Rstate
-abbr (	Rabbr
-	headFrame (	R	headFrame"f
-SelPackUseInfo
-
-exchangeId (	R
-exchangeId
-buyTimes (RbuyTimes
-slotArr (	RslotArr"Œ
-DUserCookPartyTask
-taskId (	RtaskId
-taskPro (RtaskPro
-	rewardNum (R	rewardNum
-	rewardMax (R	rewardMax
-para1 (Rpara1
-para2 (	Rpara2
-
-rewardInfo (	R
-rewardInfo"i
-SkyActivityInfo
-
-activityId (	R
-activityId
-	startTime (R	startTime
-endTime (RendTime"P
-
-SkyBoxInfo
-id (	Rid
-itemInfo (	RitemInfo
-status (Rstatus"Ö
-SkyRewardInfo
-id (	Rid
-
-rewardFree (	R
-rewardFree
-	rewardMid (	R	rewardMid
-	rewardSen (	R	rewardSen
-	freeState (R	freeState
-midState (RmidState
-senState (RsenState
-	needPoint (R	needPoint
-light	 (	Rlight"O
-SkyTaskInfo
-id (	Rid
-progress (Rprogress
-state (Rstate"8
-SkyStoreInfo
-id (	Rid
-buyTime (RbuyTime"ç
-BearCloneInfo
-pointId (RpointId
-status (Rstatus
-	startTime (R	startTime
-endTime (RendTime
-type (Rtype"©
-BearCloneRankInfo
-uid (	Ruid
-name (	Rname
-pic (	Rpic
-picVer (RpicVer
-frameId (	RframeId
-rank (Rrank
-damage (Rdamage"#
-BlackFivePackInfo
-id (	Rid"Á
-AllianceBox
-
-allianceId (	R
-allianceId
-exp (Rexp
-level (Rlevel
-boxType (RboxType
-
-createTime (R
-createTime&
-lastUpdateTime (RlastUpdateTime.
-sendMonsterGiftNum (RsendMonsterGiftNum"Œ
-AllianceMemberGift
-uuid (	Ruuid
-giftId (	RgiftId
-uid (	Ruid
-
-allianceId (	R
-allianceId
-giftType (RgiftType
-
-createTime (R
-createTime
-
-expireTime (R
-expireTime"ú
-WishInfo
-uuid (	Ruuid
-uid (	Ruid
-content (	Rcontent
-likes (Rlikes
-sendTime (RsendTime
-serverId (RserverId
-pic (	Rpic
-picVer (RpicVer
-rank	 (Rrank
-abbr
- (	Rabbr
-name (	Rname
-	headFrame (	R	headFrame"Î
-FarmVisitInfo
-uid (	Ruid
-farmLvl (RfarmLvl
-ops (Rops
-pic (	Rpic
-picVer (RpicVer
-frameId (	RframeId
-name (	Rname
-abbr (	Rabbr
-serverId	 (RserverId
-level
- (Rlevel"Ÿ
-FarmVisitRecord
-uid (	Ruid
-ops (Rops
-name (	Rname
-success (Rsuccess
-time (Rtime
-foodId (	RfoodId
-foodNum (RfoodNum
-abbr (	Rabbr
-serverId	 (RserverId"å
-RankInfo
-uid (	Ruid
-name (	Rname
-pic (	Rpic
-picVer (RpicVer
-frameId (	RframeId
-rank (Rrank
-	rankValue (R	rankValue
-abbr (	Rabbr
-serverId	 (RserverId
-	headFrame
- (	R	headFrame
-alName (	RalName"º
-AllianceRankInfo
-
-allianceId (	R
-allianceId
-name (	Rname
-icon (	Ricon
-rank (Rrank
-	rankValue (R	rankValue
-abbr (	Rabbr
-serverId (RserverId"k
-	BingoGrid
-x (Rx
-y (Ry
-state (Rstate
-num (Rnum
-position (Rposition"¥
-LoveInfo
-uid (	Ruid
-name (	Rname
-pic (	Rpic
-picVer (RpicVer
-abbr (	Rabbr
-	headFrame (	R	headFrame
-value (Rvalue
-	loveValue (R	loveValue
-	applyTime	 (R	applyTime
-state
- (Rstate
-serverId (RserverId"
-loveAvatarId (	RloveAvatarId"ã
-LoveValueRecord
-getTime (RgetTime
-type (	Rtype
-curNum (RcurNum
-totalNum (RtotalNum
-params (	Rparams"\
-LoveCalendar
-day (Rday
-	selfState (R	selfState
-	loveState (R	loveState"L
+value (	Rvalue"L
 TaskInfo
 id (	Rid
 progress (Rprogress
-state (Rstate"¥
-LoveRankInfo
-uid (	Ruid
-name (	Rname
-pic (	Rpic
-picVer (RpicVer
-rank (Rrank
-	rankValue (R	rankValue
-abbr (	Rabbr
-serverId (RserverId
-	headFrame	 (	R	headFrame
-loveUid
- (	RloveUid
-loveName (	RloveName
-lovePic (	RlovePic
-
-lovePicVer (R
-lovePicVer
-loveAbbr (	RloveAbbr"
-loveServerId (RloveServerId$
-loveHeadFrame (	RloveHeadFrame"à
-DRewardLapsInfo
-minLaps (RminLaps
-maxLaps (RmaxLapsA
-reward (2).com.noseparte.game.bean.proto.msg.RewardRreward"µ
-	DPipsInfo
-pips (Rpips
-point (Rpoint
-type (Rtype
-event (Revent
-level (Rlevel
-steps (Rsteps
-grade (Rgrade
-time (Rtime"∫
-ParticleInfo"
-particleType (	RparticleTypeN
-particle (22.com.noseparte.game.bean.proto.msg.ParticleDnaInfoRparticle 
-unlockState (RunlockState
-power (Rpower"ç
-ParticleDnaInfo
-dnaId (	RdnaId
-level (Rlevel
-	starLevel (R	starLevel
-itemId (	RitemId
-itemNum (	RitemNum"J
+state (Rstate"J
 
 EffectInfo
 effectId (ReffectId 
@@ -259,7 +22,7 @@ EffectInfo
 goodId (	RgoodId
 buyNum (RbuyNum
 	maxBuyNum (R	maxBuyNum
-	canBuyNum (R	canBuyNum"æ
+	canBuyNum (R	canBuyNum"ÔøΩ
 UserInfo
 uid (	Ruid
 name (	Rname
@@ -268,65 +31,4 @@ EffectInfo
 abbr (	Rabbr
 serverId (RserverId
 	headFrame (	R	headFrame
-power (Rpower"à
-	TradeInfoG
-userInfo (2+.com.noseparte.game.bean.proto.msg.UserInfoRuserInfo
-total (Rtotal
-	applyTime (R	applyTime"É
-TradeRecord
-time (Rtime
-water (Rwater
-	limestone (R	limestone
-copper (Rcopper
-earth (Rearth"ß
-FurnaceRecord
-type (Rtype
-
-costItemId (	R
-costItemId
-costNum (RcostNum
-	getItemId (	R	getItemId
-getNum (RgetNum
-time (Rtime"@
-EchoInfo
-score (Rscore
-sp (	Rsp
-bp (	Rbp"í
-AbyssFightInfo
-floor (Rfloor"
-rewardStatus (RrewardStatus
-endTime (RendTime
-power (Rpower
-awards (	Rawards"P
-DShopItemPrice
-type (Rtype
-goodsId (RgoodsId
-num (Rnum"Ä
-	DShopItem
-gridId (RgridId
-goodsId (RgoodsId
-goodsNum (RgoodsNum
-lock (RlockI
-prices (21.com.noseparte.game.bean.proto.msg.DShopItemPriceRprices
-stock (Rstock
-off (Roff
-
-unlockType (R
-unlockType"
-unlockParam1	 (RunlockParam1"
-unlockParam2
- (RunlockParam2
-	startTime (R	startTime
-endTime (RendTime"Ÿ
-DShop
-id (RidB
-items (2,.com.noseparte.game.bean.proto.msg.DShopItemRitems(
-nextRefreshTime (RnextRefreshTime 
-refreshType (RrefreshType(
-refreshCurrency (RrefreshCurrency 
-refreshCost (RrefreshCost*
-freeRefressTimes (RfreeRefressTimes
-version (Rversion
-
-canRefresh	 (R
-canRefreshBHbproto3
+power (RpowerBHbproto3

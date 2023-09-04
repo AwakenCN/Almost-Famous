@@ -1,0 +1,14 @@
+// -----------------------------------------
+// 玩家相关
+// -----------------------------------------
+// 请求登录
+message CSLogin {
+	option (msgId) = 1201;
+	string uid  				= 1; //玩家id
+}
+// 响应登录
+message SCLogin {
+	option (msgId) = 1202;
+	string token  				= 1; //token信息
+	UserInfo userInfo  				= 2; //token信息
+}

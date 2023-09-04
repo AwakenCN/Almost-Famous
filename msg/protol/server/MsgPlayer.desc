@@ -1,0 +1,9 @@
+
+�
+MsgPlayer.proto!com.lung.game.bean.proto.msg
+options.protoMsgDef.proto""
+CSLogin
+uid (	Ruid:���	"o
+SCLogin
+token (	RtokenG
+userInfo (2+.com.lung.game.bean.proto.msg.UserInfoRuserInfo:���	bproto3
