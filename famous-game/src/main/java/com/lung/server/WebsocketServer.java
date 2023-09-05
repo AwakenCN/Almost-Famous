@@ -2,6 +2,7 @@ package com.lung.server;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.lung.server.handler.WebsocketInitializer;
+import com.lung.utils.CommonUtils;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.*;
@@ -9,9 +10,26 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import io.netty.handler.ssl.SslContext;
+import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.util.ResourceLeakDetector;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManagerFactory;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.security.KeyStore;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+import java.util.Objects;
 
 /**
  * @author haoyitao
@@ -31,9 +49,10 @@ import org.springframework.stereotype.Component;
  * @implSpec
  * @since 2023/8/29 - 17:38
  */
-@Slf4j
 @Component
 public class WebsocketServer {
+
+    private final static Logger logger = LoggerFactory.getLogger(WebsocketServer.class);
 
     /**
      * @param port netty网络端口
@@ -44,6 +63,30 @@ public class WebsocketServer {
         EventLoopGroup bossGroup = new NioEventLoopGroup(new ThreadFactoryBuilder().setNameFormat("boss_").build());
         EventLoopGroup workerGroup = new NioEventLoopGroup(10, new ThreadFactoryBuilder().setNameFormat("work_").build());
         try {
+            // 1. 准备 Keystore：
+            String fileName = "/almost-famous.keystore"; // CA 证书文件路径
+            File file = new File(CommonUtils.getClassPath() + fileName);
+            String keystorePath = file.getPath();  // Keystore 文件路径
+            logger.info("ssl 证书路径：{}", keystorePath);
+            String keystorePassword = "noseparte";  // Keystore 密码
+
+            KeyStore keyStore = KeyStore.getInstance("JKS");
+            try (InputStream inputStream = Files.newInputStream(Paths.get(keystorePath))) {
+                keyStore.load(inputStream, keystorePassword.toCharArray());
+            }
+
+            // 2. 创建 KeyManagerFactory：
+            KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+            kmf.init(keyStore, keystorePassword.toCharArray());
+
+
+            // 3. 创建 TrustManagerFactory（用于服务器验证客户端证书）：
+            TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+            tmf.init(keyStore);
+
+            // 4. 创建 SslContext：
+            SslContext sslContext = SslContextBuilder.forServer(kmf).trustManager(tmf).build();
+
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(workerGroup, bossGroup)
                     .channel(NioServerSocketChannel.class)
@@ -54,21 +97,22 @@ public class WebsocketServer {
                     .option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT)
                     .option(ChannelOption.SO_RCVBUF, 10485760)
                     .handler(new LoggingHandler(LogLevel.DEBUG))
-                    .childHandler(new WebsocketInitializer())
+                    .childHandler(new WebsocketInitializer(sslContext))
 //                    .childOption(ChannelOption.TCP_NODELAY, true)
-                    ;
+            ;
 
-            ChannelFuture f = bootstrap.bind(port);
-            f.sync().channel();
-        } catch (InterruptedException e) {
+            ChannelFuture future = bootstrap.bind(port).sync();
+            future.channel().closeFuture().sync();
+        } catch (Exception e) {
             StackTraceElement[] stackTrace = e.getStackTrace();
             String errorInfo = stackTrace[0].getClassName() + stackTrace[0].getFileName() + stackTrace[0].getLineNumber();
-            log.error("netty network start error, {}", errorInfo, e);
+            logger.error("netty network start error, {}", errorInfo, e);
             throw new RuntimeException(e);
+        } finally {
+            workerGroup.shutdownGracefully();
+            bossGroup.shutdownGracefully();
         }
-        log.info("netty server starting");
+        logger.info("netty server starting");
     }
-
-
 
 }

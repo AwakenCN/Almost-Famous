@@ -45,19 +45,19 @@ public class MessageTask implements Runnable {
 
     private void doTask() {
         logger.info("do MessageTask! {}", gameRequest);
-        int msgId = gameRequest.getMsgId();
-        GeneratedMessageV3 message;
-        try {
-            message = MsgIds.parseFrom(msgId, gameRequest.getParams().getBytes());
-        } catch (IOException e) {
-            logger.error("parse message error, msgId = {}", msgId, e);
-            throw new RuntimeException(e);
-        }
-        User user = SessionManager.getInstance().getUser(channel);
-        if (null == user) {
-            return;
-        }
-        MsgHandler.getInstance().handle(msgId, message, user);
+//        int msgId = gameRequest.getMsgId();
+//        GeneratedMessageV3 message;
+//        try {
+//            message = MsgIds.parseFrom(msgId, gameRequest.getParams().getBytes());
+//        } catch (IOException e) {
+//            logger.error("parse message error, msgId = {}", msgId, e);
+//            throw new RuntimeException(e);
+//        }
+//        User user = SessionManager.getInstance().getUser(channel);
+//        if (null == user) {
+//            return;
+//        }
+//        MsgHandler.getInstance().handle(msgId, message, user);
         channel.writeAndFlush(new TextWebSocketFrame("收到消息, 请稍后"));
     }
 
