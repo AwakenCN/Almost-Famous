@@ -3,6 +3,7 @@ package com.lung.server;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.lung.server.handler.WebsocketInitializer;
 import com.lung.utils.CommonUtils;
+import com.lung.utils.SslUtils;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.*;
@@ -64,28 +65,10 @@ public class WebsocketServer {
         EventLoopGroup workerGroup = new NioEventLoopGroup(10, new ThreadFactoryBuilder().setNameFormat("work_").build());
         try {
             // 1. 准备 Keystore：
-            String fileName = "/almost-famous.keystore"; // CA 证书文件路径
-            File file = new File(CommonUtils.getClassPath() + fileName);
-            String keystorePath = file.getPath();  // Keystore 文件路径
-            logger.info("ssl 证书路径：{}", keystorePath);
-            String keystorePassword = "noseparte";  // Keystore 密码
-
-            KeyStore keyStore = KeyStore.getInstance("JKS");
-            try (InputStream inputStream = Files.newInputStream(Paths.get(keystorePath))) {
-                keyStore.load(inputStream, keystorePassword.toCharArray());
-            }
-
             // 2. 创建 KeyManagerFactory：
-            KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-            kmf.init(keyStore, keystorePassword.toCharArray());
-
-
             // 3. 创建 TrustManagerFactory（用于服务器验证客户端证书）：
-            TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-            tmf.init(keyStore);
-
             // 4. 创建 SslContext：
-            SslContext sslContext = SslContextBuilder.forServer(kmf).trustManager(tmf).build();
+            SslContext sslContext = SslUtils.createServerSslContext();
 
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(workerGroup, bossGroup)

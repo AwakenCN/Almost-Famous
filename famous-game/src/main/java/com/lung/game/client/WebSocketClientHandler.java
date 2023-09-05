@@ -52,12 +52,15 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
                 MsgPlayer.CSLogin.Builder loginMessage = MsgPlayer.CSLogin.newBuilder();
                 loginMessage.setUid("123456");
 //                TextWebSocketFrame textFrame = new TextWebSocketFrame("Hello, WebSocket Server!");
-                ctx.writeAndFlush(loginMessage.build());
+                ch.writeAndFlush(loginMessage.build());
             } catch (WebSocketHandshakeException e) {
                 handshakeFuture.setFailure(e);
                 System.out.println("WebSocket handshake failed: " + e.getMessage());
             }
             return;
+        } else {
+            TextWebSocketFrame textFrame = new TextWebSocketFrame("Hello, WebSocket Server!");
+            ch.writeAndFlush(textFrame);
         }
 
         if (frame instanceof TextWebSocketFrame) {

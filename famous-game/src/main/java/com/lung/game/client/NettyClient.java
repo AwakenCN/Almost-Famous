@@ -1,6 +1,7 @@
 package com.lung.game.client;
 
 import com.lung.utils.CommonUtils;
+import com.lung.utils.SslUtils;
 import com.lung.utils.TraceUtils;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
@@ -50,29 +51,7 @@ public class NettyClient {
 
     public void connect() throws Exception {
         try {
-            // 1. 准备 Keystore：
-            String fileName = "/almost-famous.keystore"; // CA 证书文件路径
-            File file = new File(CommonUtils.getClassPath() + fileName);
-            String keystorePath = file.getPath();  // Keystore 文件路径
-            logger.info("ssl 证书路径：{}", keystorePath);
-            String keystorePassword = "noseparte";  // Keystore 密码
-
-            KeyStore keyStore = KeyStore.getInstance("JKS");
-            try (InputStream inputStream = Files.newInputStream(Paths.get(keystorePath))) {
-                keyStore.load(inputStream, keystorePassword.toCharArray());
-            }
-
-            // 2. 创建 KeyManagerFactory：
-            KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-            kmf.init(keyStore, keystorePassword.toCharArray());
-
-
-            // 3. 创建 TrustManagerFactory（用于服务器验证客户端证书）：
-            TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-            tmf.init(keyStore);
-
-            // 4. 创建 SslContext：
-            SslContext sslContext = SslContextBuilder.forClient().trustManager(tmf).build();
+            SslContext sslContext = SslUtils.createClientSslContext();
 
             // Connect with V13 (RFC 6455 aka HyBi-17). You can change it to V08 or V00.
             // If you change it to V00, ping is not supported and remember to change
@@ -92,13 +71,12 @@ public class NettyClient {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline p = ch.pipeline();
-                            if (sslContext != null) {
-                                p.addLast(sslContext.newHandler(ch.alloc(), uri.getHost(), uri.getPort()));
-                            }
+                            p.addLast(sslContext.newHandler(ch.alloc(), uri.getHost(), uri.getPort()));
                             p.addLast(
                                     new HttpClientCodec(),
                                     new HttpObjectAggregator(8192),
                                     WebSocketClientCompressionHandler.INSTANCE,
+                                    new IdleStateHandler(5, 5, 5, TimeUnit.SECONDS),
                                     handler);
                         }
 
