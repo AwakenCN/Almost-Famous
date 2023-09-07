@@ -3,13 +3,14 @@ package com.lung.game.client;
 import com.lung.game.bean.proto.msg.MsgPlayer;
 import io.netty.channel.*;
 import io.netty.handler.codec.http.FullHttpResponse;
-import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
-import io.netty.handler.codec.http.websocketx.WebSocketClientHandshaker;
-import io.netty.handler.codec.http.websocketx.WebSocketFrame;
-import io.netty.handler.codec.http.websocketx.WebSocketHandshakeException;
+import io.netty.handler.codec.http.websocketx.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @ChannelHandler.Sharable
 public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> {
+
+    private final static Logger logger = LoggerFactory.getLogger(WebSocketClientHandler.class);
 
     private WebSocketClientHandshaker handShaker;
     private ChannelPromise handshakeFuture;
@@ -49,18 +50,17 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
                 System.out.println("WebSocket handshake completed successfully.");
 
                 // 在握手成功之后立即发送消息给服务器
-                MsgPlayer.CSLogin.Builder loginMessage = MsgPlayer.CSLogin.newBuilder();
-                loginMessage.setUid("123456");
-//                TextWebSocketFrame textFrame = new TextWebSocketFrame("Hello, WebSocket Server!");
-                ch.writeAndFlush(loginMessage.build());
+                TextWebSocketFrame textFrame = new TextWebSocketFrame("Hello, WebSocket Server!");
+                ch.writeAndFlush(textFrame);
             } catch (WebSocketHandshakeException e) {
                 handshakeFuture.setFailure(e);
                 System.out.println("WebSocket handshake failed: " + e.getMessage());
             }
             return;
         } else {
-            TextWebSocketFrame textFrame = new TextWebSocketFrame("Hello, WebSocket Server!");
-            ch.writeAndFlush(textFrame);
+            MsgPlayer.CSLogin.Builder loginMessage = MsgPlayer.CSLogin.newBuilder();
+            loginMessage.setUid("123456");
+            ch.writeAndFlush(loginMessage.build());
         }
 
         if (frame instanceof TextWebSocketFrame) {
@@ -80,5 +80,12 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         // 异常处理逻辑
+    }
+
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        // 心跳检测
+        logger.info("channel {}, 收到心跳信息, {}", ctx.channel().id().asShortText().hashCode(), evt.toString());
+        ctx.writeAndFlush(new PingWebSocketFrame());
     }
 }

@@ -47,7 +47,7 @@ public class WebsocketInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast(new WebSocketServerCompressionHandler());
         pipeline.addLast(new WebSocketServerProtocolHandler("/ws", null, true));
 //        pipeline.addLast(new WebSocketIndexPageHandler(WEBSOCKET_PATH));
-        pipeline.addLast(new IdleStateHandler(30, 30, 30, TimeUnit.SECONDS));
+        pipeline.addLast(new IdleStateHandler(5, 5, 5, TimeUnit.SECONDS));
         // ... 其他设置
         pipeline.addLast(new ServerWebSocketHandler());
 

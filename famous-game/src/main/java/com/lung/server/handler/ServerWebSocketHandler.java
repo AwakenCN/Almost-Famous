@@ -74,4 +74,10 @@ public class ServerWebSocketHandler extends SimpleChannelInboundHandler<WebSocke
         logger.error("exceptionCaught, {}, {}", ctx.channel().id().asShortText().hashCode(), traceInfo);
         super.exceptionCaught(ctx, cause);
     }
+
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        // 心跳检测
+        logger.info("channel {}, 服务端收到心跳信息, {}", ctx.channel().id().asShortText().hashCode(), evt.toString());
+    }
 }
