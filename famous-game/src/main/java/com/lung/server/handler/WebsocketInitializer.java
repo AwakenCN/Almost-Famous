@@ -1,5 +1,9 @@
 package com.lung.server.handler;
 
+import com.google.protobuf.AbstractMessage;
+import com.google.protobuf.MessageLite;
+import com.google.protobuf.MessageLiteOrBuilder;
+import com.lung.game.bean.proto.msg.MsgPlayer;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -11,6 +15,10 @@ import io.netty.handler.codec.http.websocketx.WebSocket13FrameDecoder;
 import io.netty.handler.codec.http.websocketx.WebSocket13FrameEncoder;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.codec.http.websocketx.extensions.compression.WebSocketServerCompressionHandler;
+import io.netty.handler.codec.protobuf.ProtobufDecoder;
+import io.netty.handler.codec.protobuf.ProtobufEncoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.handler.ssl.SslContext;
@@ -44,7 +52,14 @@ public class WebsocketInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast(new HttpObjectAggregator(512 * 1024));
 //        pipeline.addLast(new WebSocket13FrameDecoder(true, true, 1024*1024));
 //        pipeline.addLast(new WebSocket13FrameEncoder(true));
+        pipeline.addLast(new ProtobufVarint32FrameDecoder());
+        pipeline.addLast(new ProtobufDecoder(MsgPlayer.CSLogin.getDefaultInstance()));
+
+        pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
+        pipeline.addLast(new ProtobufEncoder());
+
         pipeline.addLast(new WebSocketServerCompressionHandler());
+
         pipeline.addLast(new WebSocketServerProtocolHandler("/ws", null, true));
 //        pipeline.addLast(new WebSocketIndexPageHandler(WEBSOCKET_PATH));
         pipeline.addLast(new IdleStateHandler(5, 5, 5, TimeUnit.SECONDS));
