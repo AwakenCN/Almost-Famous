@@ -4,6 +4,8 @@ import com.lung.game.bean.proto.msg.MsgPlayer;
 import io.netty.channel.*;
 import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.websocketx.*;
+import io.netty.handler.timeout.IdleState;
+import io.netty.handler.timeout.IdleStateEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,8 +52,9 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
                 System.out.println("WebSocket handshake completed successfully.");
 
                 // 在握手成功之后立即发送消息给服务器
-                TextWebSocketFrame textFrame = new TextWebSocketFrame("Hello, WebSocket Server!");
-                ch.writeAndFlush(textFrame);
+                MsgPlayer.CSLogin.Builder loginMessage = MsgPlayer.CSLogin.newBuilder();
+                loginMessage.setUid("123456");
+                ch.writeAndFlush(loginMessage.build());
             } catch (WebSocketHandshakeException e) {
                 handshakeFuture.setFailure(e);
                 System.out.println("WebSocket handshake failed: " + e.getMessage());
@@ -84,8 +87,13 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
 
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-        // 心跳检测
-        logger.info("channel {}, 收到心跳信息, {}", ctx.channel().id().asShortText().hashCode(), evt.toString());
-        ctx.writeAndFlush(new PingWebSocketFrame());
+        if (evt instanceof IdleStateEvent) {
+            IdleStateEvent event = (IdleStateEvent) evt;
+            if (event.state() == IdleState.ALL_IDLE) {
+                // 心跳检测
+                logger.info("channel {}, 收到心跳信息, {}", ctx.channel().id().asShortText().hashCode(), evt);
+            }
+        }
+        super.userEventTriggered(ctx, evt);
     }
 }

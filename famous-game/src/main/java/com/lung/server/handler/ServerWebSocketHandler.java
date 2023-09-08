@@ -10,6 +10,8 @@ import com.lung.utils.ChannelUtils;
 import com.lung.utils.TraceUtils;
 import io.netty.channel.*;
 import io.netty.handler.codec.http.websocketx.*;
+import io.netty.handler.timeout.IdleState;
+import io.netty.handler.timeout.IdleStateEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -77,7 +79,13 @@ public class ServerWebSocketHandler extends SimpleChannelInboundHandler<WebSocke
 
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-        // 心跳检测
-        logger.info("channel {}, 服务端收到心跳信息, {}", ctx.channel().id().asShortText().hashCode(), evt.toString());
+        if (evt instanceof IdleStateEvent) {
+            IdleStateEvent event = (IdleStateEvent) evt;
+            if (event.state() == IdleState.ALL_IDLE) {
+                // 心跳检测
+                logger.info("channel {}, 服务端收到心跳信息, {}", ctx.channel().id().asShortText().hashCode(), evt);
+            }
+        }
+        super.userEventTriggered(ctx, evt);
     }
 }

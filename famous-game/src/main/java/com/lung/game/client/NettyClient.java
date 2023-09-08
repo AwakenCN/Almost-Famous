@@ -76,7 +76,7 @@ public class NettyClient {
                                     new HttpClientCodec(),
                                     new HttpObjectAggregator(8192),
                                     WebSocketClientCompressionHandler.INSTANCE,
-                                    new IdleStateHandler(5, 5, 5, TimeUnit.SECONDS),
+                                    new IdleStateHandler(5, 5, 30, TimeUnit.SECONDS),
                                     handler);
                         }
 
