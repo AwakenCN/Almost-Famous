@@ -32,7 +32,9 @@ import java.util.concurrent.TimeUnit;
  */
 public class WebsocketInitializer extends ChannelInitializer<SocketChannel> {
 
-    private SslContext sslContext;
+    private static final String WEBSOCKET_PATH = "/ws";
+
+    private final SslContext sslContext;
 
     public WebsocketInitializer(SslContext sslContext) {
         this.sslContext = sslContext;
@@ -46,21 +48,23 @@ public class WebsocketInitializer extends ChannelInitializer<SocketChannel> {
         channel.config().setOption(ChannelOption.SO_REUSEADDR, true);
 
         ChannelPipeline pipeline = channel.pipeline();
-        pipeline.addLast(sslContext.newHandler(channel.alloc()));
+        if (null != sslContext) {
+            pipeline.addLast(sslContext.newHandler(channel.alloc()));
+        }
         // 添加 WebSocket 相关处理器和拦截器
         pipeline.addLast(new HttpServerCodec());
         pipeline.addLast(new HttpObjectAggregator(512 * 1024));
 //        pipeline.addLast(new WebSocket13FrameDecoder(true, true, 1024*1024));
 //        pipeline.addLast(new WebSocket13FrameEncoder(true));
-        pipeline.addLast(new ProtobufVarint32FrameDecoder());
-        pipeline.addLast(new ProtobufDecoder(MsgPlayer.CSLogin.getDefaultInstance()));
-
-        pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
-        pipeline.addLast(new ProtobufEncoder());
+//        pipeline.addLast(new ProtobufVarint32FrameDecoder());
+//        pipeline.addLast(new ProtobufDecoder(MsgPlayer.CSLogin.getDefaultInstance()));
+//
+//        pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
+//        pipeline.addLast(new ProtobufEncoder());
 
         pipeline.addLast(new WebSocketServerCompressionHandler());
 
-        pipeline.addLast(new WebSocketServerProtocolHandler("/ws", null, true));
+        pipeline.addLast(new WebSocketServerProtocolHandler(WEBSOCKET_PATH, null, true));
 //        pipeline.addLast(new WebSocketIndexPageHandler(WEBSOCKET_PATH));
         pipeline.addLast(new IdleStateHandler(5, 5, 60, TimeUnit.SECONDS));
         // ... 其他设置

@@ -6,6 +6,7 @@ import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.websocketx.*;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
+import io.netty.util.CharsetUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +15,7 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
 
     private final static Logger logger = LoggerFactory.getLogger(WebSocketClientHandler.class);
 
-    private WebSocketClientHandshaker handShaker;
+    private final WebSocketClientHandshaker handShaker;
     private ChannelPromise handshakeFuture;
 
     public WebSocketClientHandler(WebSocketClientHandshaker handShaker) {
@@ -34,6 +35,7 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         handShaker.handshake(ctx.channel());
+        ctx.writeAndFlush(new PingWebSocketFrame());
     }
 
     @Override
@@ -42,40 +44,46 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
     }
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, Object frame) {
+    protected void channelRead0(ChannelHandlerContext ctx, Object msg) {
         Channel ch = ctx.channel();
         // 处理接收到的 WebSocket 帧数据
         if (!handShaker.isHandshakeComplete()) {
             try {
-                handShaker.finishHandshake(ch, (FullHttpResponse) frame);
+                handShaker.finishHandshake(ch, (FullHttpResponse) msg);
+                System.out.println("WebSocket Client connected!");
                 handshakeFuture.setSuccess();
-                System.out.println("WebSocket handshake completed successfully.");
-
-                // 在握手成功之后立即发送消息给服务器
-                MsgPlayer.CSLogin.Builder loginMessage = MsgPlayer.CSLogin.newBuilder();
-                loginMessage.setUid("123456");
-                ch.writeAndFlush(loginMessage.build());
             } catch (WebSocketHandshakeException e) {
+                System.out.println("WebSocket Client failed to connect");
                 handshakeFuture.setFailure(e);
-                System.out.println("WebSocket handshake failed: " + e.getMessage());
             }
             return;
-        } else {
-            MsgPlayer.CSLogin.Builder loginMessage = MsgPlayer.CSLogin.newBuilder();
-            loginMessage.setUid("123456");
-            ch.writeAndFlush(loginMessage.build());
+        }
+
+        // 其他类型的帧处理
+        // ...
+        if (msg instanceof FullHttpResponse) {
+            // 处理响应消息
+            FullHttpResponse response = (FullHttpResponse) msg;
+            throw new IllegalStateException(
+                    "Unexpected FullHttpResponse (getStatus=" + response.status() +
+                            ", content=" + response.content().toString(CharsetUtil.UTF_8) + ')');
+        }
+
+        // 处理 WebSocket 帧消息
+        WebSocketFrame frame = (WebSocketFrame) msg;
+        if (frame instanceof TextWebSocketFrame) {
+            TextWebSocketFrame textFrame = (TextWebSocketFrame) frame;
+            System.out.println("WebSocket Client received message: " + textFrame.text());
+        } else if (frame instanceof PongWebSocketFrame) {
+            System.out.println("WebSocket Client received pong");
+        } else if (frame instanceof CloseWebSocketFrame) {
+            System.out.println("WebSocket Client received closing");
+            ch.close();
         }
 
         if (frame instanceof TextWebSocketFrame) {
             TextWebSocketFrame textFrame = (TextWebSocketFrame) frame;
             System.out.println("Received message: " + textFrame.text());
-        }
-        // 其他类型的帧处理
-        // ...
-        if (frame instanceof FullHttpResponse) {
-            // 处理响应消息
-        } else if (frame instanceof WebSocketFrame) {
-            // 处理 WebSocket 帧消息
         }
 
     }

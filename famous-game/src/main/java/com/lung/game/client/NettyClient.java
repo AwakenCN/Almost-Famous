@@ -1,9 +1,11 @@
 package com.lung.game.client;
 
+import com.lung.game.bean.proto.msg.MsgPlayer;
 import com.lung.utils.CommonUtils;
 import com.lung.utils.SslUtils;
 import com.lung.utils.TraceUtils;
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
@@ -19,8 +21,10 @@ import org.slf4j.LoggerFactory;
 
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.TrustManagerFactory;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -42,6 +46,8 @@ public class NettyClient {
 
     private final URI uri;
     private final EventLoopGroup group;
+
+    static Channel channel;
 
     public NettyClient(URI uri) {
         this.uri = uri;
@@ -76,16 +82,33 @@ public class NettyClient {
                                     new HttpClientCodec(),
                                     new HttpObjectAggregator(8192),
                                     WebSocketClientCompressionHandler.INSTANCE,
-                                    new IdleStateHandler(5, 5, 30, TimeUnit.SECONDS),
+//                                    new IdleStateHandler(5, 5, 30, TimeUnit.SECONDS),
                                     handler);
                         }
 
                     })
             ;
 
-            Channel channel = b.connect(uri.getHost(), uri.getPort()).sync().channel();
+            channel = b.connect(uri.getHost(), uri.getPort()).sync().channel();
             handler.handshakeFuture().sync();
-            channel.closeFuture().sync();
+            BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
+            while (true) {
+                String msg = console.readLine();
+                if (msg == null) {
+                    break;
+                } else if ("bye".equals(msg.toLowerCase())) {
+                    channel.writeAndFlush(new CloseWebSocketFrame());
+                    channel.closeFuture().sync();
+                    break;
+                } else if ("ping".equals(msg.toLowerCase())) {
+                    WebSocketFrame frame = new PingWebSocketFrame(Unpooled.wrappedBuffer(new byte[] { 8, 1, 8, 1 }));
+                    channel.writeAndFlush(frame);
+                } else {
+                    WebSocketFrame frame = new TextWebSocketFrame(msg);
+                    channel.writeAndFlush(frame);
+                }
+            }
+//            channel.closeFuture().sync();
         } catch (Exception e) {
             String traceInfo = TraceUtils.getTraceInfo(e);
             logger.error("run error, {}", traceInfo, e);
@@ -93,12 +116,20 @@ public class NettyClient {
         } finally {
             group.shutdownGracefully();
         }
+        logger.info("client connecting server successful, {}", uri);
     }
 
     public static void main(String[] args) throws Exception {
-        URI uri = new URI("wss://localhost:8888/ws"); // 设置 WebSocket 服务器的地址
+        URI uri = new URI("ws://localhost:8888/ws"); // 设置 WebSocket 服务器的地址
         NettyClient client = new NettyClient(uri);
         client.connect();
+
+        channel.writeAndFlush(new PingWebSocketFrame());
+
+        // 在握手成功之后立即发送消息给服务器
+        MsgPlayer.CSLogin.Builder loginMessage = MsgPlayer.CSLogin.newBuilder();
+        loginMessage.setUid("123456");
+        channel.writeAndFlush(loginMessage.build());
     }
 
 }
