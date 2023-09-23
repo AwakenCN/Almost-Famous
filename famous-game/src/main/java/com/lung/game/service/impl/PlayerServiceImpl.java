@@ -1,6 +1,6 @@
 package com.lung.game.service.impl;
 
-import com.lung.game.bean.User;
+import com.lung.server.memory.User;
 import com.lung.game.bean.proto.msg.MsgPlayer;
 import com.lung.game.service.PlayerService;
 import org.springframework.stereotype.Component;

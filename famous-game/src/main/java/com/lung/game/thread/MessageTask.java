@@ -1,22 +1,12 @@
 package com.lung.game.thread;
 
-import com.google.common.base.Strings;
-import com.google.protobuf.GeneratedMessageV3;
 import com.lung.game.bean.GameRequest;
-import com.lung.game.bean.User;
-import com.lung.game.bean.proto.msg.MsgHandler;
-import com.lung.game.bean.proto.msg.MsgIds;
-import com.lung.game.manager.MessageManager;
-import com.lung.game.manager.SessionManager;
 import io.netty.channel.Channel;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
 
 /**
  * @author noseparte

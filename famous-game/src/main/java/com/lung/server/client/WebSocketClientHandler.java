@@ -1,6 +1,5 @@
-package com.lung.game.client;
+package com.lung.server.client;
 
-import com.lung.game.bean.proto.msg.MsgPlayer;
 import io.netty.channel.*;
 import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.websocketx.*;

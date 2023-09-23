@@ -1,18 +1,22 @@
 package com.lung;
 
+import com.google.common.base.Strings;
 import com.google.common.cache.*;
-import com.lung.game.bean.User;
+import com.lung.game.bean.UserProfile;
+import com.lung.server.memory.User;
 import com.lung.game.bean.proto.msg.MsgHandler;
 import com.lung.game.params.ConcurrentLock;
 import com.lung.game.thread.GameThreadPoolManager;
 import com.lung.server.WebsocketServer;
 import com.lung.utils.LockUtils;
+import org.redisson.spring.starter.RedissonAutoConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
@@ -27,6 +31,7 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  *          <p>Famous-Game服务 启动类</p>
  */
+@ImportAutoConfiguration(RedissonAutoConfiguration.class)
 @SpringBootApplication(exclude = {MongoAutoConfiguration.class, DataSourceAutoConfiguration.class})
 public class FamousGameApplication implements CommandLineRunner {
 
@@ -39,7 +44,7 @@ public class FamousGameApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(FamousGameApplication.class);
-        application.setWebApplicationType(WebApplicationType.SERVLET);
+        application.setWebApplicationType(WebApplicationType.NONE);
         application.run(args);
     }
 
@@ -54,7 +59,7 @@ public class FamousGameApplication implements CommandLineRunner {
         websocketServer.start(8888);
     }
 
-    LoadingCache<String, User> userCache;
+    LoadingCache<String, UserProfile> userCache;
 
     public void setUserCache() {
         userCache = CacheBuilder.newBuilder()
@@ -66,12 +71,15 @@ public class FamousGameApplication implements CommandLineRunner {
                 .build(loadUser());
     }
 
-    private RemovalListener<String, User> addRemoveListener() {
+    private RemovalListener<String, UserProfile> addRemoveListener() {
         return notification -> {
             String uid = notification.getKey();
-            User userProfile = notification.getValue();
+            if (Strings.isNullOrEmpty(uid)) {
+                return;
+            }
+            UserProfile userProfile = notification.getValue();
             if (userProfile != null) {
-                logger.info("user profile has removed. uid {}, name {}", notification.getKey(), userProfile.getName());
+                logger.info("user profile has removed. uid {}, name {}", notification.getKey(), userProfile.getUid());
                 String lockKey = ConcurrentLock.getInstance().getKey(ConcurrentLock.LockType.LOGIN_CONCURRENT_LOCK, uid);
                 ReentrantLock lock = LockUtils.getLock(lockKey);
                 try {
@@ -86,13 +94,13 @@ public class FamousGameApplication implements CommandLineRunner {
         };
     }
 
-    private CacheLoader<String, User> loadUser() {
-        return new CacheLoader<String, User>() {
+    private CacheLoader<String, UserProfile> loadUser() {
+        return new CacheLoader<String, UserProfile>() {
             @Override
-            public User load(String uid) {
+            public UserProfile load(String uid) {
                 try {
                     logger.info("load user profile begin {}", uid);
-                    User userProfile = User.getLoggedUserProfile(uid, false);
+                    UserProfile userProfile = UserProfile.getLoggedUserProfile(uid, false);
                     logger.info("load user profile {}", uid);
                     return userProfile;
                 } catch (Exception e) {

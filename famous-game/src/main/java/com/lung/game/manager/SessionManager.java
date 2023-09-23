@@ -1,6 +1,6 @@
 package com.lung.game.manager;
 
-import com.lung.game.bean.User;
+import com.lung.server.memory.User;
 import io.netty.channel.Channel;
 
 import java.util.HashMap;

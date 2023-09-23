@@ -1,4 +1,4 @@
-package com.lung.game.bean;
+package com.lung.server.memory;
 
 import io.netty.util.AttributeKey;
 

@@ -80,7 +80,7 @@ public class WebsocketServer {
                     .option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT)
                     .option(ChannelOption.SO_RCVBUF, 10485760)
                     .handler(new LoggingHandler(LogLevel.DEBUG))
-                    .childHandler(new WebsocketInitializer(sslContext))
+                    .childHandler(new WebsocketInitializer(null))
 //                    .childOption(ChannelOption.TCP_NODELAY, true)
             ;
 

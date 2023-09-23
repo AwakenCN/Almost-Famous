@@ -3,7 +3,7 @@ package com.lung.game.bean.proto.msg;
 import com.lung.utils.PackageClass;
 import com.google.protobuf.GeneratedMessageV3;
 import com.google.protobuf.Message;
-import com.lung.game.bean.User;
+import com.lung.server.memory.User;
 
 import java.lang.invoke.*;
 import java.lang.reflect.Method;

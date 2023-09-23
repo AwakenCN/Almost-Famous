@@ -3,7 +3,7 @@ package com.lung.server.handler;
 import com.alibaba.fastjson2.JSON;
 import com.lung.FamousGameApplication;
 import com.lung.game.bean.GameRequest;
-import com.lung.game.bean.SessionKey;
+import com.lung.server.memory.SessionKey;
 import com.lung.game.manager.SessionManager;
 import com.lung.game.thread.MessageTask;
 import com.lung.utils.ChannelUtils;
