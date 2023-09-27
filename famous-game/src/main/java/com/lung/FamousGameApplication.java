@@ -2,9 +2,8 @@ package com.lung;
 
 import com.google.common.base.Strings;
 import com.google.common.cache.*;
-import com.lung.game.bean.UserProfile;
-import com.lung.server.memory.User;
-import com.lung.game.bean.proto.msg.MsgHandler;
+import com.lung.game.entry.UserProfile;
+import com.lung.game.entry.proto.msg.MsgHandler;
 import com.lung.game.params.ConcurrentLock;
 import com.lung.game.thread.GameThreadPoolManager;
 import com.lung.server.WebsocketServer;

@@ -1,4 +1,4 @@
-package com.lung.game.bean.proto.msg;
+package com.lung.game.proto.msg;
 
 import com.lung.utils.PackageClass;
 import com.google.protobuf.GeneratedMessageV3;

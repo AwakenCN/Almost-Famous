@@ -1,9 +1,8 @@
 
-ÔøΩ
-MsgPlayer.proto!com.lung.game.bean.proto.msg
-options.protoMsgDef.proto""
+⁄
+MsgPlayer.protocom.lung.game.proto.msgoptions.protoMsgDef.proto""
 CSLogin
-uid (	Ruid:ÔøΩÔøΩÔøΩ	"o
+uid (	Ruid:êÇ±	"e
 SCLogin
-token (	RtokenG
-userInfo (2+.com.lung.game.bean.proto.msg.UserInfoRuserInfo:ÔøΩÔøΩÔøΩ	bproto3
+token (	Rtoken=
+userInfo (2!.com.lung.game.proto.msg.UserInfoRuserInfo:êÇ≤	bproto3

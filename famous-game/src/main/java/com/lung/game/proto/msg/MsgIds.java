@@ -1,4 +1,4 @@
-package com.lung.game.bean.proto.msg;
+package com.lung.game.proto.msg;
 
 import java.io.IOException;
 import java.util.HashMap;

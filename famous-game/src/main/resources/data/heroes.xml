@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <group id="heroEntry">
+        <item id="1" name="不朽巨熊" attack="70" defend="85" speed="35" intellect="10" type="1"/>
+        <item id="2" name="岩浆蛇蟒" attack="90" defend="80" speed="70" intellect="60" type="2"/>
+        <item id="3" name="暴风之鹰" attack="100" defend="60" speed="120" intellect="70" type="2"/>
+        <item id="4" name="地狱红龙" attack="120" defend="80" speed="80" intellect="90" type="3"/>
+        <item id="5" name="寒冰之狼" attack="110" defend="70" speed="100" intellect="80" type="2"/>
+        <item id="6" name="毒蛇女王" attack="100" defend="50" speed="110" intellect="90" type="3"/>
+        <item id="7" name="霜冻女巫" attack="80" defend="60" speed="100" intellect="120" type="3"/>
+        <item id="8" name="神秘刺客" attack="90" defend="40" speed="130" intellect="100" type="2"/>
+        <item id="9" name="封龙骑士" attack="80" defend="100" speed="50" intellect="50" type="1"/>
+        <item id="10" name="暗夜猎手" attack="95" defend="35" speed="120" intellect="80" type="2"/>
+        <item id="11" name="炼金术士" attack="70" defend="60" speed="80" intellect="140" type="3"/>
+        <item id="12" name="雷霆巨人" attack="100" defend="120" speed="30" intellect="40" type="1"/>
+        <item id="13" name="魔法女王" attack="85" defend="40" speed="100" intellect="130" type="3"/>
+        <item id="14" name="暗影刺客" attack="95" defend="30" speed="120" intellect="70" type="2"/>
+        <item id="15" name="毁灭螳螂" attack="100" defend="80" speed="110" intellect="60" type="1"/>
+        <item id="16" name="剑圣" attack="105" defend="40" speed="130" intellect="50" type="2"/>
+        <item id="17" name="圣堂刺客" attack="80" defend="60" speed="100" intellect="110" type="3"/>
+        <item id="18" name="霜之女王" attack="90" defend="40" speed="120" intellect="100" type="3"/>
+        <item id="19" name="炎魔" attack="120" defend="50" speed="70" intellect="90" type="1"/>
+        <item id="20" name="烈焰凤凰" attack="120" defend="70" speed="100" intellect="90" type="3"/>
+        <item id="21" name="暴风剑士" attack="100" defend="100" speed="50" intellect="60" type="1"/>
+        <item id="22" name="沙漠刺客" attack="85" defend="30" speed="130" intellect="70" type="2"/>
+        <item id="23" name="冰霜之心" attack="90" defend="40" speed="120" intellect="110" type="3"/>
+        <item id="24" name="气之流浪者" attack="80" defend="50" speed="120" intellect="100" type="2"/>
+        <item id="25" name="灵翼鹰眼" attack="90" defend="80" speed="110" intellect="120" type="2"/>
+        <item id="26" name="风暴元素" attack="95" defend="60" speed="100" intellect="130" type="3"/>
+        <item id="27" name="沙漠屠夫" attack="110" defend="70" speed="90" intellect="80" type="1"/>
+        <item id="28" name="霜冻术士" attack="85" defend="50" speed="100" intellect="120" type="3"/>
+        <item id="29" name="恶魔猎手" attack="95" defend="40" speed="120" intellect="90" type="2"/>
+        <item id="30" name="焰羽凤凰" attack="130" defend="60" speed="100" intellect="100" type="3"/>
+    </group>
+
+    <group id="hero_type">
+        <item id="1" name="力量型"/>
+        <item id="2" name="敏捷型"/>
+        <item id="3" name="智力型"/>
+    </group>
+
+</data>

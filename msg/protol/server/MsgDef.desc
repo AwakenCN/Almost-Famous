@@ -1,7 +1,6 @@
 
-ï¿½
-MsgDef.proto!com.lung.game.bean.proto.msg
-options.proto"/
+¨
+MsgDef.protocom.lung.game.proto.msgoptions.proto"/
 DPerson
 pid (Rpid
 name (	Rname"`
@@ -22,7 +21,7 @@ EffectInfo
 goodId (	RgoodId
 buyNum (RbuyNum
 	maxBuyNum (R	maxBuyNum
-	canBuyNum (R	canBuyNum"ï¿½
+	canBuyNum (R	canBuyNum"¾
 UserInfo
 uid (	Ruid
 name (	Rname
