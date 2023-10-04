@@ -40,7 +40,21 @@ public class NettyClient {
         this.group = new NioEventLoopGroup();
     }
 
-
+    /**
+     * WebSocket客户端的实现。它使用Netty框架来创建一个基于NIO的Socket连接，并与服务器进行WebSocket握手。然后，它通过控制台读取用户输入的消息，并将消息发送给服务器。
+     * 1. 创建一个SSL上下文对象，用于与服务器建立安全连接。
+     * 2. 创建一个WebSocketClientHandler对象，用于处理WebSocket握手和消息的收发。
+     * 3. 创建一个Bootstrap对象，用于配置和启动客户端。
+     * 4. 初始化ChannelPipeline，添加SSL处理器、HTTP编解码器、HTTP对象聚合器和WebSocket压缩处理器。
+     * 5. 连接服务器并进行握手。
+     * 6. 通过控制台读取用户输入的消息，并根据消息类型发送不同类型的WebSocket帧。
+     * 7. 如果用户输入"bye"，则发送关闭WebSocket帧并关闭连接。
+     * 8. 如果用户输入"ping"，则发送PingWebSocket帧。
+     * 9. 如果用户输入其他消息，则发送TextWebSocket帧。
+     * 10. 循环结束后，关闭连接并释放资源。
+     *
+     * @throws Exception 抛出异常
+     */
     public void connect() throws Exception {
         try {
             SslContext sslContext = SslUtils.createClientSslContext();
@@ -109,6 +123,7 @@ public class NettyClient {
         } finally {
             group.shutdownGracefully();
         }
+        //连接成功
         logger.info("client connecting server successful, {}", uri);
     }
 
