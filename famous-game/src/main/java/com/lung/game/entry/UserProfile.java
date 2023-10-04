@@ -1,4 +1,4 @@
-package com.lung.game.bean;
+package com.lung.game.entry;
 
 import lombok.Getter;
 import lombok.Setter;

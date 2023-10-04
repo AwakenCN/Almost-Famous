@@ -1,4 +1,4 @@
-package com.lung.game.bean;
+package com.lung.server.bean;
 
 import io.netty.channel.Channel;
 import lombok.Getter;

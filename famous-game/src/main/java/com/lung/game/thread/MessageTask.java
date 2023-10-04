@@ -1,6 +1,6 @@
 package com.lung.game.thread;
 
-import com.lung.game.bean.GameRequest;
+import com.lung.server.bean.GameRequest;
 import io.netty.channel.Channel;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import lombok.Getter;
