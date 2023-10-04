@@ -1,6 +1,6 @@
 package com.lung.server.client;
 
-import com.lung.game.entry.proto.msg.MsgPlayer;
+import com.lung.game.proto.msg.MsgPlayer;
 import com.lung.utils.SslUtils;
 import com.lung.utils.TraceUtils;
 import io.netty.bootstrap.Bootstrap;
