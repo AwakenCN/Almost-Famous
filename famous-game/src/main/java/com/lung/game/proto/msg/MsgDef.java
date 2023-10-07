@@ -4401,7 +4401,7 @@ public final class MsgDef {
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.noseparte.game.bean.proto.Options.getDescriptor(),
+          com.lung.game.proto.msg.Options.getDescriptor(),
         });
     internal_static_com_lung_game_proto_msg_DPerson_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -4439,7 +4439,7 @@ public final class MsgDef {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_lung_game_proto_msg_UserInfo_descriptor,
         new java.lang.String[] { "Uid", "Name", "Pic", "PicVer", "Abbr", "ServerId", "HeadFrame", "Power", });
-    com.noseparte.game.bean.proto.Options.getDescriptor();
+    com.lung.game.proto.msg.Options.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -2498,7 +2498,7 @@ public final class MsgCommon {
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.noseparte.game.bean.proto.Options.getDescriptor(),
+          com.lung.game.proto.msg.Options.getDescriptor(),
           com.lung.game.proto.msg.MsgDef.getDescriptor(),
         });
     internal_static_com_lung_game_proto_msg_SCServerTime_descriptor =
@@ -2521,10 +2521,10 @@ public final class MsgCommon {
         new java.lang.String[] { "ErrorMsg", "Person", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
-    registry.add(com.noseparte.game.bean.proto.Options.msgId);
+    registry.add(com.lung.game.proto.msg.Options.msgId);
     com.google.protobuf.Descriptors.FileDescriptor
         .internalUpdateFileDescriptor(descriptor, registry);
-    com.noseparte.game.bean.proto.Options.getDescriptor();
+    com.lung.game.proto.msg.Options.getDescriptor();
     com.lung.game.proto.msg.MsgDef.getDescriptor();
   }
 
