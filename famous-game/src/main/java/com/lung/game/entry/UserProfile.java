@@ -1,7 +1,9 @@
 package com.lung.game.entry;
 
+import com.lung.game.persist.redis.RedisSession;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author haoyitao

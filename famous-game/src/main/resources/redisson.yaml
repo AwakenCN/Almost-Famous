@@ -7,40 +7,14 @@ singleServerConfig:
   password: null
   subscriptionsPerConnection: 5
   clientName: null
-  address: "redis://localhost:6379"
+  address: "redis://127.0.0.1:6379"
   subscriptionConnectionMinimumIdleSize: 1
   subscriptionConnectionPoolSize: 50
-  connectionMinimumIdleSize: 10
+  connectionMinimumIdleSize: 24
   connectionPoolSize: 64
   database: 0
   dnsMonitoringInterval: 5000
-  dnsMonitoring: false
-  pingTimeout: 1000
-  keepAlive: false
-  keepAliveTimeout: 10000
-  sslEnableEndpointIdentification: true
-  sslProvider: JDK
-  sslTruststore: null
-  sslTruststorePassword: null
-  sslKeystore: null
-  sslKeystorePassword: null
-  sslTruststoreType: JKS
-  sslKeystoreType: JKS
-  retryIntervalMultiplier: 2
-  pingConnectionInterval: 0
-  failedAttempts: 3
-  timeoutMultiplier: 2
-  lockWatchdogTimeout: 30000
-  readMode: "SLAVE"
-  subscriptionMode: "MASTER"
-  sentinelAddresses: []
-  masterName: ""
-  loadBalancer: "org.redisson.connection.balancer.RoundRobinLoadBalancer"
-  slaveConnectionPoolSize: 250
-  slaveConnectionMinimumIdleSize: 0
-  masterConnectionPoolSize: 250
-  masterConnectionMinimumIdleSize: 0
-  slaveSubscriptionConnectionPoolSize: 25
-  slaveSubscriptionConnectionMinimumIdleSize: 1
-  masterSubscriptionConnectionPoolSize: 25
-  masterSubscriptionConnectionMinimumIdleSize: 1
+threads: 16
+nettyThreads: 32
+codec: !<org.redisson.codec.Kryo5Codec> {}
+transportMode: "NIO"

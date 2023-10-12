@@ -1,6 +1,9 @@
 server:
   port: 8909
 spring:
-  data:
-    redis:
-      url: redis://localhost:6379
+#  data:
+#    redis:
+#      url: redis://localhost:6379
+  redis:
+    redisson:
+      file: classpath:redisson.yaml

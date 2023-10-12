@@ -1,6 +1,6 @@
 package com.lung.utils;
 
-import com.lung.game.entry.HeroEntry;
+import com.lung.model.HeroConfig;
 import org.springframework.core.io.ClassPathResource;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -24,13 +24,13 @@ public class XMLParser {
         // 解析XML文件
         try {
             // 读取 XML 文件
-            ClassPathResource resource = new ClassPathResource("data/heroes.xml");
+            ClassPathResource resource = new ClassPathResource("data/hero.xml");
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(resource.getInputStream());
 
             // 创建 Map 存储英雄信息
-            Map<Integer, HeroEntry> heroMap = new HashMap<>();
+            Map<Integer, HeroConfig> heroMap = new HashMap<>();
 
             // 解析 <group id="hero"> 节点
             Element heroGroup = (Element) document.getElementsByTagName("group").item(0);
@@ -47,8 +47,8 @@ public class XMLParser {
                     int intellect = Integer.parseInt(heroElement.getAttribute("intellect"));
                     int type = Integer.parseInt(heroElement.getAttribute("type"));
 
-                    HeroEntry heroEntry = new HeroEntry(id, name, attack, defend, speed, intellect, type);
-                    heroMap.put(id, heroEntry);
+                    HeroConfig heroConfig = new HeroConfig(id, name, attack, defend, speed, intellect, type);
+                    heroMap.put(id, heroConfig);
                 }
             }
 
@@ -63,17 +63,17 @@ public class XMLParser {
                     String name = heroTypeElement.getAttribute("name");
 
                     // 将英雄类型信息添加到对应的英雄对象中
-                    HeroEntry heroEntry = heroMap.get(id);
-                    if (heroEntry != null) {
-                        heroEntry.setType(name);
+                    HeroConfig heroConfig = heroMap.get(id);
+                    if (heroConfig != null) {
+                        heroConfig.setType(name);
                     }
                 }
             }
 
             // 打印英雄信息
-            for (Map.Entry<Integer, HeroEntry> entry : heroMap.entrySet()) {
-                HeroEntry heroEntry = entry.getValue();
-                System.out.println(heroEntry.toString());
+            for (Map.Entry<Integer, HeroConfig> entry : heroMap.entrySet()) {
+                HeroConfig heroConfig = entry.getValue();
+                System.out.println(heroConfig.toString());
             }
         } catch (Exception e) {
             e.printStackTrace();

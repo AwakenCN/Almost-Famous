@@ -4,10 +4,17 @@ import com.google.common.base.Strings;
 import com.google.common.cache.*;
 import com.lung.game.entry.UserProfile;
 import com.lung.game.params.ConcurrentLock;
+import com.lung.game.persist.redis.RedisSession;
 import com.lung.game.proto.msg.MsgHandler;
 import com.lung.game.thread.GameThreadPoolManager;
 import com.lung.server.WebsocketServer;
+import com.lung.server.bean.ServerState;
 import com.lung.utils.LockUtils;
+import org.redisson.api.RBucket;
+import org.redisson.api.RedissonClient;
+import org.redisson.client.RedisClient;
+import org.redisson.client.codec.Codec;
+import org.redisson.client.codec.IntegerCodec;
 import org.redisson.spring.starter.RedissonAutoConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +30,8 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
+import static com.lung.game.constans.ServerConstant.SERVER_STATE_KEY;
+
 /**
  * @Auther: Noseparte
  * @Date: 2019/9/27 17:19
@@ -36,10 +45,13 @@ public class FamousGameApplication implements CommandLineRunner {
 
     private final static Logger logger = LoggerFactory.getLogger(FamousGameApplication.class);
 
+
     public static GameThreadPoolManager gameThreadPoolManager = new GameThreadPoolManager(5, "almost-famous_", 20);
 
     @Autowired
     private WebsocketServer websocketServer;
+    @Autowired
+    RedisSession redisClient;
 
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(FamousGameApplication.class);
@@ -50,8 +62,11 @@ public class FamousGameApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         try {
+            redisClient.setIntValue(SERVER_STATE_KEY, ServerState.START_PREPARE.ordinal());
             MsgHandler.getInstance().init("com.lung.game");
             setUserCache();
+            redisClient.setIntValue(SERVER_STATE_KEY, ServerState.STARTING.ordinal());
+//            redisClient.delete(SERVER_STATE_KEY);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
