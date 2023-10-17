@@ -8,7 +8,7 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @author haoyitao
+ * @author noseparte
  * @implSpec 游戏业务线程池
  * @since 2023/8/31 - 11:12
  * @version 1.0

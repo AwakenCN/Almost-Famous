@@ -6,7 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @author haoyitao
+ * @author noseparte
  * @implSpec 英雄类
  * @since 2023/9/25 - 15:16
  * @version 1.0
@@ -34,6 +34,34 @@ public class HeroEntry {
     private int hp;
 
 
+
+
+
+    @Getter
+    public enum HeroType {
+        POWER("力量型", 1),
+        AGILE("敏捷型", 2),
+        INTELLECTUAL("智力型", 3),
+        ;
+
+        HeroType(String typeName, int type) {
+            this.typeName = typeName;
+            this.type = type;
+        }
+
+        final String typeName;
+        final int type;
+
+        public static String getTypeName(int type) {
+            for (HeroType heroType : values()) {
+                if (type == heroType.getType()) {
+                    return heroType.getTypeName();
+                }
+            }
+            return "";
+        }
+
+    }
 
 
 

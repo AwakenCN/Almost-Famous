@@ -1,18 +1,19 @@
 package com.lung.game.params;
 
+import com.lung.game.constans.ServerConstant;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author haoyitao
+ * @author noseparte
  * @implSpec 业务锁
  * @since 2023/8/29 - 10:37
  * @version 1.0
  */
 public class ConcurrentLock {
-    private static final String LOCK_PREFIX = "almost-famous#"; //sid
+    private static final String LOCK_PREFIX = "almost-famous#" + ServerConstant.SERVER_ID; //sid
 
     public enum LockType {
-        LOGIN_CONCURRENT_LOCK("login_concurrent_lock_"),			//登录互斥锁
+        LOGIN_CONCURRENT_LOCK("_login_concurrent_lock_"),			//登录互斥锁
 
 		;
 

@@ -13,8 +13,8 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author haoyitao
- * @implSpec
+ * @author noseparte
+ * @implSpec redisson工具类
  * @since 2023/9/23 - 17:51
  * @version 1.0
  */

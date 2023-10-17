@@ -33,7 +33,7 @@ import java.security.cert.X509Certificate;
 import java.util.Objects;
 
 /**
- * @author haoyitao
+ * @author noseparte
  * @version 1.0
  * WebSocket 的关键特点和机制包括以下几个方面：
  * 1. 双向通信：

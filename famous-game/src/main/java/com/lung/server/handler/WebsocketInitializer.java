@@ -13,7 +13,7 @@ import io.netty.handler.ssl.SslContext;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author haoyitao
+ * @author noseparte
  * @version 1.0
  * @implSpec 给pipeline添加handler
  * @since 2023/8/29 - 18:26

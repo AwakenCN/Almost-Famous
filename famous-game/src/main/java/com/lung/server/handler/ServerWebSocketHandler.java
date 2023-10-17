@@ -16,7 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author haoyitao
+ * @author noseparte
  * @implSpec 自定义拦截器
  * @since 2023/8/30 - 15:15
  * @version 1.0

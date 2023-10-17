@@ -1,7 +1,7 @@
 package com.lung.server.bean;
 
 /**
- * @author haoyitao
+ * @author noseparte
  * @implSpec 服务器状态
  * @since 2023/10/12 - 15:38
  * @version 1.0

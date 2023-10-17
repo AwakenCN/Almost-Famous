@@ -1,5 +1,6 @@
 package com.lung.model;
 
+import com.lung.game.entry.HeroEntry;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,17 +26,10 @@ public class HeroConfig {
         this.defend = defend;
         this.speed = speed;
         this.intellect = intellect;
-        this.type = getTypeName(heroType);
+        this.type = HeroEntry.HeroType.getTypeName(heroType);
     }
 
-    private String getTypeName(int type) {
-        if (type == 1) {
-            return "力量型";
-        } else if (type == 2) {
-            return "敏捷型";
-        } else if (type == 3) {
-            return "智力型";
-        }
-        return "";
-    }
+
+
+
 }

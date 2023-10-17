@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
- * @author haoyitao
+ * @author noseparte
  * @implSpec 冒泡排序
  * @since 2023/10/8 - 14:37
  * @version 1.0

@@ -6,7 +6,7 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * @author haoyitao
+ * @author noseparte
  * @implSpec 玩家业务数据，持久化，跨服
  * @since 2023/9/22 - 16:35
  * @version 1.0

@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author haoyitao
+ * @author noseparte
  * @implSpec channel session 管理
  * @since 2023/8/31 - 10:23
  * @version 1.0

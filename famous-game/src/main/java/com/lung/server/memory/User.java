@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author haoyitao
+ * @author noseparte
  * @implSpec 玩家Session数据，只存在内存中，不持久化，不跨服
  * @since 2023/9/1 - 17:29
  * @version 1.0

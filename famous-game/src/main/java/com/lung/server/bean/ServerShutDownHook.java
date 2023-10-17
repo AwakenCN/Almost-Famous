@@ -8,7 +8,7 @@ import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.stereotype.Component;
 
 /**
- * @author haoyitao
+ * @author noseparte
  * @implSpec 应用程序关闭时的钩子
  * @since 2023/10/12 - 16:23
  * @version 1.0
