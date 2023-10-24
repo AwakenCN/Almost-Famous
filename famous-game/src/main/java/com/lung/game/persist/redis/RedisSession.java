@@ -1,16 +1,16 @@
 package com.lung.game.persist.redis;
 
-import org.redisson.client.codec.Codec;
+import org.redisson.api.RScoredSortedSet;
 import org.redisson.client.codec.IntegerCodec;
 import org.redisson.client.codec.StringCodec;
-import org.springframework.data.redis.core.convert.Bucket;
 import org.springframework.stereotype.Component;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+
+import static com.lung.game.constans.ServerConstant.REDIS_KEY_SEPARATOR;
 
 /**
  * @author noseparte
@@ -47,5 +47,18 @@ public class RedisSession {
     public void delete(String key) {
         // 关闭Redisson的Session
         redissonClient.getBucket(key).delete();
+    }
+
+    /**
+     * 排行榜分数计入
+     * @param redisKey 
+     * @param uid
+     * @param score
+     */
+    public void rankAdd(String redisKey, String uid, double score) {
+        RScoredSortedSet<String> leaderboard = redissonClient.getScoredSortedSet(redisKey, StringCodec.INSTANCE);
+
+        // 组合分数和当前时间的小数作为 score，添加成员到排行榜
+        leaderboard.add(score, redisKey + REDIS_KEY_SEPARATOR + uid);
     }
 }
